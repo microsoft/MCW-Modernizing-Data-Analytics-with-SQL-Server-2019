@@ -1,4 +1,4 @@
-![](https://github.com/Microsoft/MCW-Template-Cloud-Workshop/raw/master/Media/ms-cloud-workshop.png 'Microsoft Cloud Workshops')
+![Microsoft Cloud Workshops](https://github.com/Microsoft/MCW-Template-Cloud-Workshop/raw/master/Media/ms-cloud-workshop.png 'Microsoft Cloud Workshops')
 
 <div class="MCWHeader1">
 Modernizing data analytics with SQL Server 2019
@@ -266,7 +266,7 @@ There are two scenarios WWI is considering using AI to help grow their business 
 
 The following infographic can be used as inspiration when designing your solution.
 
-![Infographic.](media/infographic-for-common-scenarios.png 'Infographic for common scenarios')
+![Infographic to be used as inspiration when designing a solution.](media/infographic-for-common-scenarios.png 'Infographic for common scenarios')
 
 ## Step 2: Design a proof of concept solution
 
@@ -435,7 +435,7 @@ _High-level architecture_
 
    SQL Server big data clusters architecture:
 
-   ![SQL Server big data clusters architecture diagram](media/common-scenario-1.png)
+   ![SQL Server big data clusters architecture diagram.](media/common-scenario-1.png)
 
 _Big data and insights_
 
@@ -525,7 +525,7 @@ _Big data and insights_
 
    In addition, you can take advantage of the distributed architecture of SQL Server 2019 BDC to increase performance where needed. Each component can be scaled out separately to improve performance where needed, such as the SQL Server Master Instance, Compute Pool, Data Pool, and Storage Pool. Each are contained within Kubernetes nodes that contain pods that can be increased in number to add more resources to the instances contained within. Performance of PolyBase queries can be boosted further by distributing the cross-partition aggregation and shuffling of the filtered query results to the Compute Pools that are comprised of multiple SQL Server instances that work together.
 
-   Another option for processing flat files stored in the HDFS cluster within the Storage Pool, as an alternative to PolyBase, is to take advantage of Apache Spark within the Storage Pool. Spark is made accessible through the Knox gateway, using Livy to send Spark Jobs. Data scientists and engineers use Jupyter notebooks as an easy way to directly query against the Spark kernel, which is optimized to process huge amounts of data at scale, boosted by in-memory and other optimizations that make using Spark up to 100x faster than Hadoop in most workloads. In this way, users can take advantage of high volume data processing in Spark, followed by writing the data to SQL Server for access to line-of-business applications. Big Data Clusters provides a new MSSQL Spark connector that uses SQL Server bulk write APIs for a performant Spark to SQL write.
+   Another option for processing flat files stored in the HDFS cluster within the Storage Pool, as an alternative to PolyBase, is to take advantage of Apache Spark within the Storage Pool. Spark is made accessible through the Knox gateway, using Livy to send Spark Jobs. Data scientists and engineers use Jupyter notebooks as an easy way to directly query against the Spark kernel, which is optimized to process huge amounts of data at scale, boosted by in-memory and other optimizations that make using Spark up to 100x faster than Hadoop in most workloads. In this way, users can take advantage of high-volume data processing in Spark, followed by writing the data to SQL Server for access to line-of-business applications. Big Data Clusters provides a new MSSQL Spark connector that uses SQL Server bulk write APIs for a performant Spark to SQL write.
 
 _Deep analytics and AI_
 
@@ -535,7 +535,7 @@ _Deep analytics and AI_
 
    The SQL Server Master Instance in the BDC installs with SQL Machine Learning Services. In this way, SQL Server 2019 BDC provides **Integrated AI and Machine Learning**. Spark can be used as well as built-in AI tools in SQL Server, using R, Python, Scala, or Java.
 
-   ![Diagram of SQL Server 2019 Integrated Ai and Machine Learning](media/sql-server-2019-integrated-ai-ml.png)
+   ![Diagram of SQL Server 2019 Integrated AI and Machine Learning](media/sql-server-2019-integrated-ai-ml.png)
 
    Data scientists can continue to use big data ecosystem tools against HDFS while also utilizing easy, real-time access to the high-value data in SQL Server because it is all part of one integrated, complete system.
 
