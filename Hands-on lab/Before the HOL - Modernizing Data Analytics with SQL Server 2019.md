@@ -1,7 +1,7 @@
 ![Microsoft Cloud Workshops](https://github.com/Microsoft/MCW-Template-Cloud-Workshop/raw/master/Media/ms-cloud-workshop.png 'Microsoft Cloud Workshops')
 
 <div class="MCWHeader1">
-Modernizing data analytics with SQL Server 2019
+Modernizing Data Analytics with SQL Server 2019
 </div>
 
 <div class="MCWHeader2">
@@ -26,7 +26,7 @@ Microsoft and the trademarks listed at <https://www.microsoft.com/en-us/legal/in
 
 <!-- TOC -->
 
-- [Modernizing data analytics with SQL Server 2019 before the hands-on lab setup guide](#Modernizing-data-analytics-with-SQL-Server-2019-before-the-hands-on-lab-setup-guide)
+- [Modernizing Data Analytics with SQL Server 2019 before the hands-on lab setup guide](#Modernizing-data-analytics-with-SQL-Server-2019-before-the-hands-on-lab-setup-guide)
   - [Requirements](#Requirements)
   - [Preview requirements](#Preview-requirements)
   - [Regional limitations](#Regional-limitations)
@@ -39,7 +39,7 @@ Microsoft and the trademarks listed at <https://www.microsoft.com/en-us/legal/in
 
 <!-- /TOC -->
 
-# Modernizing data analytics with SQL Server 2019 before the hands-on lab setup guide
+# Modernizing Data Analytics with SQL Server 2019 before the hands-on lab setup guide
 
 ## Requirements
 
