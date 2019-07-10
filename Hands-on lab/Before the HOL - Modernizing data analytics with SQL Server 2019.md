@@ -170,7 +170,7 @@ Download a starter project that includes data files used in the lab.
 
 3. On the repo page, select **Clone or download**, then select **Download ZIP**.
 
-   ![Download .zip containing the repository](media/github-download-repo.png 'Download ZIP')
+   ![Download .zip containing the repository.](media/github-download-repo.png 'Download ZIP')
 
 4. Unzip the contents to your root hard drive (i.e. `C:\`). This will create a folder on your root drive named `MCW-Modernizing-data-analytics-with-SQL-Server-2019-master`.
 
