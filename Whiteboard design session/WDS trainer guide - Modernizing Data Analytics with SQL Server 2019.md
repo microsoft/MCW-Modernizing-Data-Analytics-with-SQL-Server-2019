@@ -1,7 +1,7 @@
 ![Microsoft Cloud Workshops](https://github.com/Microsoft/MCW-Template-Cloud-Workshop/raw/master/Media/ms-cloud-workshop.png 'Microsoft Cloud Workshops')
 
 <div class="MCWHeader1">
-Modernizing data analytics with SQL Server 2019
+Modernizing Data Analytics with SQL Server 2019
 </div>
 
 <div class="MCWHeader2">
@@ -31,7 +31,7 @@ Microsoft and the trademarks listed at <https://www.microsoft.com/en-us/legal/in
   - [Whiteboard design session flow](#Whiteboard-design-session-flow)
   - [Before the whiteboard design session: How to prepare](#Before-the-whiteboard-design-session-How-to-prepare)
   - [During the whiteboard design session: Tips for an effective whiteboard design session](#During-the-whiteboard-design-session-Tips-for-an-effective-whiteboard-design-session)
-- [Modernizing data analytics with SQL Server 2019 whiteboard design session student guide](#Modernizing-data-analytics-with-SQL-Server-2019-whiteboard-design-session-student-guide)
+- [Modernizing Data Analytics with SQL Server 2019 whiteboard design session student guide](#Modernizing-data-analytics-with-SQL-Server-2019-whiteboard-design-session-student-guide)
   - [Abstract and learning objectives](#Abstract-and-learning-objectives)
   - [Step 1: Review the customer case study](#Step-1-Review-the-customer-case-study)
     - [Customer situation](#Customer-situation)
@@ -42,7 +42,7 @@ Microsoft and the trademarks listed at <https://www.microsoft.com/en-us/legal/in
   - [Step 3: Present the solution](#Step-3-Present-the-solution)
   - [Wrap-up](#Wrap-up)
   - [Additional references](#Additional-references)
-- [Modernizing data analytics with SQL Server 2019 whiteboard design session trainer guide](#Modernizing-data-analytics-with-SQL-Server-2019-whiteboard-design-session-trainer-guide)
+- [Modernizing Data Analytics with SQL Server 2019 whiteboard design session trainer guide](#Modernizing-data-analytics-with-SQL-Server-2019-whiteboard-design-session-trainer-guide)
   - [Step 1: Review the customer case study](#Step-1-Review-the-customer-case-study-1)
   - [Step 2: Design a proof of concept solution](#Step-2-Design-a-proof-of-concept-solution-1)
   - [Step 3: Present the solution](#Step-3-Present-the-solution-1)
@@ -166,7 +166,7 @@ When participants are doing activities, you can **look ahead to refresh your mem
 
 **Wait for responses**. If you ask a question such as, "What's your experience with (fill in the blank)?" then wait. Do not be afraid of a little silence. If you leap into the silence, your participants will feel you are not serious about involving them and will become passive. Give participants a chance to think, and if no one answers, patiently ask again. You will usually get a response.
 
-# Modernizing data analytics with SQL Server 2019 whiteboard design session student guide
+# Modernizing Data Analytics with SQL Server 2019 whiteboard design session student guide
 
 ## Abstract and learning objectives
 
@@ -373,7 +373,7 @@ Directions: Tables reconvene with the larger group to hear the facilitator/SME s
 | Hadoop File System (HDFS)               |                                        <https://kubernetes.io/docs/concepts/overview/components/>                                         |
 | Apache Spark                            |                                                        <https://spark.apache.org/>                                                        |
 
-# Modernizing data analytics with SQL Server 2019 whiteboard design session trainer guide
+# Modernizing Data Analytics with SQL Server 2019 whiteboard design session trainer guide
 
 ## Step 1: Review the customer case study
 
