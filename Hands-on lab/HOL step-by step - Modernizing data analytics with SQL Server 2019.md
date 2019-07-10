@@ -1,4 +1,4 @@
-![](https://github.com/Microsoft/MCW-Template-Cloud-Workshop/raw/master/Media/ms-cloud-workshop.png 'Microsoft Cloud Workshops')
+![Microsoft Cloud Workshops](https://github.com/Microsoft/MCW-Template-Cloud-Workshop/raw/master/Media/ms-cloud-workshop.png 'Microsoft Cloud Workshops')
 
 <div class="MCWHeader1">
 Modernizing data analytics with SQL Server 2019
@@ -67,7 +67,7 @@ Microsoft and the trademarks listed at <https://www.microsoft.com/en-us/legal/in
 
 ## Abstract and learning objectives
 
-Wide World Importers has a host of online stores for various product offerings, including traditional product catalogs offered by their physical storefronts, to specialized categories like automotive and consumer technology products. With this expansion, they have generated a significant amount of additional data, and data formats. These new platforms were added without integrating into the OLTP system data or Business Intelligence infrastructures. As a result, "silos" of data stores have developed. In addition to their desire to overcome fragmentation of their actionable insights due to these data silos, they wish to add AI capabilities to their toolset to help grow their business and reduce costs.
+Wide World Importers (WWI) has a host of online stores for various product offerings, including traditional product catalogs offered by their physical storefronts, to specialized categories like automotive and consumer technology products. With this expansion, they have generated a significant amount of additional data, and data formats. These new platforms were added without integrating into the OLTP system data or Business Intelligence infrastructures. As a result, "silos" of data stores have developed. In addition to their desire to overcome fragmentation of their actionable insights due to these data silos, they wish to add AI capabilities to their toolset to help grow their business and reduce costs.
 
 In this hands-on lab, you will implement the steps to install and configure a SQL Server 2019 cluster to Linux-based containers in Azure. Using this cluster, you will use data virtualization to unify data from various sources, analyze the data, create and deploy a machine learning model, and finally detect and fix PII and GDPR compliance issues.
 
@@ -410,7 +410,7 @@ In this task, you will learn how to work with Spark Jobs in a SQL Server big dat
 
 Apache Spark is an open-source processing framework that runs large-scale data analytics applications. Spark is built on an in-memory compute engine, which enables high-performance querying on big data. It takes advantage of a parallel data-processing framework that persists data in-memory and disk if needed. This allows Spark to deliver 100-times faster speed and a common execution model for tasks such as extract, transform, load (ETL), batch, interactive queries and others on data in an Apache Hadoop Distributed File System (HDFS).
 
-Many times Spark is used to do transformations on data at large scale. In this Jupyter Notebook, you'll read a large text file into a Spark DataFrame, and then save out the top 10 examples as a table using SparkSQL.
+Many times, Spark is used to do transformations on data at large scale. In this Jupyter Notebook, you'll read a large text file into a Spark DataFrame, and then save out the top 10 examples as a table using SparkSQL.
 
 1. In Azure Data Studio, click **File**, then **Open File...**.
 
@@ -484,7 +484,7 @@ The trucks have sensors that transmit data to a file location. The trips are als
 
 Duration: 15 mins
 
-Contoso Auto has several databases that include tables containing sensitive data, such as personally identifiable information (PII) like phone numbers, social security numbers, financial data, etc. Since some of their personnel and customer data include individuals who reside within the European Union (EU), they need to adhere to the General Data Protection Regulation ([GDPR](https://en.wikipedia.org/wiki/General_Data_Protection_Regulation)) as well. Because of this, Contoso Auto is required to provide periodic data auditing reports to identify sensitive and GDPR-related data that reside within their various databases.
+WWI has several databases that include tables containing sensitive data, such as personally identifiable information (PII) like phone numbers, social security numbers, financial data, etc. Since some of their personnel and customer data include individuals who reside within the European Union (EU), they need to adhere to the General Data Protection Regulation ([GDPR](https://en.wikipedia.org/wiki/General_Data_Protection_Regulation)) as well. Because of this, WWI is required to provide periodic data auditing reports to identify sensitive and GDPR-related data that reside within their various databases.
 
 With SQL Server Management Studio, they are able to identify, classify, and generate reports on sensitive and GDPR-related data by using the [SQL Data Discovery & Classification](https://docs.microsoft.com/sql/relational-databases/security/sql-data-discovery-and-classification?view=sql-server-ver15) tool. This tool introduces a set of advanced services, forming a new SQL Information Protection paradigm aimed at protecting the data, not just the database:
 
@@ -658,7 +658,7 @@ Next, you will run a query to create a user-defined function (UDF) named `custom
 
    ![The sales database and New Query menu item are highlighted.](media/ssms-sales-new-query.png 'New Query')
 
-3. The query below selects the top 100 rows from the `customer` table, calling the `customer_category` user-defined function (UDF) inline for each row. It uses the `DISABLE_TSQL_SCALAR_UDF_INLINING` hint to disable the new scalar UDF inlining QP feature. Paste the following query into the the empty query window. **Do not execute yet**.
+3. The query below selects the top 100 rows from the `customer` table, calling the `customer_category` user-defined function (UDF) inline for each row. It uses the `DISABLE_TSQL_SCALAR_UDF_INLINING` hint to disable the new scalar UDF inlining QP feature. Paste the following query into the empty query window. **Do not execute yet**.
 
    ```sql
    USE sales;
