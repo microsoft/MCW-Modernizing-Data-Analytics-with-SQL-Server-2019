@@ -1,4 +1,4 @@
-# Modernizing data analytics with SQL Server 2019
+# Modernizing Data Analytics with SQL Server 2019
 
 Businesses require near real-time insights from ever-larger sets of data. Large-scale data ingestion requires scale-out storage and processing in ways that allow fast response times. In addition to simply querying this data, organizations want full analysis and even predictive capabilities over their data.
 
