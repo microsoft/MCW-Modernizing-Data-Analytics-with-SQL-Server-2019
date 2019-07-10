@@ -1,4 +1,4 @@
-![](https://github.com/Microsoft/MCW-Template-Cloud-Workshop/raw/master/Media/ms-cloud-workshop.png 'Microsoft Cloud Workshops')
+![Microsoft Cloud Workshops](https://github.com/Microsoft/MCW-Template-Cloud-Workshop/raw/master/Media/ms-cloud-workshop.png 'Microsoft Cloud Workshops')
 
 <div class="MCWHeader1">
 Modernizing data analytics with SQL Server 2019
@@ -140,7 +140,7 @@ There are two scenarios WWI is considering using AI to help grow their business 
 
 The following infographic can be used as inspiration when designing your solution.
 
-![Infographic.](media/infographic-for-common-scenarios.png 'Infographic for common scenarios')
+![Infographic to be used as inspiration when designing a solution.](media/infographic-for-common-scenarios.png 'Infographic for common scenarios')
 
 ## Step 2: Design a proof of concept solution
 
