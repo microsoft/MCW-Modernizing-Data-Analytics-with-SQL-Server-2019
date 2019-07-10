@@ -1,4 +1,4 @@
-![](https://github.com/Microsoft/MCW-Template-Cloud-Workshop/raw/master/Media/ms-cloud-workshop.png 'Microsoft Cloud Workshops')
+![Microsoft Cloud Workshops](https://github.com/Microsoft/MCW-Template-Cloud-Workshop/raw/master/Media/ms-cloud-workshop.png 'Microsoft Cloud Workshops')
 
 <div class="MCWHeader1">
 Modernizing data analytics with SQL Server 2019
@@ -68,7 +68,7 @@ You will use these credentials in a subsequent step. It can take up to a week to
 
 ## Regional limitations
 
-**L Series VMs** (required for SQL 2019 Big Data Clusters): East US 2, West US, West US 2, and a limited set of others worldwide
+**L Series VMs** (required for SQL 2019 Big Data Clusters): East US 2, West US, West US 2, and a limited set of others worldwide.
 
 ## Before the hands-on lab
 
@@ -78,7 +78,7 @@ Duration: 60 minutes
 
 The instructions that follow are the same for either your own system (desktop or laptop), or a Virtual Machine. It's best to have at least 4MB of RAM on the management system, and these instructions assume that you are not planning to run the database server or any Containers on the workstation. It's also assumed that you are using a current version of Windows, either desktop or server.
 
-_(You can copy and paste all of the commands that follow in a PowerShell window that you run as the system Administrator)_
+_(You can copy and paste all of the commands that follow in a PowerShell window that you run as the system Administrator.)_
 
 > Since the SQL Server 2019 Big Data Clusters feature is in preview, please [refer to this link](https://docs.microsoft.com/en-us/sql/big-data-cluster/deploy-get-started?view=sqlallproducts-allversions) for the latest installation instructions if you have problems running the steps below.
 
@@ -170,7 +170,7 @@ Download a starter project that includes data files used in the lab.
 
 3. On the repo page, select **Clone or download**, then select **Download ZIP**.
 
-   ![Download .zip containing the repository](media/github-download-repo.png 'Download ZIP')
+   ![Download .zip containing the repository.](media/github-download-repo.png 'Download ZIP')
 
 4. Unzip the contents to your root hard drive (i.e. `C:\`). This will create a folder on your root drive named `MCW-Modernizing-data-analytics-with-SQL-Server-2019-master`.
 
