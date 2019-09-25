@@ -56,7 +56,7 @@ We welcome feedback and comments from Microsoft SMEs & learning partners who del
 ***Having trouble?***
 - First, verify you have followed all written lab instructions (including the Before the Hands-on lab document).
 - Next, submit an issue with a detailed description of the problem.
-- Please do not submit pull requests. Our authors will review open issues and submit pull requests, as needed, for approval.  
+- Do not submit pull requests. Our content authors will make all changes and submit pull requests for approval.   
 
 If you are planning to present a workshop, *review and test the materials early*! We recommend at least two weeks prior.
 
