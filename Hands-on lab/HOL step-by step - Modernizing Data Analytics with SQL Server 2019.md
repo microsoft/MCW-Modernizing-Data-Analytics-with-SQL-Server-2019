@@ -9,7 +9,7 @@ Hands-on lab step-by-step
 </div>
 
 <div class="MCWHeader3">
-June 2019
+September 2019
 </div>
 
 Information in this document, including URL and other Internet Web site references, is subject to change without notice. Unless otherwise noted, the example companies, organizations, products, domain names, e-mail addresses, logos, people, places, and events depicted herein are fictitious, and no association with any real company, organization, product, domain name, e-mail address, logo, person, place or event is intended or should be inferred. Complying with all applicable copyright laws is the responsibility of the user. Without limiting the rights under copyright, no part of this document may be reproduced, stored in or introduced into a retrieval system, or transmitted in any form or by any means (electronic, mechanical, photocopying, recording, or otherwise), or for any purpose, without the express written permission of Microsoft Corporation.
@@ -134,7 +134,7 @@ Follow the steps below to connect to your SQL Server 2019 cluster with both Azur
 
    ![The Connection form is filled out with the previously mentioned settings entered into the appropriate fields.](media/ads-new-connection.png 'Azure Data Studio - New Connection')
 
-4. Click **Connect**.
+4. Select **Connect**.
 
 ### Connect with SQL Server Management Studio
 
@@ -152,7 +152,7 @@ Follow the steps below to connect to your SQL Server 2019 cluster with both Azur
 
    ![The Connect form is filled out with the previously mentioned settings entered into the appropriate fields.](media/ssms-connection.png 'SQL Server Management Studio - Connect')
 
-3. Click **Connect**.
+3. Select **Connect**.
 
 ## Exercise 1: Using data virtualization
 
@@ -263,7 +263,7 @@ The next data source we will be virtualizing is a CSV file that you will upload 
 
    ![The file browser is displayed.](media/ads-open-stockitemholdings.png 'Open')
 
-5. Click **Upload**.
+5. Select **Upload**.
 
 6. Expand the **data** subfolder you created, then right-click on the `stockitemholdings.csv` file and select **Create External Table From CSV Files**.
 
@@ -273,9 +273,9 @@ The next data source we will be virtualizing is a CSV file that you will upload 
 
    ![The previously mentioned form is displayed.](media/ads-external-table-csv-wizard-active-connection.png 'Active SQL Server connections')
 
-8. Click **Next**.
+8. Select **Next**.
 
-9. The next step displays a preview of the first 50 rows CSV data for validation. Click **Next** to continue.
+9. The next step displays a preview of the first 50 rows CSV data for validation. Select **Next** to continue.
 
    ![A preview of the CSV data is displayed.](media/ads-external-table-csv-preview.png 'Preview Data')
 
@@ -327,7 +327,7 @@ Now that we have our two external tables added, we will now join those two exter
    JOIN dbo.stockitemholdings AS s ON i.i_item_sk = s.StockItemID
    ```
 
-3. Click the **Run** button above the query window to execute.
+3. Select the **Run** button above the query window to execute.
 
    ![The Run button above the query window is highlighted.](media/ads-run.png 'Run')
 
@@ -357,7 +357,7 @@ Notebooks are made up of one or more of cells that allow for the execution of th
 
    ![The Python 3 kernel is selected.](media/ads-notebook-select-kernel.png 'Kernel dropdown')
 
-4. After selecting the Kernel, you may be prompted to install Python for Notebooks components. If you see this, either select **New Python installation** or select **Use existing Python installation**. Select the existing option first and make sure it automatically locates the Python Install Location. If not, then select the first option for a new installation. Click **Install**. This may take **several minutes to complete**.
+4. After selecting the Kernel, you may be prompted to install Python for Notebooks components. If you see this, either select **New Python installation** or select **Use existing Python installation**. Select the existing option first and make sure it automatically locates the Python Install Location. If not, then select the first option for a new installation. Select **Install**. This may take **several minutes to complete**.
 
    ![The dialog is displayed.](media/ads-configure-python-for-notebooks.png 'Configure Python for Notebooks')
 
@@ -449,7 +449,7 @@ The trucks have sensors that transmit data to a file location. The trips are als
 
 2. In the folder browser dialog, navigate to the `C:\MCW-Modernizing-data-analytics-with-SQL-Server-2019-master\Hands-on lab\Resources` folder and select **predict-battery-life-with-sqlbdc.ipynb**.
 
-3. Click **Open**.
+3. Select **Open**.
 
 4. Follow the instructions in the notebook and return to the next step after you have completed the notebook.
 
@@ -467,13 +467,13 @@ The trucks have sensors that transmit data to a file location. The trips are als
 
     ![Create External Table](media/ads-battery-create-external-menu.png 'Create External Table')
 
-4.  In Step 1 of the wizard, select the `sales` database and for the `Name for new external table` field provide **battery-life-predictions**. Click **Next**.
+4.  In Step 1 of the wizard, select the `sales` database and for the `Name for new external table` field provide **battery-life-predictions**. Select **Next**.
 
     ![Step 1 of the wizard is displayed.](media/ads-predictions-csv-wizard-step1.png 'Step 1')
 
 5.  On Step 2, Preview Data, click **Next**.
 
-6.  On Step 3, for the column `Car_Has_EcoStart` set the Data Type to **char(10)**. Click **Next**.
+6.  On Step 3, for the column `Car_Has_EcoStart` set the Data Type to **char(10)**. Select **Next**.
 
     ![Step 3 of the wizard is displayed.](media/ads-predictions-csv-wizard-step3.png 'Step 3')
 
@@ -513,7 +513,7 @@ In this task, you will run the SQL Data Discovery & Classification tool against 
 
     ![The sales database, Tasks menu, and Classify Data items are highlighted.](media/ssms-classify-data-link.png 'Data Classification')
 
-3.  When the tool runs, it will analyze all of the columns within all of the tables and recommend appropriate data classifications for each. What you should see is the Data Classification dashboard showing no currently classified columns, and a classification recommendations box at the top showing that there are 45 columns that the tool identified as containing sensitive (PII) or GDPR-related data. **Click** on this classification recommendations box.
+3.  When the tool runs, it will analyze all of the columns within all of the tables and recommend appropriate data classifications for each. What you should see is the Data Classification dashboard showing no currently classified columns, and a classification recommendations box at the top showing that there are 45 columns that the tool identified as containing sensitive (PII) or GDPR-related data. **Select** on this classification recommendations box.
 
     ![The data classification recommendations box is highlighted.](media/ssms-classification-recommendations-box.png 'Data classification recommendations box')
 
@@ -521,11 +521,11 @@ In this task, you will run the SQL Data Discovery & Classification tool against 
 
     ![The recommendations are shown with each checkbox checked.](media/ssms-recommendations.png 'Classification recommendations')
 
-5.  Click **Accept selected recommendations**.
+5.  Select **Accept selected recommendations**.
 
     ![The Accept selected recommendations button is highlighted.](media/ssms-accept-selected-recommendations.png 'Accept selected recommendations')
 
-6.  Click **Save** in the toolbar above to apply your changes.
+6.  Select **Save** in the toolbar above to apply your changes.
 
     ![The Save button is highlighted.](media/ssms-save-classification-changes.png 'Save classification changes')
 

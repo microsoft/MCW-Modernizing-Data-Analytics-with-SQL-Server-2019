@@ -9,7 +9,7 @@ Before the hands-on lab setup guide
 </div>
 
 <div class="MCWHeader3">
-June 2019
+September 2019
 </div>
 
 Information in this document, including URL and other Internet Web site references, is subject to change without notice. Unless otherwise noted, the example companies, organizations, products, domain names, e-mail addresses, logos, people, places, and events depicted herein are fictitious, and no association with any real company, organization, product, domain name, e-mail address, logo, person, place or event is intended or should be inferred. Complying with all applicable copyright laws is the responsibility of the user. Without limiting the rights under copyright, no part of this document may be reproduced, stored in or introduced into a retrieval system, or transmitted in any form or by any means (electronic, mechanical, photocopying, recording, or otherwise), or for any purpose, without the express written permission of Microsoft Corporation.
@@ -26,16 +26,16 @@ Microsoft and the trademarks listed at <https://www.microsoft.com/en-us/legal/in
 
 <!-- TOC -->
 
-- [Modernizing Data Analytics with SQL Server 2019 before the hands-on lab setup guide](#Modernizing-Data-Analytics-with-SQL-Server-2019-before-the-hands-on-lab-setup-guide)
-  - [Requirements](#Requirements)
-  - [Preview requirements](#Preview-requirements)
-  - [Regional limitations](#Regional-limitations)
-  - [Before the hands-on lab](#Before-the-hands-on-lab)
-    - [Task 1: Install software on your own VM or system](#Task-1-Install-software-on-your-own-VM-or-system)
-    - [Task 2: Download lab files](#Task-2-Download-lab-files)
-    - [Task 3: Install SQL Server 2019 Big Data clusters](#Task-3-Install-SQL-Server-2019-Big-Data-clusters)
-    - [Task 4: Install sample databases and upload files](#Task-4-Install-sample-databases-and-upload-files)
-    - [Task 5: Create sample Azure SQL Database](#Task-5-Create-sample-Azure-SQL-Database)
+- [Modernizing Data Analytics with SQL Server 2019 before the hands-on lab setup guide](#modernizing-data-analytics-with-sql-server-2019-before-the-hands-on-lab-setup-guide)
+  - [Requirements](#requirements)
+  - [Preview requirements](#preview-requirements)
+  - [Regional limitations](#regional-limitations)
+  - [Before the hands-on lab](#before-the-hands-on-lab)
+    - [Task 1: Install software on your own VM or system](#task-1-install-software-on-your-own-vm-or-system)
+    - [Task 2: Download lab files](#task-2-download-lab-files)
+    - [Task 3: Install SQL Server 2019 Big Data clusters](#task-3-install-sql-server-2019-big-data-clusters)
+    - [Task 4: Install sample databases and upload files](#task-4-install-sample-databases-and-upload-files)
+    - [Task 5: Create sample Azure SQL Database](#task-5-create-sample-azure-sql-database)
 
 <!-- /TOC -->
 
