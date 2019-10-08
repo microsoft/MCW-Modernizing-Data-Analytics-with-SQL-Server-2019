@@ -10,8 +10,6 @@ Over the past few years, they have adopted an omni-channel strategy, meaning, di
 
 Now, WWI is trying to cope with difficulties in combining these disparate data sources in varying formats into a single location where they can analyze the data in near real-time, joining related information where needed. They also want to be able to leverage AI to help their business grow and cut down maintenance costs. They would like to have all of these capabilities rolled into a single system, while minimizing code changes across their domain.
 
-June 2019
-
 ## Target audience
 
 - Database Administrator
@@ -48,16 +46,3 @@ At the end of this hands-on lab, you will be better able to build solutions for 
 ## Related references
 
 - [MCW](https://github.com/Microsoft/MCW)
-
-## Help & Support
-
-We welcome feedback and comments from Microsoft SMEs & learning partners who deliver MCWs.  
-
-***Having trouble?***
-- First, verify you have followed all written lab instructions (including the Before the Hands-on lab document).
-- Next, submit an issue with a detailed description of the problem.
-- Do not submit pull requests. Our content authors will make all changes and submit pull requests for approval.   
-
-If you are planning to present a workshop, *review and test the materials early*! We recommend at least two weeks prior.
-
-### Please allow 5 - 10 business days for review and resolution of issues.

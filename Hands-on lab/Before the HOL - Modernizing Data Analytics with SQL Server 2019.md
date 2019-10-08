@@ -26,7 +26,7 @@ Microsoft and the trademarks listed at <https://www.microsoft.com/en-us/legal/in
 
 <!-- TOC -->
 
-- [Modernizing Data Analytics with SQL Server 2019 before the hands-on lab setup guide](#Modernizing-data-analytics-with-SQL-Server-2019-before-the-hands-on-lab-setup-guide)
+- [Modernizing Data Analytics with SQL Server 2019 before the hands-on lab setup guide](#Modernizing-Data-Analytics-with-SQL-Server-2019-before-the-hands-on-lab-setup-guide)
   - [Requirements](#Requirements)
   - [Preview requirements](#Preview-requirements)
   - [Regional limitations](#Regional-limitations)
@@ -156,6 +156,21 @@ _(You can copy and paste all of the commands that follow in a PowerShell window 
     pip3 install -r  https://private-repo.microsoft.com/python/ctp3.0/mssqlctl/requirements.txt
     ```
 
+    ```bash
+    pip3 uninstall -r https://private-repo.microsoft.com/python/ctp3.0/mssqlctl/requirements.txt
+    ```
+
+     ```bash
+    pip3 uninstall -r https://private-repo.microsoft.com/python/ctp3.1/mssqlctl/requirements.txt
+    ```
+
+     ```bash
+    pip3 uninstall -r https://azdatacli.blob.core.windows.net/python/azdata/2019-ctp3.2/requirements.txt
+    ```
+
+    ```bash
+    pip3 install -r https://aka.ms/azdata --user
+    ```
 11. Download and install [SQL Server Management Studio](https://go.microsoft.com/fwlink/?linkid=2078638) (SSMS) v18.0 or greater.
 
 12. Install the [Azure Data Studio SQL Server 2019 extension](https://docs.microsoft.com/en-us/sql/azure-data-studio/sql-server-2019-extension?view=sql-server-2017).
@@ -196,10 +211,10 @@ Open PowerShell and execute the following to deploy the clusters in preparation 
    az account set --subscription <subscription id>
    ```
 
-4. Navigate to the lab files folder.
+4. Download the latest python and kubernetes install script.
 
    ```powershell
-   cd "C:\MCW-Modernizing-data-analytics-with-SQL-Server-2019-master\Hands-on lab\Resources"
+   curl -o deploy-sql-big-data-aks.py "https://raw.githubusercontent.com/Microsoft/sql-server-samples/master/samples/features/sql-big-data-cluster/deployment/aks/deploy-sql-big-data-aks.py"
    ```
 
 5. Use the following steps to run the deployment script. This script will create an AKS service in Azure and then deploy a SQL Server 2019 big data cluster to AKS. The [deploy-sql-big-data-aks.py](deploy-sql-big-data-aks.py) script located in this folder is customized with environment variables that set the memory allocation for the cluster.
@@ -240,22 +255,22 @@ Open PowerShell and execute the following to deploy the clusters in preparation 
        - 104.209.210.8
      - PORT
        - 31433
-   - HDFS/KNOX:
+   - Gateway to access HDFS files, Spark:
      - IP
        - 104.208.243.59
      - PORT
        - 30443
-   - Cluster administration portal (`https://<ip>:<port>`):
+   - Management Proxy (`https://<ip>:<port>`):
      - IP
        - 137.116.37.126
      - PORT
        - 30777
 
-   ![Screenshot of the output after completion.](media/powershell-bdc-install-output.png 'Output of Big Data Cluster install')
+   <!-- ![Screenshot of the output after completion.](media/powershell-bdc-install-output.png 'Output of Big Data Cluster install') -->
 
 ### Task 4: Install sample databases and upload files
 
-1. Open a new Windows command prompt (DO NOT user PowerShell for these steps).
+1. Open a new Windows command prompt (DO NOT user PowerShell for these steps).  Navigate to a folder where you'll keep the sample data files.
 
 2. Use **curl** to download the bootstrap script for the sample data.
 
@@ -275,7 +290,7 @@ Open PowerShell and execute the following to deploy the clusters in preparation 
    curl -o upload-sample-files.cmd "https://raw.githubusercontent.com/solliancenet/MCW-Modernizing-data-analytics-with-SQL-Server-2019/master/Hands-on%20lab/Resources/upload-sample-files.cmd"
    ```
 
-5. Run the bootstrap script. Substitute `<CLUSTER_NAMESPACE>`, `<SQL_MASTER_IP>`, `<SQL_MASTER_SA_PASSWORD>`, `<KNOX_IP>`, `<KNOX_PASSWORD>` with values output from the SQL Server 2019 cluster creation script above.
+5. Run the bootstrap script. Substitute `<CLUSTER_NAMESPACE>`, `<SQL_MASTER_IP>`, `<SQL_MASTER_SA_PASSWORD>`, `<KNOX_IP>`, `<KNOX_PASSWORD>` with values output from the SQL Server 2019 cluster creation script above.  Halfway through the execution of this script, you may need to hit a key to have it continue.
 
    ```bash
    .\bootstrap-sample-db.cmd <CLUSTER_NAMESPACE> <SQL_MASTER_IP> <SQL_MASTER_SA_PASSWORD> <KNOX_IP> <KNOX_PASSWORD> --install-extra-samples

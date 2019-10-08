@@ -26,40 +26,40 @@ Microsoft and the trademarks listed at <https://www.microsoft.com/en-us/legal/in
 
 <!-- TOC -->
 
-- [Modernizing Data Analytics with SQL Server 2019 hands-on lab step-by-step](#Modernizing-data-analytics-with-SQL-Server-2019-hands-on-lab-step-by-step)
-  - [Abstract and learning objectives](#Abstract-and-learning-objectives)
-  - [Overview](#Overview)
-  - [Solution architecture](#Solution-architecture)
-  - [Requirements](#Requirements)
-  - [Before the hands-on lab](#Before-the-hands-on-lab)
-    - [Connect with Azure Data Studio](#Connect-with-Azure-Data-Studio)
-    - [Connect with SQL Server Management Studio](#Connect-with-SQL-Server-Management-Studio)
-  - [Exercise 1: Using data virtualization](#Exercise-1-Using-data-virtualization)
-    - [Task 1: Create external table from Azure SQL Database](#Task-1-Create-external-table-from-Azure-SQL-Database)
-    - [Task 2: Create external table from CSV files](#Task-2-Create-external-table-from-CSV-files)
-    - [Task 3: Query and join data from flat files, data from external database systems, and SQL Server](#Task-3-Query-and-join-data-from-flat-files-data-from-external-database-systems-and-SQL-Server)
-  - [Exercise 2: Using notebooks](#Exercise-2-Using-notebooks)
-    - [Task 1: Introduction to Jupyter notebooks](#Task-1-Introduction-to-Jupyter-notebooks)
-    - [Task 2: Querying the SQL Server Master Instance (MI)](#Task-2-Querying-the-SQL-Server-Master-Instance-MI)
-    - [Task 3: Virtualizing data with scripts](#Task-3-Virtualizing-data-with-scripts)
-    - [Task 4: Creating and querying a Data Mart](#Task-4-Creating-and-querying-a-Data-Mart)
-    - [Task 5: Using the powerful Spark engine for data exploration](#Task-5-Using-the-powerful-Spark-engine-for-data-exploration)
-  - [Exercise 3: Machine learning](#Exercise-3-Machine-learning)
-    - [Task 1: Train a machine learning model](#Task-1-Train-a-machine-learning-model)
-    - [Task 2: Score and save data as an external table](#Task-2-Score-and-save-data-as-an-external-table)
-  - [Exercise 4: Identify PII and GDPR-related compliance issues using Data Discovery & Classification in SSMS](#Exercise-4-Identify-PII-and-GDPR-related-compliance-issues-using-Data-Discovery--Classification-in-SSMS)
-    - [Task 1: Use the Data Discovery & Classification in SSMS](#Task-1-Use-the-Data-Discovery--Classification-in-SSMS)
-    - [Task 2: Fix compliance issues with dynamic data masking](#Task-2-Fix-compliance-issues-with-dynamic-data-masking)
-  - [Exercise 5: Exploring intelligent query processing (QP) features](#Exercise-5-Exploring-intelligent-query-processing-QP-features)
-    - [Task 1: Set database compatibility level](#Task-1-Set-database-compatibility-level)
-    - [Task 2: Scalar UDF inlining](#Task-2-Scalar-UDF-inlining)
-    - [Task 3: Table variable deferred compilation](#Task-3-Table-variable-deferred-compilation)
-    - [Task 4: Row mode memory grant feedback](#Task-4-Row-mode-memory-grant-feedback)
-  - [Exercise 6: Monitoring the big data cluster](#Exercise-6-Monitoring-the-big-data-cluster)
-    - [Task 1: Use the cluster administration portal](#Task-1-Use-the-cluster-administration-portal)
-    - [Task 2: Monitor and troubleshoot using kubectl commands](#Task-2-Monitor-and-troubleshoot-using-kubectl-commands)
-  - [After the hands-on lab](#After-the-hands-on-lab)
-    - [Task 1: Delete the resource group](#Task-1-Delete-the-resource-group)
+- [Modernizing Data Analytics with SQL Server 2019 hands-on lab step-by-step](#modernizing-data-analytics-with-sql-server-2019-hands-on-lab-step-by-step)
+  - [Abstract and learning objectives](#abstract-and-learning-objectives)
+  - [Overview](#overview)
+  - [Solution architecture](#solution-architecture)
+  - [Requirements](#requirements)
+  - [Before the hands-on lab](#before-the-hands-on-lab)
+    - [Connect with Azure Data Studio](#connect-with-azure-data-studio)
+    - [Connect with SQL Server Management Studio](#connect-with-sql-server-management-studio)
+  - [Exercise 1: Using data virtualization](#exercise-1-using-data-virtualization)
+    - [Task 1: Create external table from Azure SQL Database](#task-1-create-external-table-from-azure-sql-database)
+    - [Task 2: Create external table from CSV files](#task-2-create-external-table-from-csv-files)
+    - [Task 3: Query and join data from flat files, data from external database systems, and SQL Server](#task-3-query-and-join-data-from-flat-files-data-from-external-database-systems-and-sql-server)
+  - [Exercise 2: Using notebooks](#exercise-2-using-notebooks)
+    - [Task 1: Introduction to Jupyter notebooks](#task-1-introduction-to-jupyter-notebooks)
+    - [Task 2: Querying the SQL Server Master Instance (MI)](#task-2-querying-the-sql-server-master-instance-mi)
+    - [Task 3: Virtualizing data with scripts](#task-3-virtualizing-data-with-scripts)
+    - [Task 4: Creating and querying a Data Mart](#task-4-creating-and-querying-a-data-mart)
+    - [Task 5: Using the powerful Spark engine for data exploration](#task-5-using-the-powerful-spark-engine-for-data-exploration)
+  - [Exercise 3: Machine learning](#exercise-3-machine-learning)
+    - [Task 1: Train a machine learning model](#task-1-train-a-machine-learning-model)
+    - [Task 2: Score and save data as an external table](#task-2-score-and-save-data-as-an-external-table)
+  - [Exercise 4: Identify PII and GDPR-related compliance issues using Data Discovery & Classification in SSMS](#exercise-4-identify-pii-and-gdpr-related-compliance-issues-using-data-discovery--classification-in-ssms)
+    - [Task 1: Use the Data Discovery & Classification in SSMS](#task-1-use-the-data-discovery--classification-in-ssms)
+    - [Task 2: Fix compliance issues with dynamic data masking](#task-2-fix-compliance-issues-with-dynamic-data-masking)
+  - [Exercise 5: Exploring intelligent query processing (QP) features](#exercise-5-exploring-intelligent-query-processing-qp-features)
+    - [Task 1: Set database compatibility level](#task-1-set-database-compatibility-level)
+    - [Task 2: Scalar UDF inlining](#task-2-scalar-udf-inlining)
+    - [Task 3: Table variable deferred compilation](#task-3-table-variable-deferred-compilation)
+    - [Task 4: Row mode memory grant feedback](#task-4-row-mode-memory-grant-feedback)
+  - [Exercise 6: Monitoring the big data cluster](#exercise-6-monitoring-the-big-data-cluster)
+    - [Task 1: Use the cluster administration portal](#task-1-use-the-cluster-administration-portal)
+    - [Task 2: Monitor and troubleshoot using kubectl commands](#task-2-monitor-and-troubleshoot-using-kubectl-commands)
+  - [After the hands-on lab](#after-the-hands-on-lab)
+    - [Task 1: Delete the resource group](#task-1-delete-the-resource-group)
 
 <!-- /TOC -->
 
@@ -176,53 +176,64 @@ To start, we will use the External Table Wizard in Azure Data Studio to connect 
 
 1. Open Azure Data Studio and connect to your SQL Server 2019 cluster, following the [connection steps](#connect-with-azure-data-studio) above.
 
-2. Expand the Databases folder, right-click on the **sales** database, then select **Create External Table**.
+2. Expand the Databases folder, right-click on the **sales** database, then select **New Query**.
 
-   ![The sales database and the Create External Table sub-menu item are highlighted.](media/ads-create-external-table-sales.png 'Create External Table')
 
-3. Select the **SQL Server** data source type, then click **Next**.
+3. Run the following code.  Make sure to replace the value for the SQL Server.  Change the username and password if you changed it off of the default values.
 
-   ![The SQL Server data source type is selected.](media/ads-external-table-wizard-data-source-type.png 'Select data source type')
+ ```sql
 
-4. The next step is to create a database master key, if it does not already exist. This secures the credentials used by an external data source. Enter `MySecure@MasterKey1` in the **Password** and **Confirm Password** fields. If you see a message stating that a master key already exists, you may skip this step. Click **Next**.
+  CREATE MASTER KEY ENCRYPTION BY PASSWORD = 'MySQLBigData2019';
+GO
+    /*  specify credentials to external data source
+    *  IDENTITY: user name for external source.
+    *  SECRET: password for external source.
+    */
+CREATE DATABASE SCOPED CREDENTIAL SQLCred
+    WITH IDENTITY = 'ServerAdmin', Secret = 'MySQLBigData2019';
+GO
 
-   ![The Master Key step is displayed.](media/ads-external-table-wizard-master-key.png 'Master Key')
+/* LOCATION: Location string should be of format '<vendor>://<server>[:<port>]'.
+* PUSHDOWN: specify whether computation should be pushed down to the source. ON by default.
+* CREDENTIAL: the database scoped credential, created above.
+*/
+drop external data source sqlserverinstance
 
-5. Now, enter the credentials provided to you for the **CA_Commerce** Azure SQL Database within the following fields:
+CREATE EXTERNAL DATA SOURCE SQLServerInstance
+WITH ( 
+LOCATION = 'sqlserver://ikebigdatasql.database.windows.net',
+-- PUSHDOWN = ON | OFF,
+    CREDENTIAL = SQLCred
+	, CONNECTION_OPTIONS='Database=wwi_commerce' 
+);
+GO
 
-   - **External Data Source Name:** Enter the string "SQLReviews".
-   - **Server Name:** Enter the value of the Azure SQL Server name for the server you created when you provisioned the Azure SQL Database. The name should end with `.database.windows.net`.
-   - **Database Name:** Enter "WWI_Commerce".
-   - **Choose Credential:** Select "-- Create New Credential --".
-   - **New Credential Name:** Enter "SQLCred".
-   - **Username:** Enter the Azure SQL Server username (such as **ServerAdmin**).
-   - **Password:** Enter the Azure SQL Server password (such as **MySQLBigData2019**).
+  
+CREATE EXTERNAL TABLE dbo.SQLReviews(
+	[product_id] [bigint] NOT NULL,
+	[customer_id] [bigint] NOT NULL,
+	[review] [nvarchar](1000) NOT NULL,
+	[date_added] [datetime] NOT NULL
+    )
+    WITH (
+    LOCATION='wwi_commerce.dbo.Reviews',
+    DATA_SOURCE=SqlServerInstance
+    );
 
-   ![The external data source connection form is filled out with the previously mentioned settings entered into the appropriate fields.](media/ads-external-table-wizard-data-source.png 'Create a connection to your Data Source')
+	select * from sqlreviews
 
-6. Click **Next**. This process will take a few moments while the External Table Wizard attempts to connect to your data source.
 
-7. The next screen allows you to configure external table mapping and select the tables for which you want to create external views. Expand the **WWI_Commerce** database node, then expand Tables, and check the box next to the **dbo.Reviews** table. Click on the table name to highlight it as well. It is here where you can rename the external table if you wish. For now, just click **Next**.
+ ```
 
-   ![The external tables are listed and the Reviews table is checked and selected.](media/ads-external-table-wizard-table-mapping.png 'External tables')
-
-8. In the Summary page that follows, you can see the name of the database scoped credential and external data source objects to be created in the destination database. Here you can click Generate Script to view the SQL script that will run to create the external table. Instead, click **Create**.
-
-   ![A screenshot of the summary is displayed.](media/ads-external-table-wizard-summary.png 'Summary')
-
-9. After a few moments, a "Create External Table succeeded" message will display.
-
-   ![The Create External Table succeeded message is displayed.](media/ads-external-table-wizard-succeeded.png 'Create External Table succeeded message')
-
-10. Select the Servers link (Ctrl+G) on the left-hand menu, then expand the Tables list underneath your **sales** database and find the **dbo.Reviews (External)** table. If you do not see it, right-click on the Tables folder, then select Refresh. The "(External)" portion of the table name denotes that it is a virtual data object that was added as an external table.
+4.  Select the Servers link (Ctrl+G) on the left-hand menu, then expand the Tables list underneath your **sales** database and find the **dbo.Reviews (External)** table. If you do not see it, right-click on the Tables folder, then select Refresh. The "(External)" portion of the table name denotes that it is a virtual data object that was added as an external table.
 
     ![The Reviews external table is displayed in the sales tables list.](media/ads-reviews-table-in-list.png 'Reviews external table')
 
-11. Right-click the **dbo.Reviews (External)** table, then select the **Select Top 1000** menu option to display the table contents.
+5.  Right-click the **dbo.Reviews (External)** table, then select the **Select Top 1000** menu option to display the table contents.
 
     ![The Select Top 1000 rows menu item is highlighted.](media/ads-reviews-select-top-1000.png 'Select Top 1000')
 
-12. You should see a SQL query selecting the top 1000 records from the Reviews table and its results. The interesting thing to note is that the query selects the table and fields using the same syntax you would use to select from any other table in the sales database. The fact that the Reviews table is external is completely seamless and transparent to the user. This is the power of data virtualization in SQL Server 2019.
+6.  You should see a SQL query selecting the top 1000 records from the Reviews table and its results. The interesting thing to note is that the query selects the table and fields using the same syntax you would use to select from any other table in the sales database. The fact that the Reviews table is external is completely seamless and transparent to the user. This is the power of data virtualization in SQL Server 2019.
 
     ![The Reviews query and results are displayed.](media/ads-reviews-query-results.png 'Reviews query results')
 
@@ -860,7 +871,7 @@ The cluster administration portal allows you to:
 
 To access the portal, use the IP address and port you captured after deploying your cluster.
 
-1. Open a new web browser window and go to `https://<ip-address>:30777/portal`, replacing `<ip-address>` with your portal's IP. You may receive a security warning when accessing the web page since it is using auto-generated SSL certificates.
+1. Open a new web browser window and go to `https://<ip-address>:30777/portal`, replacing `<ip-address>` with your portal's IP. You may receive a security warning when accessing the web page since it is using auto-generated SSL certificates.  There was a recent build where the portal URI was not working.  I would try this, but if the website doesn't appear, skip steps 1, 2, and 3.
 
    > Use kubectl to find the IP addresses for the cluster administration portal. Run `kubectl get svc -n <your-big-data-cluster-name>` and look at the EXTERNAL-IP addresses for **mgmtproxy-svc-external**).
 
@@ -870,7 +881,7 @@ To access the portal, use the IP address and port you captured after deploying y
 
 3. The home page shows you how many pods are currently running within the Controller, Master Instance, Compute Pool, Storage Pool, and Data Pool. You can either select a pool to view its details, or use the menu on the left. For now, select the **Controller** card or its item from the left-hand menu.
 
-4. You will see the 11 pods associated with the Controller on this page. All of them have links to view metrics in Grafana, and a few of them have links to view logs. Select **View** under **Node Metrics** next to the **Knox Service** pod. This will open a new browser tab into the Grafana dashboard.
+4. You will see the 11 pods associated with the Controller on this page. All of them have links to view metrics in Grafana, and a few of them have links to view logs. Select **View** under **Node Metrics** next to the **Knox Service** pod. This will open a new browser tab into the Grafana dashboard.  Alternatively, you can go to `https://<ip-address>:30777/grafana`.
 
    ![The Controller Status is displayed with 11 pods.](media/admin-portal-controller.png 'Controller Status')
 
@@ -878,7 +889,7 @@ To access the portal, use the IP address and port you captured after deploying y
 
    ![The Grafana dashboard is displaying information about the Knox Service pod.](media/grafana-knox.png 'Grafana dashboard')
 
-6. Switch back to the cluster administration portal tab and select **View** under **Logs** next to the **Knox Service** pod. This will open a new browser tab into the Kibana log dashboard.
+6. Switch back to the cluster administration portal tab and select **View** under **Logs** next to the **Knox Service** pod. This will open a new browser tab into the Kibana log dashboard. Alternatively, you can go to `https://<ip-address>:30777/kibana`.
 
    ![The View link under Logs is highlighted.](media/admin-portal-controller-logs.png 'Controller Status')
 
@@ -902,7 +913,7 @@ Before executing these commands, you will need to make sure you are authenticate
 
 1. Open a new Windows command prompt.
 
-2. Execute the following kubectl command to show the status of all the pods in your SQL Server big data cluster. Remember, **replace** CLUSTER_NAMESPACE with your own namespace.
+2. Execute the following kubectl command to show the status of all the pods in your SQL Server big data cluster. Remember, **replace** CLUSTER_NAMESPACE with your own namespace.  It's the name you provided for the prompt "Provide name of AKS cluster and SQL big data cluster:".
 
    ```bash
    kubectl get pods -n CLUSTER_NAMESPACE
