@@ -9,7 +9,7 @@ Hands-on lab step-by-step
 </div>
 
 <div class="MCWHeader3">
-June 2019
+September 2019
 </div>
 
 Information in this document, including URL and other Internet Web site references, is subject to change without notice. Unless otherwise noted, the example companies, organizations, products, domain names, e-mail addresses, logos, people, places, and events depicted herein are fictitious, and no association with any real company, organization, product, domain name, e-mail address, logo, person, place or event is intended or should be inferred. Complying with all applicable copyright laws is the responsibility of the user. Without limiting the rights under copyright, no part of this document may be reproduced, stored in or introduced into a retrieval system, or transmitted in any form or by any means (electronic, mechanical, photocopying, recording, or otherwise), or for any purpose, without the express written permission of Microsoft Corporation.
@@ -26,40 +26,40 @@ Microsoft and the trademarks listed at <https://www.microsoft.com/en-us/legal/in
 
 <!-- TOC -->
 
-- [Modernizing Data Analytics with SQL Server 2019 hands-on lab step-by-step](#Modernizing-data-analytics-with-SQL-Server-2019-hands-on-lab-step-by-step)
-  - [Abstract and learning objectives](#Abstract-and-learning-objectives)
-  - [Overview](#Overview)
-  - [Solution architecture](#Solution-architecture)
-  - [Requirements](#Requirements)
-  - [Before the hands-on lab](#Before-the-hands-on-lab)
-    - [Connect with Azure Data Studio](#Connect-with-Azure-Data-Studio)
-    - [Connect with SQL Server Management Studio](#Connect-with-SQL-Server-Management-Studio)
-  - [Exercise 1: Using data virtualization](#Exercise-1-Using-data-virtualization)
-    - [Task 1: Create external table from Azure SQL Database](#Task-1-Create-external-table-from-Azure-SQL-Database)
-    - [Task 2: Create external table from CSV files](#Task-2-Create-external-table-from-CSV-files)
-    - [Task 3: Query and join data from flat files, data from external database systems, and SQL Server](#Task-3-Query-and-join-data-from-flat-files-data-from-external-database-systems-and-SQL-Server)
-  - [Exercise 2: Using notebooks](#Exercise-2-Using-notebooks)
-    - [Task 1: Introduction to Jupyter notebooks](#Task-1-Introduction-to-Jupyter-notebooks)
-    - [Task 2: Querying the SQL Server Master Instance (MI)](#Task-2-Querying-the-SQL-Server-Master-Instance-MI)
-    - [Task 3: Virtualizing data with scripts](#Task-3-Virtualizing-data-with-scripts)
-    - [Task 4: Creating and querying a Data Mart](#Task-4-Creating-and-querying-a-Data-Mart)
-    - [Task 5: Using the powerful Spark engine for data exploration](#Task-5-Using-the-powerful-Spark-engine-for-data-exploration)
-  - [Exercise 3: Machine learning](#Exercise-3-Machine-learning)
-    - [Task 1: Train a machine learning model](#Task-1-Train-a-machine-learning-model)
-    - [Task 2: Score and save data as an external table](#Task-2-Score-and-save-data-as-an-external-table)
-  - [Exercise 4: Identify PII and GDPR-related compliance issues using Data Discovery & Classification in SSMS](#Exercise-4-Identify-PII-and-GDPR-related-compliance-issues-using-Data-Discovery--Classification-in-SSMS)
-    - [Task 1: Use the Data Discovery & Classification in SSMS](#Task-1-Use-the-Data-Discovery--Classification-in-SSMS)
-    - [Task 2: Fix compliance issues with dynamic data masking](#Task-2-Fix-compliance-issues-with-dynamic-data-masking)
-  - [Exercise 5: Exploring intelligent query processing (QP) features](#Exercise-5-Exploring-intelligent-query-processing-QP-features)
-    - [Task 1: Set database compatibility level](#Task-1-Set-database-compatibility-level)
-    - [Task 2: Scalar UDF inlining](#Task-2-Scalar-UDF-inlining)
-    - [Task 3: Table variable deferred compilation](#Task-3-Table-variable-deferred-compilation)
-    - [Task 4: Row mode memory grant feedback](#Task-4-Row-mode-memory-grant-feedback)
-  - [Exercise 6: Monitoring the big data cluster](#Exercise-6-Monitoring-the-big-data-cluster)
-    - [Task 1: Use the cluster administration portal](#Task-1-Use-the-cluster-administration-portal)
-    - [Task 2: Monitor and troubleshoot using kubectl commands](#Task-2-Monitor-and-troubleshoot-using-kubectl-commands)
-  - [After the hands-on lab](#After-the-hands-on-lab)
-    - [Task 1: Delete the resource group](#Task-1-Delete-the-resource-group)
+- [Modernizing Data Analytics with SQL Server 2019 hands-on lab step-by-step](#modernizing-data-analytics-with-sql-server-2019-hands-on-lab-step-by-step)
+  - [Abstract and learning objectives](#abstract-and-learning-objectives)
+  - [Overview](#overview)
+  - [Solution architecture](#solution-architecture)
+  - [Requirements](#requirements)
+  - [Before the hands-on lab](#before-the-hands-on-lab)
+    - [Connect with Azure Data Studio](#connect-with-azure-data-studio)
+    - [Connect with SQL Server Management Studio](#connect-with-sql-server-management-studio)
+  - [Exercise 1: Using data virtualization](#exercise-1-using-data-virtualization)
+    - [Task 1: Create external table from Azure SQL Database](#task-1-create-external-table-from-azure-sql-database)
+    - [Task 2: Create external table from CSV files](#task-2-create-external-table-from-csv-files)
+    - [Task 3: Query and join data from flat files, data from external database systems, and SQL Server](#task-3-query-and-join-data-from-flat-files-data-from-external-database-systems-and-sql-server)
+  - [Exercise 2: Using notebooks](#exercise-2-using-notebooks)
+    - [Task 1: Introduction to Jupyter notebooks](#task-1-introduction-to-jupyter-notebooks)
+    - [Task 2: Querying the SQL Server Master Instance (MI)](#task-2-querying-the-sql-server-master-instance-mi)
+    - [Task 3: Virtualizing data with scripts](#task-3-virtualizing-data-with-scripts)
+    - [Task 4: Creating and querying a Data Mart](#task-4-creating-and-querying-a-data-mart)
+    - [Task 5: Using the powerful Spark engine for data exploration](#task-5-using-the-powerful-spark-engine-for-data-exploration)
+  - [Exercise 3: Machine learning](#exercise-3-machine-learning)
+    - [Task 1: Train a machine learning model](#task-1-train-a-machine-learning-model)
+    - [Task 2: Score and save data as an external table](#task-2-score-and-save-data-as-an-external-table)
+  - [Exercise 4: Identify PII and GDPR-related compliance issues using Data Discovery & Classification in SSMS](#exercise-4-identify-pii-and-gdpr-related-compliance-issues-using-data-discovery--classification-in-ssms)
+    - [Task 1: Use the Data Discovery & Classification in SSMS](#task-1-use-the-data-discovery--classification-in-ssms)
+    - [Task 2: Fix compliance issues with dynamic data masking](#task-2-fix-compliance-issues-with-dynamic-data-masking)
+  - [Exercise 5: Exploring intelligent query processing (QP) features](#exercise-5-exploring-intelligent-query-processing-qp-features)
+    - [Task 1: Set database compatibility level](#task-1-set-database-compatibility-level)
+    - [Task 2: Scalar UDF inlining](#task-2-scalar-udf-inlining)
+    - [Task 3: Table variable deferred compilation](#task-3-table-variable-deferred-compilation)
+    - [Task 4: Row mode memory grant feedback](#task-4-row-mode-memory-grant-feedback)
+  - [Exercise 6: Monitoring the big data cluster](#exercise-6-monitoring-the-big-data-cluster)
+    - [Task 1: Use the cluster administration portal](#task-1-use-the-cluster-administration-portal)
+    - [Task 2: Monitor and troubleshoot using kubectl commands](#task-2-monitor-and-troubleshoot-using-kubectl-commands)
+  - [After the hands-on lab](#after-the-hands-on-lab)
+    - [Task 1: Delete the resource group](#task-1-delete-the-resource-group)
 
 <!-- /TOC -->
 
@@ -134,7 +134,7 @@ Follow the steps below to connect to your SQL Server 2019 cluster with both Azur
 
    ![The Connection form is filled out with the previously mentioned settings entered into the appropriate fields.](media/ads-new-connection.png 'Azure Data Studio - New Connection')
 
-4. Click **Connect**.
+4. Select **Connect**.
 
 ### Connect with SQL Server Management Studio
 
@@ -152,7 +152,7 @@ Follow the steps below to connect to your SQL Server 2019 cluster with both Azur
 
    ![The Connect form is filled out with the previously mentioned settings entered into the appropriate fields.](media/ssms-connection.png 'SQL Server Management Studio - Connect')
 
-3. Click **Connect**.
+3. Select **Connect**.
 
 ## Exercise 1: Using data virtualization
 
@@ -176,53 +176,64 @@ To start, we will use the External Table Wizard in Azure Data Studio to connect 
 
 1. Open Azure Data Studio and connect to your SQL Server 2019 cluster, following the [connection steps](#connect-with-azure-data-studio) above.
 
-2. Expand the Databases folder, right-click on the **sales** database, then select **Create External Table**.
+2. Expand the Databases folder, right-click on the **sales** database, then select **New Query**.
 
-   ![The sales database and the Create External Table sub-menu item are highlighted.](media/ads-create-external-table-sales.png 'Create External Table')
 
-3. Select the **SQL Server** data source type, then click **Next**.
+3. Run the following code.  Make sure to replace the value for the SQL Server.  Change the username and password if you changed it off of the default values.
 
-   ![The SQL Server data source type is selected.](media/ads-external-table-wizard-data-source-type.png 'Select data source type')
+ ```sql
 
-4. The next step is to create a database master key, if it does not already exist. This secures the credentials used by an external data source. Enter `MySecure@MasterKey1` in the **Password** and **Confirm Password** fields. If you see a message stating that a master key already exists, you may skip this step. Click **Next**.
+  CREATE MASTER KEY ENCRYPTION BY PASSWORD = 'MySQLBigData2019';
+GO
+    /*  specify credentials to external data source
+    *  IDENTITY: user name for external source.
+    *  SECRET: password for external source.
+    */
+CREATE DATABASE SCOPED CREDENTIAL SQLCred
+    WITH IDENTITY = 'ServerAdmin', Secret = 'MySQLBigData2019';
+GO
 
-   ![The Master Key step is displayed.](media/ads-external-table-wizard-master-key.png 'Master Key')
+/* LOCATION: Location string should be of format '<vendor>://<server>[:<port>]'.
+* PUSHDOWN: specify whether computation should be pushed down to the source. ON by default.
+* CREDENTIAL: the database scoped credential, created above.
+*/
+drop external data source sqlserverinstance
 
-5. Now, enter the credentials provided to you for the **CA_Commerce** Azure SQL Database within the following fields:
+CREATE EXTERNAL DATA SOURCE SQLServerInstance
+WITH ( 
+LOCATION = 'sqlserver://ikebigdatasql.database.windows.net',
+-- PUSHDOWN = ON | OFF,
+    CREDENTIAL = SQLCred
+	, CONNECTION_OPTIONS='Database=wwi_commerce' 
+);
+GO
 
-   - **External Data Source Name:** Enter the string "SQLReviews".
-   - **Server Name:** Enter the value of the Azure SQL Server name for the server you created when you provisioned the Azure SQL Database. The name should end with `.database.windows.net`.
-   - **Database Name:** Enter "WWI_Commerce".
-   - **Choose Credential:** Select "-- Create New Credential --".
-   - **New Credential Name:** Enter "SQLCred".
-   - **Username:** Enter the Azure SQL Server username (such as **ServerAdmin**).
-   - **Password:** Enter the Azure SQL Server password (such as **MySQLBigData2019**).
+  
+CREATE EXTERNAL TABLE dbo.SQLReviews(
+	[product_id] [bigint] NOT NULL,
+	[customer_id] [bigint] NOT NULL,
+	[review] [nvarchar](1000) NOT NULL,
+	[date_added] [datetime] NOT NULL
+    )
+    WITH (
+    LOCATION='wwi_commerce.dbo.Reviews',
+    DATA_SOURCE=SqlServerInstance
+    );
 
-   ![The external data source connection form is filled out with the previously mentioned settings entered into the appropriate fields.](media/ads-external-table-wizard-data-source.png 'Create a connection to your Data Source')
+	select * from sqlreviews
 
-6. Click **Next**. This process will take a few moments while the External Table Wizard attempts to connect to your data source.
 
-7. The next screen allows you to configure external table mapping and select the tables for which you want to create external views. Expand the **WWI_Commerce** database node, then expand Tables, and check the box next to the **dbo.Reviews** table. Click on the table name to highlight it as well. It is here where you can rename the external table if you wish. For now, just click **Next**.
+ ```
 
-   ![The external tables are listed and the Reviews table is checked and selected.](media/ads-external-table-wizard-table-mapping.png 'External tables')
-
-8. In the Summary page that follows, you can see the name of the database scoped credential and external data source objects to be created in the destination database. Here you can click Generate Script to view the SQL script that will run to create the external table. Instead, click **Create**.
-
-   ![A screenshot of the summary is displayed.](media/ads-external-table-wizard-summary.png 'Summary')
-
-9. After a few moments, a "Create External Table succeeded" message will display.
-
-   ![The Create External Table succeeded message is displayed.](media/ads-external-table-wizard-succeeded.png 'Create External Table succeeded message')
-
-10. Select the Servers link (Ctrl+G) on the left-hand menu, then expand the Tables list underneath your **sales** database and find the **dbo.Reviews (External)** table. If you do not see it, right-click on the Tables folder, then select Refresh. The "(External)" portion of the table name denotes that it is a virtual data object that was added as an external table.
+4.  Select the Servers link (Ctrl+G) on the left-hand menu, then expand the Tables list underneath your **sales** database and find the **dbo.Reviews (External)** table. If you do not see it, right-click on the Tables folder, then select Refresh. The "(External)" portion of the table name denotes that it is a virtual data object that was added as an external table.
 
     ![The Reviews external table is displayed in the sales tables list.](media/ads-reviews-table-in-list.png 'Reviews external table')
 
-11. Right-click the **dbo.Reviews (External)** table, then select the **Select Top 1000** menu option to display the table contents.
+5.  Right-click the **dbo.Reviews (External)** table, then select the **Select Top 1000** menu option to display the table contents.
 
     ![The Select Top 1000 rows menu item is highlighted.](media/ads-reviews-select-top-1000.png 'Select Top 1000')
 
-12. You should see a SQL query selecting the top 1000 records from the Reviews table and its results. The interesting thing to note is that the query selects the table and fields using the same syntax you would use to select from any other table in the sales database. The fact that the Reviews table is external is completely seamless and transparent to the user. This is the power of data virtualization in SQL Server 2019.
+6.  You should see a SQL query selecting the top 1000 records from the Reviews table and its results. The interesting thing to note is that the query selects the table and fields using the same syntax you would use to select from any other table in the sales database. The fact that the Reviews table is external is completely seamless and transparent to the user. This is the power of data virtualization in SQL Server 2019.
 
     ![The Reviews query and results are displayed.](media/ads-reviews-query-results.png 'Reviews query results')
 
@@ -252,7 +263,7 @@ The next data source we will be virtualizing is a CSV file that you will upload 
 
    ![The file browser is displayed.](media/ads-open-stockitemholdings.png 'Open')
 
-5. Click **Upload**.
+5. Select **Upload**.
 
 6. Expand the **data** subfolder you created, then right-click on the `stockitemholdings.csv` file and select **Create External Table From CSV Files**.
 
@@ -262,21 +273,21 @@ The next data source we will be virtualizing is a CSV file that you will upload 
 
    ![The previously mentioned form is displayed.](media/ads-external-table-csv-wizard-active-connection.png 'Active SQL Server connections')
 
-8. Click **Next**.
+8. Select **Next**.
 
-9. The next step displays a preview of the first 50 rows CSV data for validation. Click **Next** to continue.
+9. The next step displays a preview of the first 50 rows CSV data for validation. Select **Next** to continue.
 
    ![A preview of the CSV data is displayed.](media/ads-external-table-csv-preview.png 'Preview Data')
 
-10. In the next step, you will be able to modify the columns of the external table you intend to create. You are able to alter the column name, change the data type, and allow for Nullable rows. For now, leave everything as-is and click **Next**.
+10. In the next step, you will be able to modify the columns of the external table you intend to create. You are able to alter the column name, change the data type, and allow for Nullable rows. For now, leave everything as-is and select **Next**.
 
     ![The Modify Columns step is displayed.](media/ads-external-table-csv-modify.png 'Modify Columns')
 
-11. Verify that everything looks correct in the Summary step, then click **Create Table**.
+11. Verify that everything looks correct in the Summary step, then select **Create Table**.
 
     ![The Summary step is displayed.](media/ads-external-table-csv-create.png 'Summary')
 
-12. As with the previous external table you created, a "Create External Table succeeded" dialog will appear under your task history in a few moments. Select the Servers link (Ctrl+G) on the left-hand menu, then expand the Tables list underneath your **sales** database and find the **dbo.stockitemholdings (External)** table. If you do not see it, right-click on the Tables folder, then select Refresh. **Right-click** the **dbo.stockitemholdings (External)** table, then select **Select Top 1000** from the context menu.
+12. As with the previous external table you created, a "Create External Table succeeded" dialog will appear under your task history in a few moments. Select the Servers link (Ctrl+G) on the left-hand menu, then expand the Tables list underneath your **sales** database and find the **dbo.stockitemholdings (External)** table. If you do not see it, right-click on the Tables folder, then select Refresh. **Right-click** the **dbo.stockitemholdings (External)** table, then choose **Select Top 1000** from the context menu.
 
     ![The Select Top 1000 rows menu item is highlighted.](media/ads-stockitemholdings-select-top-1000.png 'Select Top 1000')
 
@@ -316,7 +327,7 @@ Now that we have our two external tables added, we will now join those two exter
    JOIN dbo.stockitemholdings AS s ON i.i_item_sk = s.StockItemID
    ```
 
-3. Click the **Run** button above the query window to execute.
+3. Select the **Run** button above the query window to execute.
 
    ![The Run button above the query window is highlighted.](media/ads-run.png 'Run')
 
@@ -336,7 +347,7 @@ Notebooks are made up of one or more of cells that allow for the execution of th
 
 ### Task 1: Introduction to Jupyter notebooks
 
-1. In Azure Data Studio, click **File**, then **Open File...**.
+1. In Azure Data Studio, choose **File**, then **Open File...**.
 
 2. In the folder browser dialog, navigate to the `C:\MCW-Modernizing-data-analytics-with-SQL-Server-2019-master\Hands-on lab\Resources` folder and select **notebook_00.ipynb**.
 
@@ -346,7 +357,7 @@ Notebooks are made up of one or more of cells that allow for the execution of th
 
    ![The Python 3 kernel is selected.](media/ads-notebook-select-kernel.png 'Kernel dropdown')
 
-4. After selecting the Kernel, you may be prompted to install Python for Notebooks components. If you see this, either select **New Python installation** or select **Use existing Python installation**. Select the existing option first and make sure it automatically locates the Python Install Location. If not, then select the first option for a new installation. Click **Install**. This may take **several minutes to complete**.
+4. After selecting the Kernel, you may be prompted to install Python for Notebooks components. If you see this, either select **New Python installation** or select **Use existing Python installation**. Select the existing option first and make sure it automatically locates the Python Install Location. If not, then select the first option for a new installation. Select **Install**. This may take **several minutes to complete**.
 
    ![The dialog is displayed.](media/ads-configure-python-for-notebooks.png 'Configure Python for Notebooks')
 
@@ -362,7 +373,7 @@ Notebooks are made up of one or more of cells that allow for the execution of th
 
 In this task, you will learn how to run standard SQL Server Queries against the Master Instance (MI) in a SQL Server big data cluster.
 
-1. In Azure Data Studio, click **File**, then **Open File...**.
+1. In Azure Data Studio, select **File**, then **Open File...**.
 
 2. In the folder browser dialog, navigate to the `C:\MCW-Modernizing-data-analytics-with-SQL-Server-2019-master\Hands-on lab\Resources` folder and select **notebook_01.ipynb**.
 
@@ -378,7 +389,7 @@ Earlier in this lab, you virtualized data using the UI components within Azure D
 - Next, you'll create a data source for the SQL Storage Pool, since that allows you to access the HDFS system in BDC.
 - Finally, you'll create an External Table, which uses the previous steps to access the data.
 
-1. In Azure Data Studio, click **File**, then **Open File...**.
+1. In Azure Data Studio, select **File**, then **Open File...**.
 
 2. In the folder browser dialog, navigate to the `C:\MCW-Modernizing-data-analytics-with-SQL-Server-2019-master\Hands-on lab\Resources` folder and select **notebook_02.ipynb**.
 
@@ -396,7 +407,7 @@ The web logs, however, are refreshed periodically. WWI would like to keep the lo
 
 In this Jupyter Notebook you'll create a location to store the log files as a SQL Server Table in the SQL Data Pool, and then fill it by creating an External Table that reads HDFS.
 
-1. In Azure Data Studio, click **File**, then **Open File...**.
+1. In Azure Data Studio, select **File**, then **Open File...**.
 
 2. In the folder browser dialog, navigate to the `C:\MCW-Modernizing-data-analytics-with-SQL-Server-2019-master\Hands-on lab\Resources` folder and select **notebook_03.ipynb**.
 
@@ -412,7 +423,7 @@ Apache Spark is an open-source processing framework that runs large-scale data a
 
 Many times, Spark is used to do transformations on data at large scale. In this Jupyter Notebook, you'll read a large text file into a Spark DataFrame, and then save out the top 10 examples as a table using SparkSQL.
 
-1. In Azure Data Studio, click **File**, then **Open File...**.
+1. In Azure Data Studio, select **File**, then **Open File...**.
 
 2. In the folder browser dialog, navigate to the `C:\MCW-Modernizing-data-analytics-with-SQL-Server-2019-master\Hands-on lab\Resources` folder and select **notebook_04.ipynb**.
 
@@ -434,11 +445,11 @@ The trucks have sensors that transmit data to a file location. The trips are als
 
 ### Task 1: Train a machine learning model
 
-1. In Azure Data Studio, click **File**, then **Open File...**.
+1. In Azure Data Studio, select **File**, then **Open File...**.
 
 2. In the folder browser dialog, navigate to the `C:\MCW-Modernizing-data-analytics-with-SQL-Server-2019-master\Hands-on lab\Resources` folder and select **predict-battery-life-with-sqlbdc.ipynb**.
 
-3. Click **Open**.
+3. Select **Open**.
 
 4. Follow the instructions in the notebook and return to the next step after you have completed the notebook.
 
@@ -448,31 +459,31 @@ The trucks have sensors that transmit data to a file location. The trips are als
 
 1.  In Azure Data Studio, under Servers, expand your connected cluster, `Data Services`, `HDFS`, `data`.
 
-2.  Right click the `data` folder and select `Refresh` to see the newly created folder.
+2.  Right-click the `data` folder and select `Refresh` to see the newly created folder.
 
     ![Refresh data](media/ads-refresh-data.png 'Refresh data')
 
-3.  You should see `battery-life.csv` as a folder, expand it and then right click on the CSV file whose name starts with `part-00000-` and select `Create External Table From CSV Files`.
+3.  You should see `battery-life.csv` as a folder, expand it and then right-click on the CSV file whose name starts with `part-00000-` and select `Create External Table From CSV Files`.
 
     ![Create External Table](media/ads-battery-create-external-menu.png 'Create External Table')
 
-4.  In Step 1 of the wizard, select the `sales` database and for the `Name for new external table` field provide **battery-life-predictions**. Click **Next**.
+4.  In Step 1 of the wizard, select the `sales` database and for the `Name for new external table` field provide **battery-life-predictions**. Select **Next**.
 
     ![Step 1 of the wizard is displayed.](media/ads-predictions-csv-wizard-step1.png 'Step 1')
 
-5.  On Step 2, Preview Data, click **Next**.
+5.  On Step 2, Preview Data, select **Next**.
 
-6.  On Step 3, for the column `Car_Has_EcoStart` set the Data Type to **char(10)**. Click **Next**.
+6.  On Step 3, for the column `Car_Has_EcoStart` set the Data Type to **char(10)**. Select **Next**.
 
     ![Step 3 of the wizard is displayed.](media/ads-predictions-csv-wizard-step3.png 'Step 3')
 
-7.  On Step, click **Create Table**. Your predictions are now available for SQL querying in the battery-life-predictions table in the sales database.
+7.  On Step, select **Create Table**. Your predictions are now available for SQL querying in the battery-life-predictions table in the sales database.
 
-8.  In Azure Data Studio, Servers, expand your Big Data Cluster, `Databases`, `sales_YOUR-UNIQUE-IDENTIFIER`, right click `Tables` and then select `Refresh`.
+8.  In Azure Data Studio, Servers, expand your Big Data Cluster, `Databases`, `sales_YOUR-UNIQUE-IDENTIFIER`, right-click `Tables` and then select `Refresh`.
 
     ![Refresh the sales database tables.](media/ads-refresh-sales.png 'Refresh sales')
 
-9.  Expand `tables`, right-click `battery-life-prediction` and select **Select Top 1000** to view the data contained by the external table.
+9.  Expand `tables`, right-click `battery-life-prediction` and choose **Select Top 1000** to view the data contained by the external table.
 
     ![Select Top 1000 records.](media/ads-predictions-select-top.png 'Select Top 1000')
 
@@ -502,7 +513,7 @@ In this task, you will run the SQL Data Discovery & Classification tool against 
 
     ![The sales database, Tasks menu, and Classify Data items are highlighted.](media/ssms-classify-data-link.png 'Data Classification')
 
-3.  When the tool runs, it will analyze all of the columns within all of the tables and recommend appropriate data classifications for each. What you should see is the Data Classification dashboard showing no currently classified columns, and a classification recommendations box at the top showing that there are 45 columns that the tool identified as containing sensitive (PII) or GDPR-related data. **Click** on this classification recommendations box.
+3.  When the tool runs, it will analyze all of the columns within all of the tables and recommend appropriate data classifications for each. What you should see is the Data Classification dashboard showing no currently classified columns, and a classification recommendations box at the top showing that there are 45 columns that the tool identified as containing sensitive (PII) or GDPR-related data. **Select** on this classification recommendations box.
 
     ![The data classification recommendations box is highlighted.](media/ssms-classification-recommendations-box.png 'Data classification recommendations box')
 
@@ -510,11 +521,11 @@ In this task, you will run the SQL Data Discovery & Classification tool against 
 
     ![The recommendations are shown with each checkbox checked.](media/ssms-recommendations.png 'Classification recommendations')
 
-5.  Click **Accept selected recommendations**.
+5.  Select **Accept selected recommendations**.
 
     ![The Accept selected recommendations button is highlighted.](media/ssms-accept-selected-recommendations.png 'Accept selected recommendations')
 
-6.  Click **Save** in the toolbar above to apply your changes.
+6.  Select **Save** in the toolbar above to apply your changes.
 
     ![The Save button is highlighted.](media/ssms-save-classification-changes.png 'Save classification changes')
 
@@ -712,7 +723,7 @@ Next, you will run a query to create a user-defined function (UDF) named `custom
 
 ### Task 3: Table variable deferred compilation
 
-1. Either highlight and delete everything in the query window, or open a new query window. Paste the following query into the query window. This query makes use of the table variable deferred compilation feature, since the database compatibility level is set to `150`. If you opened a new query window instead of reusing this one, make sure to click the **Include Actual Execution Plan** button to enable it. **Execute** the query.
+1. Either highlight and delete everything in the query window, or open a new query window. Paste the following query into the query window. This query makes use of the table variable deferred compilation feature, since the database compatibility level is set to `150`. If you opened a new query window instead of reusing this one, make sure to select the **Include Actual Execution Plan** button to enable it. **Execute** the query.
 
    ```sql
    USE sales
@@ -785,7 +796,7 @@ Next, you will run a query to create a user-defined function (UDF) named `custom
 
 ### Task 4: Row mode memory grant feedback
 
-1. Either highlight and delete everything in the query window, or open a new query window. Paste the following query to simulate out-of-date statistics on the `web_sales` table, followed by a query that executes a hash match. If you opened a new query window instead of reusing this one, make sure to click the **Include Actual Execution Plan** button to enable it. **Execute** the query.
+1. Either highlight and delete everything in the query window, or open a new query window. Paste the following query to simulate out-of-date statistics on the `web_sales` table, followed by a query that executes a hash match. If you opened a new query window instead of reusing this one, make sure to select the **Include Actual Execution Plan** button to enable it. **Execute** the query.
 
    ```sql
    USE sales;
@@ -810,7 +821,7 @@ Next, you will run a query to create a user-defined function (UDF) named `custom
 
    ![The Hash Match dialog shows spilled data warnings.](media/ssms-memory-grant-feedback-old.png 'Query execution plan showing spilled data')
 
-3. Either highlight and delete everything in the query window, or open a new query window. Paste the following query to execute the select query that contains the hash match once more. If you opened a new query window instead of reusing this one, make sure to click the **Include Actual Execution Plan** button to enable it. **Execute** the query.
+3. Either highlight and delete everything in the query window, or open a new query window. Paste the following query to execute the select query that contains the hash match once more. If you opened a new query window instead of reusing this one, make sure to select the **Include Actual Execution Plan** button to enable it. **Execute** the query.
 
    ```sql
    USE sales;
@@ -860,7 +871,7 @@ The cluster administration portal allows you to:
 
 To access the portal, use the IP address and port you captured after deploying your cluster.
 
-1. Open a new web browser window and go to `https://<ip-address>:30777/portal`, replacing `<ip-address>` with your portal's IP. You may receive a security warning when accessing the web page since it is using auto-generated SSL certificates.
+1. Open a new web browser window and go to `https://<ip-address>:30777/portal`, replacing `<ip-address>` with your portal's IP. You may receive a security warning when accessing the web page since it is using auto-generated SSL certificates.  There was a recent build where the portal URI was not working.  I would try this, but if the website doesn't appear, skip steps 1, 2, and 3.
 
    > Use kubectl to find the IP addresses for the cluster administration portal. Run `kubectl get svc -n <your-big-data-cluster-name>` and look at the EXTERNAL-IP addresses for **mgmtproxy-svc-external**).
 
@@ -870,7 +881,7 @@ To access the portal, use the IP address and port you captured after deploying y
 
 3. The home page shows you how many pods are currently running within the Controller, Master Instance, Compute Pool, Storage Pool, and Data Pool. You can either select a pool to view its details, or use the menu on the left. For now, select the **Controller** card or its item from the left-hand menu.
 
-4. You will see the 11 pods associated with the Controller on this page. All of them have links to view metrics in Grafana, and a few of them have links to view logs. Select **View** under **Node Metrics** next to the **Knox Service** pod. This will open a new browser tab into the Grafana dashboard.
+4. You will see the 11 pods associated with the Controller on this page. All of them have links to view metrics in Grafana, and a few of them have links to view logs. Select **View** under **Node Metrics** next to the **Knox Service** pod. This will open a new browser tab into the Grafana dashboard.  Alternatively, you can go to `https://<ip-address>:30777/grafana`.
 
    ![The Controller Status is displayed with 11 pods.](media/admin-portal-controller.png 'Controller Status')
 
@@ -878,7 +889,7 @@ To access the portal, use the IP address and port you captured after deploying y
 
    ![The Grafana dashboard is displaying information about the Knox Service pod.](media/grafana-knox.png 'Grafana dashboard')
 
-6. Switch back to the cluster administration portal tab and select **View** under **Logs** next to the **Knox Service** pod. This will open a new browser tab into the Kibana log dashboard.
+6. Switch back to the cluster administration portal tab and select **View** under **Logs** next to the **Knox Service** pod. This will open a new browser tab into the Kibana log dashboard. Alternatively, you can go to `https://<ip-address>:30777/kibana`.
 
    ![The View link under Logs is highlighted.](media/admin-portal-controller-logs.png 'Controller Status')
 
@@ -902,7 +913,7 @@ Before executing these commands, you will need to make sure you are authenticate
 
 1. Open a new Windows command prompt.
 
-2. Execute the following kubectl command to show the status of all the pods in your SQL Server big data cluster. Remember, **replace** CLUSTER_NAMESPACE with your own namespace.
+2. Execute the following kubectl command to show the status of all the pods in your SQL Server big data cluster. Remember, **replace** CLUSTER_NAMESPACE with your own namespace.  It's the name you provided for the prompt "Provide name of AKS cluster and SQL big data cluster:".
 
    ```bash
    kubectl get pods -n CLUSTER_NAMESPACE
