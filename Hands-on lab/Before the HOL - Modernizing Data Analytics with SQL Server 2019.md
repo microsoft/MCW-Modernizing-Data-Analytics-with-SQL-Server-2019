@@ -366,7 +366,7 @@ In this lab, you will be using an Azure SQL Database as a source for virtual tab
 
     ![The Add client IP and Allow access to Azure services buttons are highlighted.](media/azure-sql-set-server-firewall.png 'Firewall settings')
 
-12. Select **Query editor** from the left-hand menu. When prompted, type **ServerAdmin** for the Login name, and **MySQLBigData2019** for the password, then click **OK** to log in.
+12. Choose **Query editor** from the left-hand menu. When prompted, type **ServerAdmin** for the Login name, and **MySQLBigData2019** for the password, then select **OK** to log in.
 
     ![The login form for the Query Editor is displayed.](media/azure-sql-query-editor-login.png 'Query editor')
 
