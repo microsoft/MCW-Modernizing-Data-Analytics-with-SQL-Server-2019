@@ -279,15 +279,15 @@ The next data source we will be virtualizing is a CSV file that you will upload 
 
    ![A preview of the CSV data is displayed.](media/ads-external-table-csv-preview.png 'Preview Data')
 
-10. In the next step, you will be able to modify the columns of the external table you intend to create. You are able to alter the column name, change the data type, and allow for Nullable rows. For now, leave everything as-is and click **Next**.
+10. In the next step, you will be able to modify the columns of the external table you intend to create. You are able to alter the column name, change the data type, and allow for Nullable rows. For now, leave everything as-is and select **Next**.
 
     ![The Modify Columns step is displayed.](media/ads-external-table-csv-modify.png 'Modify Columns')
 
-11. Verify that everything looks correct in the Summary step, then click **Create Table**.
+11. Verify that everything looks correct in the Summary step, then select **Create Table**.
 
     ![The Summary step is displayed.](media/ads-external-table-csv-create.png 'Summary')
 
-12. As with the previous external table you created, a "Create External Table succeeded" dialog will appear under your task history in a few moments. Select the Servers link (Ctrl+G) on the left-hand menu, then expand the Tables list underneath your **sales** database and find the **dbo.stockitemholdings (External)** table. If you do not see it, right-click on the Tables folder, then select Refresh. **Right-click** the **dbo.stockitemholdings (External)** table, then select **Select Top 1000** from the context menu.
+12. As with the previous external table you created, a "Create External Table succeeded" dialog will appear under your task history in a few moments. Select the Servers link (Ctrl+G) on the left-hand menu, then expand the Tables list underneath your **sales** database and find the **dbo.stockitemholdings (External)** table. If you do not see it, right-click on the Tables folder, then select Refresh. **Right-click** the **dbo.stockitemholdings (External)** table, then choose **Select Top 1000** from the context menu.
 
     ![The Select Top 1000 rows menu item is highlighted.](media/ads-stockitemholdings-select-top-1000.png 'Select Top 1000')
 
@@ -347,7 +347,7 @@ Notebooks are made up of one or more of cells that allow for the execution of th
 
 ### Task 1: Introduction to Jupyter notebooks
 
-1. In Azure Data Studio, click **File**, then **Open File...**.
+1. In Azure Data Studio, choose **File**, then **Open File...**.
 
 2. In the folder browser dialog, navigate to the `C:\MCW-Modernizing-data-analytics-with-SQL-Server-2019-master\Hands-on lab\Resources` folder and select **notebook_00.ipynb**.
 
@@ -373,7 +373,7 @@ Notebooks are made up of one or more of cells that allow for the execution of th
 
 In this task, you will learn how to run standard SQL Server Queries against the Master Instance (MI) in a SQL Server big data cluster.
 
-1. In Azure Data Studio, click **File**, then **Open File...**.
+1. In Azure Data Studio, select **File**, then **Open File...**.
 
 2. In the folder browser dialog, navigate to the `C:\MCW-Modernizing-data-analytics-with-SQL-Server-2019-master\Hands-on lab\Resources` folder and select **notebook_01.ipynb**.
 
@@ -389,7 +389,7 @@ Earlier in this lab, you virtualized data using the UI components within Azure D
 - Next, you'll create a data source for the SQL Storage Pool, since that allows you to access the HDFS system in BDC.
 - Finally, you'll create an External Table, which uses the previous steps to access the data.
 
-1. In Azure Data Studio, click **File**, then **Open File...**.
+1. In Azure Data Studio, select **File**, then **Open File...**.
 
 2. In the folder browser dialog, navigate to the `C:\MCW-Modernizing-data-analytics-with-SQL-Server-2019-master\Hands-on lab\Resources` folder and select **notebook_02.ipynb**.
 
@@ -407,7 +407,7 @@ The web logs, however, are refreshed periodically. WWI would like to keep the lo
 
 In this Jupyter Notebook you'll create a location to store the log files as a SQL Server Table in the SQL Data Pool, and then fill it by creating an External Table that reads HDFS.
 
-1. In Azure Data Studio, click **File**, then **Open File...**.
+1. In Azure Data Studio, select **File**, then **Open File...**.
 
 2. In the folder browser dialog, navigate to the `C:\MCW-Modernizing-data-analytics-with-SQL-Server-2019-master\Hands-on lab\Resources` folder and select **notebook_03.ipynb**.
 
@@ -423,7 +423,7 @@ Apache Spark is an open-source processing framework that runs large-scale data a
 
 Many times, Spark is used to do transformations on data at large scale. In this Jupyter Notebook, you'll read a large text file into a Spark DataFrame, and then save out the top 10 examples as a table using SparkSQL.
 
-1. In Azure Data Studio, click **File**, then **Open File...**.
+1. In Azure Data Studio, select **File**, then **Open File...**.
 
 2. In the folder browser dialog, navigate to the `C:\MCW-Modernizing-data-analytics-with-SQL-Server-2019-master\Hands-on lab\Resources` folder and select **notebook_04.ipynb**.
 
@@ -445,7 +445,7 @@ The trucks have sensors that transmit data to a file location. The trips are als
 
 ### Task 1: Train a machine learning model
 
-1. In Azure Data Studio, click **File**, then **Open File...**.
+1. In Azure Data Studio, select **File**, then **Open File...**.
 
 2. In the folder browser dialog, navigate to the `C:\MCW-Modernizing-data-analytics-with-SQL-Server-2019-master\Hands-on lab\Resources` folder and select **predict-battery-life-with-sqlbdc.ipynb**.
 
@@ -459,11 +459,11 @@ The trucks have sensors that transmit data to a file location. The trips are als
 
 1.  In Azure Data Studio, under Servers, expand your connected cluster, `Data Services`, `HDFS`, `data`.
 
-2.  Right click the `data` folder and select `Refresh` to see the newly created folder.
+2.  Right-click the `data` folder and select `Refresh` to see the newly created folder.
 
     ![Refresh data](media/ads-refresh-data.png 'Refresh data')
 
-3.  You should see `battery-life.csv` as a folder, expand it and then right click on the CSV file whose name starts with `part-00000-` and select `Create External Table From CSV Files`.
+3.  You should see `battery-life.csv` as a folder, expand it and then right-click on the CSV file whose name starts with `part-00000-` and select `Create External Table From CSV Files`.
 
     ![Create External Table](media/ads-battery-create-external-menu.png 'Create External Table')
 
@@ -471,19 +471,19 @@ The trucks have sensors that transmit data to a file location. The trips are als
 
     ![Step 1 of the wizard is displayed.](media/ads-predictions-csv-wizard-step1.png 'Step 1')
 
-5.  On Step 2, Preview Data, click **Next**.
+5.  On Step 2, Preview Data, select **Next**.
 
 6.  On Step 3, for the column `Car_Has_EcoStart` set the Data Type to **char(10)**. Select **Next**.
 
     ![Step 3 of the wizard is displayed.](media/ads-predictions-csv-wizard-step3.png 'Step 3')
 
-7.  On Step, click **Create Table**. Your predictions are now available for SQL querying in the battery-life-predictions table in the sales database.
+7.  On Step, select **Create Table**. Your predictions are now available for SQL querying in the battery-life-predictions table in the sales database.
 
-8.  In Azure Data Studio, Servers, expand your Big Data Cluster, `Databases`, `sales_YOUR-UNIQUE-IDENTIFIER`, right click `Tables` and then select `Refresh`.
+8.  In Azure Data Studio, Servers, expand your Big Data Cluster, `Databases`, `sales_YOUR-UNIQUE-IDENTIFIER`, right-click `Tables` and then select `Refresh`.
 
     ![Refresh the sales database tables.](media/ads-refresh-sales.png 'Refresh sales')
 
-9.  Expand `tables`, right-click `battery-life-prediction` and select **Select Top 1000** to view the data contained by the external table.
+9.  Expand `tables`, right-click `battery-life-prediction` and choose **Select Top 1000** to view the data contained by the external table.
 
     ![Select Top 1000 records.](media/ads-predictions-select-top.png 'Select Top 1000')
 
@@ -723,7 +723,7 @@ Next, you will run a query to create a user-defined function (UDF) named `custom
 
 ### Task 3: Table variable deferred compilation
 
-1. Either highlight and delete everything in the query window, or open a new query window. Paste the following query into the query window. This query makes use of the table variable deferred compilation feature, since the database compatibility level is set to `150`. If you opened a new query window instead of reusing this one, make sure to click the **Include Actual Execution Plan** button to enable it. **Execute** the query.
+1. Either highlight and delete everything in the query window, or open a new query window. Paste the following query into the query window. This query makes use of the table variable deferred compilation feature, since the database compatibility level is set to `150`. If you opened a new query window instead of reusing this one, make sure to select the **Include Actual Execution Plan** button to enable it. **Execute** the query.
 
    ```sql
    USE sales
@@ -796,7 +796,7 @@ Next, you will run a query to create a user-defined function (UDF) named `custom
 
 ### Task 4: Row mode memory grant feedback
 
-1. Either highlight and delete everything in the query window, or open a new query window. Paste the following query to simulate out-of-date statistics on the `web_sales` table, followed by a query that executes a hash match. If you opened a new query window instead of reusing this one, make sure to click the **Include Actual Execution Plan** button to enable it. **Execute** the query.
+1. Either highlight and delete everything in the query window, or open a new query window. Paste the following query to simulate out-of-date statistics on the `web_sales` table, followed by a query that executes a hash match. If you opened a new query window instead of reusing this one, make sure to select the **Include Actual Execution Plan** button to enable it. **Execute** the query.
 
    ```sql
    USE sales;
@@ -821,7 +821,7 @@ Next, you will run a query to create a user-defined function (UDF) named `custom
 
    ![The Hash Match dialog shows spilled data warnings.](media/ssms-memory-grant-feedback-old.png 'Query execution plan showing spilled data')
 
-3. Either highlight and delete everything in the query window, or open a new query window. Paste the following query to execute the select query that contains the hash match once more. If you opened a new query window instead of reusing this one, make sure to click the **Include Actual Execution Plan** button to enable it. **Execute** the query.
+3. Either highlight and delete everything in the query window, or open a new query window. Paste the following query to execute the select query that contains the hash match once more. If you opened a new query window instead of reusing this one, make sure to select the **Include Actual Execution Plan** button to enable it. **Execute** the query.
 
    ```sql
    USE sales;
