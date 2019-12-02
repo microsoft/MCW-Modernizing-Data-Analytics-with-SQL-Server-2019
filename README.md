@@ -2,15 +2,11 @@
 
 Businesses require near real-time insights from ever-larger sets of data. Large-scale data ingestion requires scale-out storage and processing in ways that allow fast response times. In addition to simply querying this data, organizations want full analysis and even predictive capabilities over their data.
 
-While solutions for large-scale data processing exist, they are often batch-based, which has a lag in the time from query to response. Also, batch systems such as Hadoop are complicated to set up and manage. Operational data is often stored in Relational Database systems on-premises, and joining that data to larger-scale cloud systems exposes security weaknesses and brittle architectures.
-
-Wide World Importers (WWI) is a traditional brick and mortar business with a long track record of success, generating profits through strong retail store sales of their unique offering of affordable products from around the world. They have a great training program for new employees, that focuses on connecting with their customers and providing great face-to-face customer service. This strong focus on customer relationships has helped set WWI apart from their competitors.
-
-Over the past few years, they have adopted an omni-channel strategy, meaning, different ways for consumers to purchase their products. These new platforms were added without integrating into the OLTP system data or Business Intelligence infrastructures. As a result, "silos" of data stores have developed.
+Wide World Importers (WWI) is a traditional brick and mortar business with a long track record of success, generating profits through strong retail store sales of their unique offering of affordable products from around the world. Over the past few years, they have adopted an omni-channel strategy, meaning, different ways for consumers to purchase their products. These new platforms were added without integrating into the OLTP system data or Business Intelligence infrastructures. As a result, "silos" of data stores have developed.
 
 Now, WWI is trying to cope with difficulties in combining these disparate data sources in varying formats into a single location where they can analyze the data in near real-time, joining related information where needed. They also want to be able to leverage AI to help their business grow and cut down maintenance costs. They would like to have all of these capabilities rolled into a single system, while minimizing code changes across their domain.
 
-- September 2019
+- December 2019
 
 ## Target audience
 

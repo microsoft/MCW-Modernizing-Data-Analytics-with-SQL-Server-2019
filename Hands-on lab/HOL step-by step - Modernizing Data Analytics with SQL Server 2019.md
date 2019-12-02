@@ -9,7 +9,7 @@ Hands-on lab step-by-step
 </div>
 
 <div class="MCWHeader3">
-September 2019
+December 2019
 </div>
 
 Information in this document, including URL and other Internet Web site references, is subject to change without notice. Unless otherwise noted, the example companies, organizations, products, domain names, e-mail addresses, logos, people, places, and events depicted herein are fictitious, and no association with any real company, organization, product, domain name, e-mail address, logo, person, place or event is intended or should be inferred. Complying with all applicable copyright laws is the responsibility of the user. Without limiting the rights under copyright, no part of this document may be reproduced, stored in or introduced into a retrieval system, or transmitted in any form or by any means (electronic, mechanical, photocopying, recording, or otherwise), or for any purpose, without the express written permission of Microsoft Corporation.
@@ -56,7 +56,7 @@ Microsoft and the trademarks listed at <https://www.microsoft.com/en-us/legal/in
     - [Task 3: Table variable deferred compilation](#task-3-table-variable-deferred-compilation)
     - [Task 4: Row mode memory grant feedback](#task-4-row-mode-memory-grant-feedback)
   - [Exercise 6: Monitoring the big data cluster](#exercise-6-monitoring-the-big-data-cluster)
-    - [Task 1: Use the cluster administration portal](#task-1-use-the-cluster-administration-portal)
+    - [Task 1: Use the Big Data Cluster Dashboard](#task-1-use-the-big-data-cluster-dashboard)
     - [Task 2: Monitor and troubleshoot using kubectl commands](#task-2-monitor-and-troubleshoot-using-kubectl-commands)
   - [After the hands-on lab](#after-the-hands-on-lab)
     - [Task 1: Delete the resource group](#task-1-delete-the-resource-group)
@@ -100,11 +100,11 @@ While solutions for large-scale data processing exist, they are often batch-base
 4. curl
 5. sqlcmd
 6. [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)
-7. [mssqlctl](https://docs.microsoft.com/en-us/sql/big-data-cluster/deploy-install-mssqlctl?view=sql-server-ver15)
+7. [azdata](https://docs.microsoft.com/en-us/sql/big-data-cluster/deploy-install-azdata-installer?view=sql-server-ver15)
 8. [kubectl](https://kubernetes.io/docs/tasks/tools/install-kubectl/#install-with-powershell-from-psgallery)
-9. [SQL Server Management Studio](https://go.microsoft.com/fwlink/?linkid=2078638) (SSMS) v18.0 or greater
+9. [SQL Server Management Studio](https://go.microsoft.com/fwlink/?linkid=2078638) (SSMS) v18.4 or greater
 10. [Azure Data Studio](https://docs.microsoft.com/sql/azure-data-studio/download?view=sql-server-ver15)
-    - [SQL Server 2019 extension](https://docs.microsoft.com/en-us/sql/azure-data-studio/sql-server-2019-extension?view=sql-server-2017)
+    - [Data Virtualization extension for Azure Data Studio](https://docs.microsoft.com/en-us/sql/azure-data-studio/data-virtualization-extension?view=sql-server-ver15)
 
 ## Before the hands-on lab
 
@@ -127,8 +127,8 @@ Follow the steps below to connect to your SQL Server 2019 cluster with both Azur
    - **Connection type:** Select Microsoft SQL Server.
    - **Server:** Enter the IP address, followed by port number `31433` to the SQL Server 2019 Big Data cluster. It should have a format of IP separated by a comma from the port, such as: `11.122.133.144,31433`.
    - **Authentication type:** Select SQL Login.
-   - **Username:** Enter `sa`.
-   - **Password:** Enter the password you used when creating the cluster. The default value is **MySQLBigData2019**.
+   - **Username:** Enter `admin`.
+   - **Password:** Enter the password you used when creating the cluster.
    - **Remember password:** Checked.
    - Leave all other options at their default values.
 
@@ -146,13 +146,17 @@ Follow the steps below to connect to your SQL Server 2019 cluster with both Azur
 
    - **Server name:** Enter the IP address, followed by port number `31433` to the SQL Server 2019 Big Data cluster. It should have a format of IP separated by a comma from the port, such as: `11.122.133.144,31433`.
    - **Authentication:** Select SQL Server Authentication.
-   - **Login:** Enter `sa`.
-   - **Password:** Enter the password you used when creating the cluster. The default value is **MySQLBigData2019**.
+   - **Login:** Enter `admin`.
+   - **Password:** Enter the password you used when creating the cluster.
    - **Remember password:** Checked.
 
    ![The Connect form is filled out with the previously mentioned settings entered into the appropriate fields.](media/ssms-connection.png 'SQL Server Management Studio - Connect')
 
-3. Select **Connect**.
+3. Select **Options**.  Then, on the **Connection Properties** tab, check the **Trust server certificate** box.
+
+![The Connection Properties form is filled out with the Trust server certificate option selected.](media/ssms-trust-server-certificate.png 'SQL Server Management Studio - Connection Properties')
+
+4. Select **Connect**.
 
 ## Exercise 1: Using data virtualization
 
@@ -182,50 +186,81 @@ To start, we will use the External Table Wizard in Azure Data Studio to connect 
 3. Run the following code.  Make sure to replace the value for the SQL Server.  Change the username and password if you changed it off of the default values.
 
  ```sql
-
-  CREATE MASTER KEY ENCRYPTION BY PASSWORD = 'MySQLBigData2019';
-GO
-    /*  specify credentials to external data source
-    *  IDENTITY: user name for external source.
-    *  SECRET: password for external source.
-    */
-CREATE DATABASE SCOPED CREDENTIAL SQLCred
-    WITH IDENTITY = 'ServerAdmin', Secret = 'MySQLBigData2019';
-GO
-
-/* LOCATION: Location string should be of format '<vendor>://<server>[:<port>]'.
-* PUSHDOWN: specify whether computation should be pushed down to the source. ON by default.
-* CREDENTIAL: the database scoped credential, created above.
-*/
-drop external data source sqlserverinstance
-
-CREATE EXTERNAL DATA SOURCE SQLServerInstance
-WITH ( 
-LOCATION = 'sqlserver://ikebigdatasql.database.windows.net',
--- PUSHDOWN = ON | OFF,
-    CREDENTIAL = SQLCred
-	, CONNECTION_OPTIONS='Database=wwi_commerce' 
-);
+IF NOT EXISTS
+(
+	SELECT 1
+	FROM sys.symmetric_keys
+	WHERE
+		name LIKE '%DatabaseMasterKey%'
+)
+BEGIN
+	CREATE MASTER KEY ENCRYPTION BY PASSWORD = 'MySQLBigData2019';
+END
 GO
 
-  
-CREATE EXTERNAL TABLE dbo.SQLReviews(
-	[product_id] [bigint] NOT NULL,
-	[customer_id] [bigint] NOT NULL,
-	[review] [nvarchar](1000) NOT NULL,
-	[date_added] [datetime] NOT NULL
-    )
-    WITH (
+IF NOT EXISTS
+(
+	SELECT 1
+	FROM sys.database_scoped_credentials
+	WHERE
+		name = N'SQLCred'
+)
+BEGIN
+  /*  specify credentials to external data source
+   *  IDENTITY: user name for external source.
+   *  SECRET: password for external source.
+   */
+	CREATE DATABASE SCOPED CREDENTIAL SQLCred
+	WITH IDENTITY = 'ServerAdmin',
+	SECRET = 'MySQLBigData2019';
+END
+GO
+
+IF NOT EXISTS
+(
+	SELECT 1
+	FROM sys.external_data_sources s
+	WHERE
+		s.name = N'SQLServerInstance'
+)
+BEGIN
+  /* LOCATION: Location string should be of format '<vendor>://<server>[:<port>]'.
+   * PUSHDOWN: specify whether computation should be pushed down to the source. ON by default.
+   * CREDENTIAL: the database scoped credential, created above.
+   */
+	CREATE EXTERNAL DATA SOURCE SQLServerInstance WITH
+	(
+		LOCATION = 'sqlserver://<YOUR_AZURE_SERVER_NAME>.database.windows.net',
+    -- PUSHDOWN = ON | OFF,
+    CREDENTIAL = SQLCred,
+    CONNECTION_OPTIONS='Database=wwi_commerce' 
+	);
+END
+GO
+
+IF (OBJECT_ID('dbo.Reviews') IS NULL)
+BEGIN
+	CREATE EXTERNAL TABLE dbo.Reviews
+  (
+	  [product_id] [bigint] NOT NULL,
+	  [customer_id] [bigint] NOT NULL,
+	  [review] [nvarchar](1000) NOT NULL,
+	  [date_added] [datetime] NOT NULL
+  )
+  WITH
+  (
     LOCATION='wwi_commerce.dbo.Reviews',
     DATA_SOURCE=SqlServerInstance
-    );
+  );
+END
+GO
 
-	select * from sqlreviews
-
+SELECT *
+FROM dbo.Reviews;
 
  ```
 
-4.  Select the Servers link (Ctrl+G) on the left-hand menu, then expand the Tables list underneath your **sales** database and find the **dbo.Reviews (External)** table. If you do not see it, right-click on the Tables folder, then select Refresh. The "(External)" portion of the table name denotes that it is a virtual data object that was added as an external table.
+4.  Select the Servers link (Ctrl+Shift+D) on the left-hand menu, then expand the Tables list underneath your **sales** database and find the **dbo.Reviews (External)** table. If you do not see it, right-click on the Tables folder, then select Refresh. The "(External)" portion of the table name denotes that it is a virtual data object that was added as an external table.
 
     ![The Reviews external table is displayed in the sales tables list.](media/ads-reviews-table-in-list.png 'Reviews external table')
 
@@ -287,7 +322,7 @@ The next data source we will be virtualizing is a CSV file that you will upload 
 
     ![The Summary step is displayed.](media/ads-external-table-csv-create.png 'Summary')
 
-12. As with the previous external table you created, a "Create External Table succeeded" dialog will appear under your task history in a few moments. Select the Servers link (Ctrl+G) on the left-hand menu, then expand the Tables list underneath your **sales** database and find the **dbo.stockitemholdings (External)** table. If you do not see it, right-click on the Tables folder, then select Refresh. **Right-click** the **dbo.stockitemholdings (External)** table, then choose **Select Top 1000** from the context menu.
+12. As with the previous external table you created, a "Create External Table succeeded" dialog will appear under your task history in a few moments. Select the Servers link (Ctrl+Shift+D) on the left-hand menu, then expand the Tables list underneath your **sales** database and find the **dbo.stockitemholdings (External)** table. If you do not see it, right-click on the Tables folder, then select Refresh. **Right-click** the **dbo.stockitemholdings (External)** table, then choose **Select Top 1000** from the context menu.
 
     ![The Select Top 1000 rows menu item is highlighted.](media/ads-stockitemholdings-select-top-1000.png 'Select Top 1000')
 
@@ -319,12 +354,18 @@ Now that we have our two external tables added, we will now join those two exter
 2. Paste the following into the new query window:
 
    ```sql
-   SELECT i.i_item_sk AS ItemID, i.i_item_desc AS Item, c.c_first_name AS FirstName,
-     c.c_last_name AS LastName, s.QuantityOnHand, r.review AS Review, r.date_added AS DateReviewed
+   SELECT
+    i.i_item_sk AS ItemID,
+    i.i_item_desc AS Item,
+    c.c_first_name AS FirstName,
+    c.c_last_name AS LastName,
+    s.QuantityOnHand,
+    r.review AS Review,
+    r.date_added AS DateReviewed
    FROM dbo.item as i
-   JOIN dbo.Reviews AS r ON i.i_item_sk = r.product_id
-   JOIN dbo.customer AS c ON c.c_customer_sk = r.customer_id
-   JOIN dbo.stockitemholdings AS s ON i.i_item_sk = s.StockItemID
+    INNER JOIN dbo.Reviews AS r ON i.i_item_sk = r.product_id
+    INNER JOIN dbo.customer AS c ON c.c_customer_sk = r.customer_id
+    INNER JOIN dbo.stockitemholdings AS s ON i.i_item_sk = s.StockItemID;
    ```
 
 3. Select the **Run** button above the query window to execute.
@@ -357,7 +398,7 @@ Notebooks are made up of one or more of cells that allow for the execution of th
 
    ![The Python 3 kernel is selected.](media/ads-notebook-select-kernel.png 'Kernel dropdown')
 
-4. After selecting the Kernel, you may be prompted to install Python for Notebooks components. If you see this, either select **New Python installation** or select **Use existing Python installation**. Select the existing option first and make sure it automatically locates the Python Install Location. If not, then select the first option for a new installation. Select **Install**. This may take **several minutes to complete**.
+4. After selecting the Kernel, you may be prompted to install Python for Notebooks components. If you see this, select **New Python installation**. Select **Install**. This may take **several minutes to complete**.
 
    ![The dialog is displayed.](media/ads-configure-python-for-notebooks.png 'Configure Python for Notebooks')
 
@@ -377,7 +418,7 @@ In this task, you will learn how to run standard SQL Server Queries against the 
 
 2. In the folder browser dialog, navigate to the `C:\MCW-Modernizing-data-analytics-with-SQL-Server-2019-master\Hands-on lab\Resources` folder and select **notebook_01.ipynb**.
 
-3. When the notebook opens, you need to select the **Kernel** you would like to use to run the notebook. Locate the **Kernel** dropdown in the toolbar above the notebook, then select **SQL**.
+3. When the notebook opens, you may need to select the **Kernel** you would like to use to run the notebook. Locate the **Kernel** dropdown in the toolbar above the notebook, then select **SQL** if it is not already set.
 
 4. Follow the instructions within the notebook.
 
@@ -393,7 +434,7 @@ Earlier in this lab, you virtualized data using the UI components within Azure D
 
 2. In the folder browser dialog, navigate to the `C:\MCW-Modernizing-data-analytics-with-SQL-Server-2019-master\Hands-on lab\Resources` folder and select **notebook_02.ipynb**.
 
-3. When the notebook opens, you need to select the **Kernel** you would like to use to run the notebook. Locate the **Kernel** dropdown in the toolbar above the notebook, then select **SQL**.
+3. When the notebook opens, you may need to select the **Kernel** you would like to use to run the notebook. Locate the **Kernel** dropdown in the toolbar above the notebook, then select **SQL** if it is not already set.
 
 4. Follow the instructions within the notebook.
 
@@ -411,7 +452,7 @@ In this Jupyter Notebook you'll create a location to store the log files as a SQ
 
 2. In the folder browser dialog, navigate to the `C:\MCW-Modernizing-data-analytics-with-SQL-Server-2019-master\Hands-on lab\Resources` folder and select **notebook_03.ipynb**.
 
-3. When the notebook opens, you need to select the **Kernel** you would like to use to run the notebook. Locate the **Kernel** dropdown in the toolbar above the notebook, then select **SQL**.
+3. When the notebook opens, you may need to select the **Kernel** you would like to use to run the notebook. Locate the **Kernel** dropdown in the toolbar above the notebook, then select **SQL** if it is not already set.
 
 4. Follow the instructions within the notebook.
 
@@ -427,7 +468,7 @@ Many times, Spark is used to do transformations on data at large scale. In this 
 
 2. In the folder browser dialog, navigate to the `C:\MCW-Modernizing-data-analytics-with-SQL-Server-2019-master\Hands-on lab\Resources` folder and select **notebook_04.ipynb**.
 
-3. When the notebook opens, you need to select the **Kernel** you would like to use to run the notebook. Locate the **Kernel** dropdown in the toolbar above the notebook, then select **PySpark3**.
+3. When the notebook opens, you may need to select the **Kernel** you would like to use to run the notebook. Locate the **Kernel** dropdown in the toolbar above the notebook, then select **PySpark** if it is not already set.
 
 4. Follow the instructions within the notebook.
 
@@ -437,9 +478,9 @@ Duration: 15 mins
 
 In this exercise, you will use Azure Data Studio to execute a notebook that will enable you to train a model to predict the battery lifetime, apply the model to make batch predictions against a set of vehicle telemetry and save the scored telemetry to an external table that you can query using SQL.
 
-Wide World Importers has refrigerated trucks to deliver temperature-sensitive products. These are high-profit, and high-expense items. In the past, there have been failures in the cooling systems, and the primary culprit has been the deep-cycle batteries used in the system.
+Wide World Importers has refrigerated trucks to deliver temperature-sensitive products. These are high-profit, high-expense items. In the past, there have been failures in the cooling systems and the primary culprit has been the deep-cycle batteries used in the system.
 
-WWI began replacing the batters every three months as a preventative measure, but this has a high cost. Recently, the taxes on recycling batteries has increased dramatically. The CEO has asked the Data Science team if they can investigate creating a Predictive Maintenance system to more accurately tell the maintenance staff how long a battery will last, rather than relying on a flat 3 month cycle.
+WWI began replacing the batteries every three months as a preventative measure, but this has a high cost. Recently, the taxes on recycling batteries has increased dramatically. The CEO has asked the Data Science team if they can investigate creating a Predictive Maintenance system to more accurately tell the maintenance staff how long a battery will last, rather than relying on a flat 3 month cycle.
 
 The trucks have sensors that transmit data to a file location. The trips are also logged. In this Jupyter Notebook, you'll create, train and store a Machine Learning model using SciKit-Learn, so that it can be deployed to multiple hosts.
 
@@ -477,9 +518,9 @@ The trucks have sensors that transmit data to a file location. The trips are als
 
     ![Step 3 of the wizard is displayed.](media/ads-predictions-csv-wizard-step3.png 'Step 3')
 
-7.  On Step, select **Create Table**. Your predictions are now available for SQL querying in the battery-life-predictions table in the sales database.
+7.  On Step 4, select **Create Table**. Your predictions are now available for SQL querying in the battery-life-predictions table in the sales database.
 
-8.  In Azure Data Studio, Servers, expand your Big Data Cluster, `Databases`, `sales_YOUR-UNIQUE-IDENTIFIER`, right-click `Tables` and then select `Refresh`.
+8.  In Azure Data Studio, Servers, expand your Big Data Cluster, `Databases`, `sales`, right-click `Tables` and then select `Refresh`.
 
     ![Refresh the sales database tables.](media/ads-refresh-sales.png 'Refresh sales')
 
@@ -513,7 +554,7 @@ In this task, you will run the SQL Data Discovery & Classification tool against 
 
     ![The sales database, Tasks menu, and Classify Data items are highlighted.](media/ssms-classify-data-link.png 'Data Classification')
 
-3.  When the tool runs, it will analyze all of the columns within all of the tables and recommend appropriate data classifications for each. What you should see is the Data Classification dashboard showing no currently classified columns, and a classification recommendations box at the top showing that there are 45 columns that the tool identified as containing sensitive (PII) or GDPR-related data. **Select** on this classification recommendations box.
+3.  When the tool runs, it will analyze all of the columns within all of the tables and recommend appropriate data classifications for each. What you should see is the Data Classification dashboard showing no currently classified columns, and a classification recommendations box at the top showing that there are 44 columns that the tool identified as containing sensitive (PII) or GDPR-related data. **Select** on this classification recommendations box.
 
     ![The data classification recommendations box is highlighted.](media/ssms-classification-recommendations-box.png 'Data classification recommendations box')
 
@@ -849,7 +890,7 @@ Next, you will run a query to create a user-defined function (UDF) named `custom
 
 ## Exercise 6: Monitoring the big data cluster
 
-Duration: 10 mins
+Duration: 20 mins
 
 When you need to monitor and troubleshoot your big data cluster, some of your options are quite different than what you may be used to in a typical Windows-based, or even Linux installation. No longer are you viewing Windows event logs or other familiar locations to view metrics and system-level information about your SQL environment. This is because the services that comprise your big data cluster are distributed across multiple Kubernetes pods. If you are unfamiliar with Kubernetes or Docker containers, then you may not know where to start.
 
@@ -857,63 +898,80 @@ On the other hand, monitoring and managing SQL Server 2019 itself is very much t
 
 For the cluster components, you have three primary interfaces to use: The cluster administration portal, kubectl (Kubernetes tool), and the Kubernetes dashboard. For this exercise, we will focus on reviewing the first two.
 
-### Task 1: Use the cluster administration portal
+### Task 1: Use the Big Data Cluster dashboard
 
-The cluster administration portal can be used to monitor and troubleshoot your SQL Server 2019 Big Data cluster.
+Azure Data Studio includes a SQL Server Big Data Cluster dashboard which allows you to monitor and troubleshoot your SQL Server 2019 Big Data cluster.
 
-The cluster administration portal allows you to:
+The tab allows you to:
 
-- Quickly view number of pods running and any issues
+- View cluster details for your SQL Server, HDFS, and Spark clusters
 - Monitor deployment status
 - View available service endpoints
-- View controller and SQL Server master instance
 - Drill down information on pods, including accessing Grafana dashboards and Kibana logs
 
-To access the portal, use the IP address and port you captured after deploying your cluster.
+1. Open up Azure Data Studio and connect to your SQL Server Big Data Cluster's master instance.  Right-click on the master instance and select **Manage**.
 
-1. Open a new web browser window and go to `https://<ip-address>:30777/portal`, replacing `<ip-address>` with your portal's IP. You may receive a security warning when accessing the web page since it is using auto-generated SSL certificates.  There was a recent build where the portal URI was not working.  I would try this, but if the website doesn't appear, skip steps 1, 2, and 3.
+  ![The Azure Data Studio context menu for our SQL Server Big Data Cluster, with Manage highlighted.](media/ads-management-manage.png "Manage")
 
-   > Use kubectl to find the IP addresses for the cluster administration portal. Run `kubectl get svc -n <your-big-data-cluster-name>` and look at the EXTERNAL-IP addresses for **mgmtproxy-svc-external**).
+2. On the instance management dashboard, click the **SQL Server Big Data Cluster** tab.  Then, on the SQL Server Big Data Cluster tab, click on the **Cluster Dashboard** button.  This will open up a new Big Data Cluster dashboard.
 
-2. When prompted to log in, the username is **admin** and the password is the one you set when you provisioned the cluster (default is **MySQLBigData2019**).
+  ![The SQL Server Big Data Cluster tab, which contains a Cluster Dashboard button to click.](media/ads-management-bdc-tab.png "Cluster Dashboard")
 
-   ![The Cluster Administration Portal home page is displayed.](media/admin-portal-home.png 'Cluster Administration Portal home page')
+3. The Big Data Cluster overview contains a brief overview of your Big Data Cluster's health, services, and service endpoints.  For now, click on the SQL Server link.
 
-3. The home page shows you how many pods are currently running within the Controller, Master Instance, Compute Pool, Storage Pool, and Data Pool. You can either select a pool to view its details, or use the menu on the left. For now, select the **Controller** card or its item from the left-hand menu.
+  ![The SQL Server Big Data Cluster overview, which contains a SQL Server link to click.](media/ads-management-bdc-overview.png "Big Data Cluster overview")
 
-4. You will see the 11 pods associated with the Controller on this page. All of them have links to view metrics in Grafana, and a few of them have links to view logs. Select **View** under **Node Metrics** next to the **Knox Service** pod. This will open a new browser tab into the Grafana dashboard.  Alternatively, you can go to `https://<ip-address>:30777/grafana`.
+4. The SQL Server details section shows information on your master instance, as well as your compute, data, and storage pods.  Click on the **View** link under SQL Metrics.  This will open a browser window and connect to Grafana.
 
-   ![The Controller Status is displayed with 11 pods.](media/admin-portal-controller.png 'Controller Status')
+  ![In SQL Server cluster details, click the View link under SQL Metrics.](media/ads-management-bdc-sql-metrics.png "View in Grafana")
 
-5. Spend some time viewing the available metrics and graphs on the Grafana dashboard for the Knox Service pod. This dashboard gives good insight on load and any problem areas, as well as uptime and health checks.
+Grafana will appear, along with details on your SQL Server instance.  Spend some time viewing the available metrics and graphs on the Grafana dashboard.  You can also change between instances by selecting the appropriate instance in the Host drop-down list.
+  
+  ![SQL Server Big Data Cluster master instance metrics in Grafana.](media/ads-management-grafana.png "SQL Server Metrics from Grafana")
 
-   ![The Grafana dashboard is displaying information about the Knox Service pod.](media/grafana-knox.png 'Grafana dashboard')
+5. Return to the Big Data Cluster Dashboard.  Then, click the **View** link under Node Metrics.  This will once again take you to Grafana, but this time you will see the Host Node Metrics dashboard,  which contains details on the Azure Kubernetes Services nodes which make up your service cluster.
 
-6. Switch back to the cluster administration portal tab and select **View** under **Logs** next to the **Knox Service** pod. This will open a new browser tab into the Kibana log dashboard. Alternatively, you can go to `https://<ip-address>:30777/kibana`.
+  ![In SQL Server cluster details, click the View link under SQL Metrics.](media/ads-management-bdc-node-metrics.png "View in Grafana")
 
-   ![The View link under Logs is highlighted.](media/admin-portal-controller-logs.png 'Controller Status')
+These measures will be important for troubleshooting Azure Kubernetes Service issues, as well as uptime and health checks.
 
-7. When the Kibana page is displayed, you are presented with a nice interface for deriving insights from your pod's logs. You can search through your logs, filter by timeline, and refine your view. There is also an automatic refresh feature you can turn on. To do this, select **Auto-refresh** at the top of the page, then select a refresh interval, such as 10 seconds. Once set, you can turn it back off or pause the auto-refresh if it interferes with looking through the logs.
+  ![Azure Kubernetes Service host node metrics in Grafana.](media/ads-management-grafana-host-node.png "Host Node Metrics from Grafana")
 
-   ![The auto refresh interval is set to 10 seconds.](media/kibana-discover.png 'Kibana')
+6. Return to the Big Data Cluster Dashboard.  Then, click the **View** link under Logs.  This will take you to Kibana.
 
-8. Switch back to the cluster administration portal tab and select **Service Endpoints** on the left-hand menu. This lists the service endpoints, including links to the Spark jobs management and monitoring dashboard, Grafana dashboard, HDFS proxy, and Kibana logs.
+  ![In SQL Server cluster details, click the View link under Logs.](media/ads-management-bdc-logs.png "View in Kibana")
 
-   ![The Service Endpoints page is displayed.](media/admin-portal-service-endpoints.png 'Service Endpoints')
+Kibana is a log visualization product which is part of the Elasticsearch-Logstash-Kibana (ELK) stack of open-source log management tools.  SQL Server Big Data Clusters use Logstash to move log data into Elasticsearch, a product which specializes in indexing logs and other documents.  From there, Kibana allows us to view what is in the logs, reviewing and visualizing results.
 
-9. Select **About** in the top-right corner of the portal to view information about your cluster, such as version numbers, container images, and a link to the documentation.
+  ![Logged messages concerning the master SQL Server instance in the past 15 minutes.](media/ads-management-kibana.png "Kibana")
 
-   ![The About page is displayed.](media/admin-portal-about.png 'About')
+7. Return to the Big Data Cluster Dashboard.  Then, review node metrics and logs for other services, including HDFS and Spark.  These links will take you to Grafana and Kibana, respectively, and will provide measures and information for these services.
+
+8. After you have reviewed Grafana and Kibana, return to the Big Data Cluster Dashboard.  Then, click the **Big data cluster overview** link and then the **Troubleshoot** button.
+
+  ![In the SQL Server Big Data Cluster Dashboard, click the Troubleshoot button.](media/ads-management-troubleshoot.png "Troubleshoot")
+
+This brings up a Jupyter notebook designed to troubleshoot basic availability scenarios.
+
+  ![The Big Data Cluster troubleshooter, with links to other notebooks.](media/ads-management-tsg.png "A troubleshooting guide")
+
+Review the notebook and click on links to additional notebooks and Standard Operating Procedures, such as SOP007, which returns version information. 
+
+  ![A Standard Operating Procedure notebook for determining version information for tools.](media/ads-management-tsg-sop007.png "Version information Standard Operating Procedure guide")
+
+You can also view the entire set of notebooks in Azure Data Studio by clicking the Jupyter Books button.  This will show the **Operations and Support - SQL Server 2019 Big Data Clusters** collection of Jupyter notebooks.  Review these notebooks to learn more about how to troubleshoot individual components of a Big Data Cluster.
+
+  ![The set of notebooks available for SQL Server 2019 Big Data Clusters.](media/ads-management-jupyter-books.png "Jupyter Books")
 
 ### Task 2: Monitor and troubleshoot using kubectl commands
 
-> For all of the commands you will execute, replace **CLUSTER_NAMESPACE** with the big data cluster namespace you defined when deploying your cluster.
+> For all of the commands you will execute, replace **CLUSTER_NAMESPACE** with the big data cluster namespace you defined when deploying your cluster.  By default, this is **mssql-cluster**.
 
 Before executing these commands, you will need to make sure you are authenticated to Azure. If not, sign in using **az login**.
 
 1. Open a new Windows command prompt.
 
-2. Execute the following kubectl command to show the status of all the pods in your SQL Server big data cluster. Remember, **replace** CLUSTER_NAMESPACE with your own namespace.  It's the name you provided for the prompt "Provide name of AKS cluster and SQL big data cluster:".
+2. Execute the following kubectl command to show the status of all the pods in your SQL Server big data cluster. Remember, **replace** CLUSTER_NAMESPACE with your own namespace.
 
    ```bash
    kubectl get pods -n CLUSTER_NAMESPACE
@@ -931,7 +989,7 @@ Before executing these commands, you will need to make sure you are authenticate
 
    In our case, the `master-0` pod shows no errors in recent events.
 
-4. As you saw in the previous section, you can view the logs through Kibana from the cluster administration portal. However, sometimes you want quick access to download all the logs for containers running within a pod. Run the command below to output the logs for all containers running in the `master-0` pod to a new file named `master-0-pod-logs.txt`.
+4. As you saw in the previous section, you can view the logs through Kibana from the SQL Server Big Data Cluster Dashboard. However, sometimes you want quick access to download all the logs for containers running within a pod. Run the command below to output the logs for all containers running in the `master-0` pod to a new file named `master-0-pod-logs.txt`.
 
    ```bash
    kubectl logs master-0 --all-containers=true -n CLUSTER_NAMESPACE > master-0-pod-logs.txt
@@ -953,7 +1011,7 @@ Before executing these commands, you will need to make sure you are authenticate
 
    ```bash
    kubectl exec -it master-0  -c mssql-server -n CLUSTER_NAMESPACE -- /bin/bash
-   supervisorctl restart mssql
+   supervisorctl restart mssql-server
    ```
 
    ![Kubectl exec command.](media/kubectl-exec.png 'Command prompt')
