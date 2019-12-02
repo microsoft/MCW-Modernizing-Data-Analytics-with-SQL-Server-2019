@@ -251,7 +251,7 @@ Once you have filled in these details, click Next.
 2. Use **curl** to download the bootstrap script for the sample data.
 
    ```bash
-   curl -o bootstrap-sample-db.cmd "https://raw.githubusercontent.com/Microsoft/sql-server-samples/master/samples/features/sql-big-data-cluster/bootstrap-sample-db.cmd"
+   curl -o bootstrap-sample-db.cmd "https://raw.githubusercontent.com/Microsoft/MCW-Modernizing-data-analytics-with-SQL-Server-2019/master/Hands-on%20lab/Resources/bootstrap-sample-db.cmd"
    ```
 
 3. Download the **bootstrap-sample-db.sql** Transact-SQL script. This script is called by the bootstrap script.
@@ -263,7 +263,7 @@ Once you have filled in these details, click Next.
 4. Download the **upload-sample-files.cmd** command script for uploading additional lab files to HDFS on your cluster.
 
    ```bash
-   curl -o upload-sample-files.cmd "https://raw.githubusercontent.com/solliancenet/MCW-Modernizing-data-analytics-with-SQL-Server-2019/master/Hands-on%20lab/Resources/upload-sample-files.cmd"
+   curl -o upload-sample-files.cmd "https://raw.githubusercontent.com/Microsoft/MCW-Modernizing-data-analytics-with-SQL-Server-2019/master/Hands-on%20lab/Resources/upload-sample-files.cmd"
    ```
 
 5. Run the bootstrap script. Substitute `<MSSQL_CLUSTER_NAME>`, `<SQL_MASTER_IP>`, `<SQL_MASTER_ADMIN_PASSWORD>`, `<KNOX_IP>`, `<KNOX_PASSWORD>` with values output from the SQL Server 2019 cluster creation notebook above.  Halfway through the execution of this script, you may need to hit a key to have it continue.
