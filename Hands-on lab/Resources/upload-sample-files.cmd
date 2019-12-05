@@ -1,4 +1,5 @@
 @echo off
+setlocal ENABLEDELAYEDEXPANSION
 REM sample files upload CMD script
 setlocal enableextensions
 setlocal enabledelayedexpansion
@@ -21,9 +22,9 @@ cd %TMP_DIR_NAME%
 
 REM Create HDFS directories
 echo Creating HDFS directories to store file data...
-%DEBUG% curl -i -L -k -u root:%KNOX_PASSWORD% -X PUT "https://%KNOX_ENDPOINT%/gateway/default/webhdfs/v1/partner_customers?op=MKDIRS"
-%DEBUG% curl -i -L -k -u root:%KNOX_PASSWORD% -X PUT "https://%KNOX_ENDPOINT%/gateway/default/webhdfs/v1/partner_products?op=MKDIRS"
-%DEBUG% curl -i -L -k -u root:%KNOX_PASSWORD% -X PUT "https://%KNOX_ENDPOINT%/gateway/default/webhdfs/v1/web_logs?op=MKDIRS"
+%DEBUG% curl -i -L -k -u root:!KNOX_PASSWORD! -X PUT "https://%KNOX_ENDPOINT%/gateway/default/webhdfs/v1/partner_customers?op=MKDIRS"
+%DEBUG% curl -i -L -k -u root:!KNOX_PASSWORD! -X PUT "https://%KNOX_ENDPOINT%/gateway/default/webhdfs/v1/partner_products?op=MKDIRS"
+%DEBUG% curl -i -L -k -u root:!KNOX_PASSWORD! -X PUT "https://%KNOX_ENDPOINT%/gateway/default/webhdfs/v1/web_logs?op=MKDIRS"
 
 REM Download source files
 echo Downloading source files...
@@ -33,9 +34,9 @@ echo Downloading source files...
 
 REM Upload the data files to HDFS
 echo Uploading data files to HDFS...
-%DEBUG% curl -i -L -k -u root:%KNOX_PASSWORD% -X PUT "https://%KNOX_ENDPOINT%/gateway/default/webhdfs/v1/partner_customers/customers.csv?op=create&overwrite=true" -H "Content-Type: application/octet-stream" -T "customers.csv"
-%DEBUG% curl -i -L -k -u root:%KNOX_PASSWORD% -X PUT "https://%KNOX_ENDPOINT%/gateway/default/webhdfs/v1/partner_products/products.csv?op=create&overwrite=true" -H "Content-Type: application/octet-stream" -T "products.csv"
-%DEBUG% curl -i -L -k -u root:%KNOX_PASSWORD% -X PUT "https://%KNOX_ENDPOINT%/gateway/default/webhdfs/v1/web_logs/web_clickstreams.csv?op=create&overwrite=true" -H "Content-Type: application/octet-stream" -T "web_clickstreams.csv"
+%DEBUG% curl -i -L -k -u root:!KNOX_PASSWORD! -X PUT "https://%KNOX_ENDPOINT%/gateway/default/webhdfs/v1/partner_customers/customers.csv?op=create&overwrite=true" -H "Content-Type: application/octet-stream" -T "customers.csv"
+%DEBUG% curl -i -L -k -u root:!KNOX_PASSWORD! -X PUT "https://%KNOX_ENDPOINT%/gateway/default/webhdfs/v1/partner_products/products.csv?op=create&overwrite=true" -H "Content-Type: application/octet-stream" -T "products.csv"
+%DEBUG% curl -i -L -k -u root:!KNOX_PASSWORD! -X PUT "https://%KNOX_ENDPOINT%/gateway/default/webhdfs/v1/web_logs/web_clickstreams.csv?op=create&overwrite=true" -H "Content-Type: application/octet-stream" -T "web_clickstreams.csv"
 :: del /q customers.*
 :: del /q products.*
 :: del /q web_clickstreams.*
