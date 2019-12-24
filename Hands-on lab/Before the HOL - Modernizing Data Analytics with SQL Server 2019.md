@@ -240,7 +240,7 @@ Once you have filled in these details, select Next.
 
 13. The final step of the notebook will allow you to connect to your Big Data Cluster master instance using Azure Data Studio.  Run the step and then select the link to connect to your SQL Server master instance.
 
-![Click the link to connect to the SQL Server master instance.](media/ads-deploy-bdc-connect.png 'Connect to a SQL Server master instance')
+![Select the link to connect to the SQL Server master instance.](media/ads-deploy-bdc-connect.png 'Connect to a SQL Server master instance')
 
 14. Once you have run through each step, save the notebook.  This notebook will contain information on all of your Big Data Cluster endpoints, which you will need throughout the lab.
 
