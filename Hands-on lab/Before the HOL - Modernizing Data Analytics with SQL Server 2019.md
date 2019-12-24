@@ -246,27 +246,9 @@ Once you have filled in these details, select Next.
 
 ### Task 4: Install sample databases and upload files
 
-1. Open a new Windows command prompt (DO NOT user PowerShell for these steps).  Navigate to a folder where you'll keep the sample data files.
+1. Open a new Windows Explorer window.  Navigate to the Hands-on lab's Resources folder. If you followed along with Step 4 of Task 2, it will be at `C:\MCW-Modernizing-data-analytics-with-SQL-Server-2019-master\Hands-on lab\Resources\`.
 
-2. Use **curl** to download the bootstrap script for the sample data.
-
-   ```bash
-   curl -o bootstrap-sample-db.cmd "https://raw.githubusercontent.com/Microsoft/MCW-Modernizing-data-analytics-with-SQL-Server-2019/master/Hands-on%20lab/Resources/bootstrap-sample-db.cmd"
-   ```
-
-3. Download the **bootstrap-sample-db.sql** Transact-SQL script. This script is called by the bootstrap script.
-
-   ```bash
-   curl -o bootstrap-sample-db.sql "https://raw.githubusercontent.com/Microsoft/sql-server-samples/master/samples/features/sql-big-data-cluster/bootstrap-sample-db.sql"
-   ```
-
-4. Download the **upload-sample-files.cmd** command script for uploading additional lab files to HDFS on your cluster.
-
-   ```bash
-   curl -o upload-sample-files.cmd "https://raw.githubusercontent.com/Microsoft/MCW-Modernizing-data-analytics-with-SQL-Server-2019/master/Hands-on%20lab/Resources/upload-sample-files.cmd"
-   ```
-
-5. Run the bootstrap script. Substitute `<MSSQL_CLUSTER_NAME>`, `<SQL_MASTER_IP>`, `<SQL_MASTER_ADMIN_PASSWORD>`, `<KNOX_IP>`, `<KNOX_PASSWORD>` with values output from the SQL Server 2019 cluster creation notebook above.  Halfway through the execution of this script, you may need to hit a key to have it continue.
+2. Run the script named **bootstrap-sample-db.cmd**. Substitute `<MSSQL_CLUSTER_NAME>`, `<SQL_MASTER_IP>`, `<SQL_MASTER_ADMIN_PASSWORD>`, `<KNOX_IP>`, `<KNOX_PASSWORD>` with values output from the SQL Server 2019 cluster creation notebook above.  Halfway through the execution of this script, you may need to hit a key to have it continue.
 
    ```bash
    .\bootstrap-sample-db.cmd <MSSQL_CLUSTER_NAME> <SQL_MASTER_IP> <SQL_MASTER_ADMIN_PASSWORD> <KNOX_IP> <KNOX_PASSWORD> --install-extra-samples
@@ -283,7 +265,7 @@ Once you have filled in these details, select Next.
 
    > You can also use kubectl to find the IP addresses for the SQL Server master instance and Knox. Run `kubectl get svc -n <your-big-data-cluster-name>` and look at the EXTERNAL-IP addresses for the master instance (**master-svc-external**) and Knox (**gateway-svc-external**).
 
-6. Run the file upload script. Substitute `<KNOX_IP>`, `<KNOX_PASSWORD>` with values output from the SQL Server 2019 cluster creation script above.
+3. Run the script named **upload-sample-files.cmd**. Substitute `<KNOX_IP>`, `<KNOX_PASSWORD>` with values output from the SQL Server 2019 cluster creation script above.
 
    ```bash
    .\upload-sample-files.cmd <KNOX_IP> <KNOX_PASSWORD>

@@ -253,9 +253,6 @@ To start, we will use the External Table Wizard in Azure Data Studio to connect 
     );
   END
   GO
-
-  SELECT *
-  FROM dbo.Reviews;
   ```
 
 4. Select the Servers link (Ctrl+Shift+D) on the left-hand menu, then expand the Tables list underneath your **sales** database and find the **dbo.Reviews (External)** table. If you do not see it, right-click on the Tables folder, then select Refresh. The "(External)" portion of the table name denotes that it is a virtual data object that was added as an external table.
@@ -403,6 +400,10 @@ Notebooks are made up of one or more of cells that allow for the execution of th
    While it is running, you will see the install progress in the **Tasks** tab, and the **Kernel** will display "Changing kernel..." in the dropdown.
 
    ![The installation status is displayed.](media/ads-configure-python-for-notebooks-running.png 'Tasks')
+
+If you have already installed the Python for Notebooks components, you might be prompted to upgrade Python packages.  If you see this, select the **No** option and continue.
+
+  ![The upgrade dialog is displayed.](media/ads-notebook-upgrade-packages.png 'Some installed Python packages need to be upgraded')
 
 5. After the Python components are installed, make sure that **Python 3** is your selected **Kernel**, then follow the instructions within the notebook. You can execute each code cell by selecting it and pressing **F5** on your keyboard, or by selecting the Run icon to the left of the cell.
 
@@ -906,6 +907,8 @@ The tab allows you to:
 - Monitor deployment status
 - View available service endpoints
 - Drill down information on pods, including accessing Grafana dashboards and Kibana logs
+
+> If you are prompted on any of the following screens for a username and password, enter the same username and password combination you chose when creating the cluster. By default, the username is `admin`.
 
 1. Open up Azure Data Studio and connect to your SQL Server Big Data Cluster's master instance.  Right-click on the master instance and select **Manage**.
 
