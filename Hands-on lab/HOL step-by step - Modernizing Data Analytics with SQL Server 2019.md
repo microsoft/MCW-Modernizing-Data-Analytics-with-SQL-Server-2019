@@ -93,18 +93,18 @@ While solutions for large-scale data processing exist, they are often batch-base
 
 ## Requirements
 
-1. Microsoft Azure subscription must be pay-as-you-go or MSDN.
+- Microsoft Azure subscription must be pay-as-you-go or MSDN.
    - Trial subscriptions will not work.
-2. PowerShell
-3. Python3
-4. curl
-5. sqlcmd
-6. [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)
-7. [azdata](https://docs.microsoft.com/en-us/sql/big-data-cluster/deploy-install-azdata-installer?view=sql-server-ver15)
-8. [kubectl](https://kubernetes.io/docs/tasks/tools/install-kubectl/#install-with-powershell-from-psgallery)
-9. [SQL Server Management Studio](https://go.microsoft.com/fwlink/?linkid=2078638) (SSMS) v18.4 or greater
-10. [Azure Data Studio](https://docs.microsoft.com/sql/azure-data-studio/download?view=sql-server-ver15)
-    - [Data Virtualization extension for Azure Data Studio](https://docs.microsoft.com/en-us/sql/azure-data-studio/data-virtualization-extension?view=sql-server-ver15)
+- PowerShell
+- Python3
+- curl
+- sqlcmd
+- [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)
+- [azdata](https://docs.microsoft.com/en-us/sql/big-data-cluster/deploy-install-azdata-installer?view=sql-server-ver15)
+- [kubectl](https://kubernetes.io/docs/tasks/tools/install-kubectl/#install-with-powershell-from-psgallery)
+- [SQL Server Management Studio](https://go.microsoft.com/fwlink/?linkid=2078638) (SSMS) v18.4 or greater
+- [Azure Data Studio](https://docs.microsoft.com/sql/azure-data-studio/download?view=sql-server-ver15)
+  - [Data Virtualization extension for Azure Data Studio](https://docs.microsoft.com/en-us/sql/azure-data-studio/data-virtualization-extension?view=sql-server-ver15)
 
 ## Before the hands-on lab
 
@@ -428,6 +428,7 @@ Earlier in this lab, you virtualized data using the UI components within Azure D
 - You'll start with creating a text file format, since that's the type of data you are reading in.
 - Next, you'll create a data source for the SQL Storage Pool, since that allows you to access the HDFS system in BDC.
 - Finally, you'll create an External Table, which uses the previous steps to access the data.
+
 
 1. In Azure Data Studio, select **File**, then **Open File...**.
 
