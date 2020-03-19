@@ -11,7 +11,7 @@
       "type": "securestring"
     },
 	"sqlservername": {
-	  "defaultValue" : "init-sql-data",
+	  "defaultValue" : "INIT-sql-mod-data",
       "type": "string"
     },
 	"databaseName": {
