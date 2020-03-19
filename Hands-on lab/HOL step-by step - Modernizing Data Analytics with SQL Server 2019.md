@@ -965,63 +965,62 @@ The tab allows you to:
 
 > If you are prompted on any of the following screens for a username and password, enter the same username and password combination you chose when creating the cluster. By default, the username is `admin`.
 
-1. Open up Azure Data Studio and connect to your SQL Server Big Data Cluster's master instance.  Right-click on the master instance and select **Manage**.
-
-    ![The Azure Data Studio context menu for our SQL Server Big Data Cluster, with Manage highlighted.](media/ads-management-manage.png "Manage")
-
-2. On the instance management dashboard, select the **SQL Server Big Data Cluster** tab.  Then, on the SQL Server Big Data Cluster tab, select the **Cluster Dashboard** button.  This will open up a new Big Data Cluster dashboard.
-
-    ![The SQL Server Big Data Cluster tab, which contains a Cluster Dashboard button to select.](media/ads-management-bdc-tab.png "Cluster Dashboard")
-
-3. The Big Data Cluster overview contains a brief overview of your Big Data Cluster's health, services, and service endpoints.  For now, select the **SQL Server** link.
+1. Switch to Azure Data Studio
+2. Expand the **SQL SERVER BIG DATA CLUSTERS** section
+3. Click **Add SQL Server Big Data cluster controller** link
+4. Connect to your SQL Server Big Data Cluster's master instance (x.x.x.x:30080), use the connection details from the **deploy-bdc-aks** workbook.
+5. Right-click on the master instance and select **Manage**. The Big Data Cluster overview contains a brief overview of your Big Data Cluster's health, services, and service endpoints.  
+6. Select the **SQL Server** link.
 
     ![The SQL Server Big Data Cluster overview, which contains a SQL Server link to select.](media/ads-management-bdc-overview.png "Big Data Cluster overview")
 
-4. The SQL Server details section shows information on your master instance, as well as your compute, data, and storage pods.  Select the **View** link under SQL Metrics.  This will open a browser window and connect to Grafana. 
+7. The SQL Server details section shows information on your master instance, as well as your compute, data, and storage pods.  Select the **View** link under SQL Metrics.  This will open a browser window and connect to Grafana.
 
-   > Note that you may need to select to ignore certificate warnings and then login using the `admin` username and the password you selected in the before the HOL steps.
+   - Note that you may need to select to ignore certificate warnings. If so, select **Advanced**, then select **Proceed to ...** link. Login using the `admin` username and the password you selected in the before the HOL steps.
 
-    ![In SQL Server cluster details, select the View link under SQL Metrics.](media/ads-management-bdc-sql-metrics.png "View in Grafana")
+      ![In SQL Server cluster details, select the View link under SQL Metrics.](media/ads-management-bdc-sql-metrics.png "View in Grafana")
 
-    Grafana will appear, along with details on your SQL Server instance.  Spend some time viewing the available metrics and graphs on the Grafana dashboard.  You can also change between instances by selecting the appropriate instance in the Host drop-down list.
+    - Grafana will appear, along with details on your SQL Server instance.  Spend some time viewing the available metrics and graphs on the Grafana dashboard.  You can also change between instances by selecting the appropriate instance in the Host drop-down list.
 
-    ![SQL Server Big Data Cluster master instance metrics in Grafana.](media/ads-management-grafana.png "SQL Server Metrics from Grafana")
+      ![SQL Server Big Data Cluster master instance metrics in Grafana.](media/ads-management-grafana.png "SQL Server Metrics from Grafana")
 
-5. Return to the Big Data Cluster Dashboard.  Then, select the **View** link under Node Metrics.  
+8. Return to the Big Data Cluster Dashboard.  Then, select the **View** link under Node Metrics.  
 
-6. This will once again take you to Grafana, but this time you will see the Host Node Metrics dashboard,  which contains details on the Azure Kubernetes Services nodes which make up your service cluster.
+   - This will once again take you to Grafana, but this time you will see the Host Node Metrics dashboard,  which contains details on the Azure Kubernetes Services nodes which make up your service cluster.
 
-    ![In SQL Server cluster details, select the View link under SQL Metrics.](media/ads-management-bdc-node-metrics.png "View in Grafana")
+      ![In SQL Server cluster details, select the View link under SQL Metrics.](media/ads-management-bdc-node-metrics.png "View in Grafana")
 
-    These measures will be important for troubleshooting Azure Kubernetes Service issues, as well as uptime and health checks.
+    - These measures will be important for troubleshooting Azure Kubernetes Service issues, as well as uptime and health checks.
 
-    ![Azure Kubernetes Service host node metrics in Grafana.](media/ads-management-grafana-host-node.png "Host Node Metrics from Grafana")
+      ![Azure Kubernetes Service host node metrics in Grafana.](media/ads-management-grafana-host-node.png "Host Node Metrics from Grafana")
 
-7. Return to the Big Data Cluster Dashboard.  Then, select the **View** link under Logs.  This will take you to Kibana.  If prompted, again use the `admin` username with the password you selected in the before the HOL steps.
+9.  Return to the Big Data Cluster Dashboard.  Then, select the **View** link under Logs.  This will take you to Kibana.  If prompted, again use the `admin` username with the password you selected in the before the HOL steps.
 
-    ![In SQL Server cluster details, select the View link under Logs.](media/ads-management-bdc-logs.png "View in Kibana")
+      ![In SQL Server cluster details, select the View link under Logs.](media/ads-management-bdc-logs.png "View in Kibana")
 
-    Kibana is a log visualization product which is part of the Elasticsearch-Logstash-Kibana (ELK) stack of open-source log management tools.  SQL Server Big Data Clusters use Logstash to move log data into Elasticsearch, a product which specializes in indexing logs and other documents.  From there, Kibana allows us to view what is in the logs, reviewing and visualizing results.
+    - Kibana is a log visualization product which is part of the Elasticsearch-Logstash-Kibana (ELK) stack of open-source log management tools.  SQL Server Big Data Clusters use Logstash to move log data into Elasticsearch, a product which specializes in indexing logs and other documents.  From there, Kibana allows us to view what is in the logs, reviewing and visualizing results.
 
-    ![Logged messages concerning the master SQL Server instance in the past 15 minutes.](media/ads-management-kibana.png "Kibana")
+      ![Logged messages concerning the master SQL Server instance in the past 15 minutes.](media/ads-management-kibana.png "Kibana")
 
-8.  Return to the Big Data Cluster Dashboard.  Then, review node metrics and logs for other services, including HDFS and Spark.  These links will take you to Grafana and Kibana, respectively, and will provide measures and information for these services.
+10. Return to the Big Data Cluster Dashboard.  
+11. Review node metrics and logs for other services, including HDFS and Spark.  These links will take you to Grafana and Kibana, respectively, and will provide measures and information for these services.
 
-9.  After you have reviewed Grafana and Kibana, return to the Big Data Cluster Dashboard.  Then, select the **Big data cluster overview** link and then the **Troubleshoot** button.
+12. After you have reviewed Grafana and Kibana, return to the Big Data Cluster Dashboard.  
+13. Select the **Big data cluster overview** link and then the **Troubleshoot** button.
 
-    ![In the SQL Server Big Data Cluster Dashboard, select the Troubleshoot button.](media/ads-management-troubleshoot.png "Troubleshoot")
+      ![In the SQL Server Big Data Cluster Dashboard, select the Troubleshoot button.](media/ads-management-troubleshoot.png "Troubleshoot")
 
-    This brings up a Jupyter notebook designed to troubleshoot basic availability scenarios.
+    - This brings up a Jupyter notebook designed to troubleshoot basic availability scenarios.
 
-    ![The Big Data Cluster troubleshooter, with links to other notebooks.](media/ads-management-tsg.png "A troubleshooting guide")
+      ![The Big Data Cluster troubleshooter, with links to other notebooks.](media/ads-management-tsg.png "A troubleshooting guide")
 
-    Review the notebook and select the links to additional notebooks and Standard Operating Procedures, such as SOP007. Version information is returned.
+    - Review the notebook and select the links to additional notebooks and Standard Operating Procedures, such as SOP007. Version information is returned.
 
-    ![A Standard Operating Procedure notebook for determining version information for tools.](media/ads-management-tsg-sop007.png "Version information Standard Operating Procedure guide")
+      ![A Standard Operating Procedure notebook for determining version information for tools.](media/ads-management-tsg-sop007.png "Version information Standard Operating Procedure guide")
 
-    You can also view the entire set of notebooks in Azure Data Studio by selecting the Jupyter Books button.  This will show the **Operations and Support - SQL Server 2019 Big Data Clusters** collection of Jupyter notebooks.  Review these notebooks to learn more about how to troubleshoot individual components of a Big Data Cluster.
+    - You can also view the entire set of notebooks in Azure Data Studio by selecting the Jupyter Books button.  This will show the **Operations and Support - SQL Server 2019 Big Data Clusters** collection of Jupyter notebooks.  Review these notebooks to learn more about how to troubleshoot individual components of a Big Data Cluster.
 
-    ![The set of notebooks available for SQL Server 2019 Big Data Clusters.](media/ads-management-jupyter-books.png "Jupyter Books")
+      ![The set of notebooks available for SQL Server 2019 Big Data Clusters.](media/ads-management-jupyter-books.png "Jupyter Books")
 
 ### Task 2: Monitor and troubleshoot using kubectl commands
 
@@ -1039,42 +1038,45 @@ Before executing these commands, you will need to make sure you are authenticate
 
    ![Get pods command is displayed.](media/kubectl-get-pods.png 'Command prompt')
 
-3. Now, let's get some more details about one of the pods. In the list from the previous output, you should see a pod named **master-0**. Use the `describe` command to get a detailed description of a specific pod in json format. It includes details such as the current Kubernetes node that the pod is placed on, the containers running within the pod, and the image used to bootstrap the containers. It also shows other details, such as labels, status, and persisted volumes claims that are associated with the pod. If any errors have occurred, you can sometimes see the error in the recent events for the pod.
+3. In the list from the previous output, you should see a pod named **master-0**. 
+4. Execute the following kubectl command.
 
-   ```bash
-   kubectl describe pod master-0 -n CLUSTER_NAMESPACE
-   ```
+   - The `describe` command will show a detailed description of a specific pod in json format. It includes details such as the current Kubernetes node that the pod is placed on, the containers running within the pod, and the image used to bootstrap the containers. It also shows other details, such as labels, status, and persisted volumes claims that are associated with the pod. If any errors have occurred, you can sometimes see the error in the recent events for the pod.
 
-   ![Describe pod command shows no errors in recent events.](media/kubectl-describe-pod.png 'Command prompt')
+      ```bash
+      kubectl describe pod master-0 -n CLUSTER_NAMESPACE
+      ```
 
-   In our case, the `master-0` pod shows no errors in recent events.
+      ![Describe pod command shows no errors in recent events.](media/kubectl-describe-pod.png 'Command prompt')
 
-4. As you saw in the previous section, you can view the logs through Kibana from the SQL Server Big Data Cluster Dashboard. However, sometimes you want quick access to download all the logs for containers running within a pod. Run the command below to output the logs for all containers running in the `master-0` pod to a new file named `master-0-pod-logs.txt`.
+      - In our case, the `master-0` pod shows no errors in recent events.
+
+5. As you saw in the previous section, you can view the logs through Kibana from the SQL Server Big Data Cluster Dashboard. However, sometimes you want quick access to download all the logs for containers running within a pod. Run the command below to output the logs for all containers running in the `master-0` pod to a new file named `master-0-pod-logs.txt`.
 
    ```bash
    kubectl logs master-0 --all-containers=true -n CLUSTER_NAMESPACE > master-0-pod-logs.txt
    ```
 
-5. A useful command that you may run relatively often is the `get svc` command. This returns details about your big data cluster services, including their type, IP, and ports. We've referred to this command a few times throughout the lab to show how you can retrieve the external IP address and port for services such as the cluster admin portal, Knox, and the SQL master instance.
+6. A useful command that you may run relatively often is the `get svc` command. This returns details about your big data cluster services, including their type, IP, and ports. We've referred to this command a few times throughout the lab to show how you can retrieve the external IP address and port for services such as the cluster admin portal, Knox, and the SQL master instance.
 
    ```bash
    kubectl get svc -n CLUSTER_NAMESPACE
    ```
 
-6. The command to retrieve service details is very similar to the one you ran to retrieve details about a pod. You can use this command to get a detailed description about a service in JSON format, such as IP, external IP, port, labels, selector, etc. In this case, we will retrieve service details for `master-svc-external`. Simply swap the service name for another to view details about that service.
+7. The command to retrieve service details is very similar to the one you ran to retrieve details about a pod. You can use this command to get a detailed description about a service in JSON format, such as IP, external IP, port, labels, selector, etc. In this case, we will retrieve service details for `master-svc-external`. Simply swap the service name for another to view details about that service.
 
    ```bash
    kubectl describe service master-svc-external -n CLUSTER_NAMESPACE
    ```
 
-7. Besides retrieving useful information about pods, containers, and services, you can execute commands in a container as well. It is necessary at times to perform certain tasks by logging into a container, like checking if a certain file exists or restarting services in the container. You use this by executing the `kubectl exec` command. The syntax is as follows: `kubectl exec -it <pod_name> -c <container_name> -n <namespace_name> -- /bin/bash <command name>`. Execute the following command to log in to the `mssql-server` container within the `master-0` pod and restart the SQL Server process (remember to replace CLUSTER_NAMESPACE with your namespace):
+8. Besides retrieving useful information about pods, containers, and services, you can execute commands in a container as well. It is necessary at times to perform certain tasks by logging into a container, like checking if a certain file exists or restarting services in the container. You use this by executing the `kubectl exec` command. The syntax is as follows: `kubectl exec -it <pod_name> -c <container_name> -n <namespace_name> -- /bin/bash <command name>`. Execute the following command to log in to the `mssql-server` container within the `master-0` pod and restart the SQL Server process (remember to replace CLUSTER_NAMESPACE with your namespace):
 
-   ```bash
-   kubectl exec -it master-0  -c mssql-server -n CLUSTER_NAMESPACE -- /bin/bash
-   supervisorctl restart mssql-server
-   ```
+      ```bash
+      kubectl exec -it master-0  -c mssql-server -n CLUSTER_NAMESPACE -- /bin/bash
+      supervisorctl restart mssql-server
+      ```
 
-   ![Kubectl exec command is displayed.](media/kubectl-exec.png 'Command prompt')
+      ![Kubectl exec command is displayed.](media/kubectl-exec.png 'Command prompt')
 
 ## After the hands-on lab
 
