@@ -9,7 +9,7 @@ Hands-on lab step-by-step
 </div>
 
 <div class="MCWHeader3">
-December 2019
+March 2020
 </div>
 
 Information in this document, including URL and other Internet Web site references, is subject to change without notice. Unless otherwise noted, the example companies, organizations, products, domain names, e-mail addresses, logos, people, places, and events depicted herein are fictitious, and no association with any real company, organization, product, domain name, e-mail address, logo, person, place or event is intended or should be inferred. Complying with all applicable copyright laws is the responsibility of the user. Without limiting the rights under copyright, no part of this document may be reproduced, stored in or introduced into a retrieval system, or transmitted in any form or by any means (electronic, mechanical, photocopying, recording, or otherwise), or for any purpose, without the express written permission of Microsoft Corporation.
@@ -18,7 +18,7 @@ Microsoft may have patents, patent applications, trademarks, copyrights, or othe
 
 The names of manufacturers, products, or URLs are provided for informational purposes only and Microsoft makes no representations and warranties, either expressed, implied, or statutory, regarding these manufacturers or the use of the products with any Microsoft technologies. The inclusion of a manufacturer or product does not imply endorsement of Microsoft of the manufacturer or product. Links may be provided to third party sites. Such sites are not under the control of Microsoft and Microsoft is not responsible for the contents of any linked site or any link contained in a linked site, or any changes or updates to such sites. Microsoft is not responsible for webcasting or any other form of transmission received from any linked site. Microsoft is providing these links to you only as a convenience, and the inclusion of any link does not imply endorsement of Microsoft of the site or the products contained therein.
 
-© 2019 Microsoft Corporation. All rights reserved.
+© 2020 Microsoft Corporation. All rights reserved.
 
 Microsoft and the trademarks listed at <https://www.microsoft.com/en-us/legal/intellectualproperty/Trademarks/Usage/General.aspx> are trademarks of the Microsoft group of companies. All other trademarks are property of their respective owners.
 
@@ -47,8 +47,8 @@ Microsoft and the trademarks listed at <https://www.microsoft.com/en-us/legal/in
   - [Exercise 3: Machine learning](#exercise-3-machine-learning)
     - [Task 1: Train a machine learning model](#task-1-train-a-machine-learning-model)
     - [Task 2: Score and save data as an external table](#task-2-score-and-save-data-as-an-external-table)
-  - [Exercise 4: Identify PII and GDPR-related compliance issues using Data Discovery &amp; Classification in SSMS](#exercise-4-identify-pii-and-gdpr-related-compliance-issues-using-data-discovery-amp-classification-in-ssms)
-    - [Task 1: Use the Data Discovery &amp; Classification in SSMS](#task-1-use-the-data-discovery-amp-classification-in-ssms)
+  - [Exercise 4: Identify PII and GDPR-related compliance issues using Data Discovery & Classification in SSMS](#exercise-4-identify-pii-and-gdpr-related-compliance-issues-using-data-discovery--classification-in-ssms)
+    - [Task 1: Use the Data Discovery & Classification in SSMS](#task-1-use-the-data-discovery--classification-in-ssms)
     - [Task 2: Fix compliance issues with dynamic data masking](#task-2-fix-compliance-issues-with-dynamic-data-masking)
   - [Exercise 5: Exploring intelligent query processing (QP) features](#exercise-5-exploring-intelligent-query-processing-qp-features)
     - [Task 1: Set database compatibility level](#task-1-set-database-compatibility-level)
@@ -114,15 +114,17 @@ Follow the steps below to connect to your SQL Server 2019 cluster with both Azur
 
 ### Connect with Azure Data Studio
 
-1. On the bottom-left corner of your Windows desktop, locate the search box next to the Start Menu. Type **Azure Data Studio**, then select the Azure Data Studio desktop app in the search results.
+1. If you do not already have Azure Data Studio running with the Big Data Cluster connected, following the following steps.  If you do, skip to the next steps of connecting with SQL Server Management Studio
+
+2. On the bottom-left corner of your Windows desktop, locate the search box next to the Start Menu. Type **Azure Data Studio**, then select the Azure Data Studio desktop app in the search results.
 
    ![The search box has "Azure Data Studio" entered into it and the desktop app is highlighted in the results.](media/launch-azure-data-studio.png 'Launch Azure Data Studio')
 
-2. Within Azure Data Studio, if the Connection dialog isn't automatically displayed, select **Servers** from the top of the left-hand menu, then select **New Connection** from the top toolbar to the right of the menu.
+3. Within Azure Data Studio, if the Connection dialog isn't automatically displayed, select **Servers** from the top of the left-hand menu, then select **New Connection** from the top toolbar to the right of the menu.
 
    ![The Servers menu icon is selected, as well as the new connection icon.](media/ads-new-connection-link.png 'Azure Data Studio')
 
-3. Within the Connection dialog, configure the following:
+4. Within the Connection dialog, configure the following:
 
    - **Connection type:** Select Microsoft SQL Server.
    - **Server:** Enter the IP address, followed by port number `31433` to the SQL Server 2019 Big Data cluster. It should have a format of IP separated by a comma from the port, such as: `11.122.133.144,31433`.
@@ -134,7 +136,7 @@ Follow the steps below to connect to your SQL Server 2019 cluster with both Azur
 
    ![The Connection form is filled out with the previously mentioned settings entered into the appropriate fields.](media/ads-new-connection.png 'Azure Data Studio - New Connection')
 
-4. Select **Connect**.
+5. Select **Connect**.
 
 ### Connect with SQL Server Management Studio
 
@@ -263,17 +265,19 @@ To start, we will use the External Table Wizard in Azure Data Studio to connect 
 
     ![The Select Top 1000 rows menu item is highlighted.](media/ads-reviews-select-top-1000.png 'Select Top 1000')
 
-6. You should see a SQL query selecting the top 1000 records from the Reviews table and its results. The interesting thing to note is that the query selects the table and fields using the same syntax you would use to select from any other table in the sales database. The fact that the Reviews table is external is completely seamless and transparent to the user. This is the power of data virtualization in SQL Server 2019.
+6. You should see a SQL query selecting the top 1000 records from the Reviews table and its results. The interesting thing to note is that the query selects the table and fields using the same syntax you would use to select from any other table in the sales database. 
+
+   ```sql
+   SELECT TOP (1000) [product_id]
+      ,[customer_id]
+      ,[review]
+      ,[date_added]
+   FROM [sales].[dbo].[Reviews]
+   ```
+
+7. The fact that the Reviews table is external is completely seamless and transparent to the user. This is the power of data virtualization in SQL Server 2019.
 
     ![The Reviews query and results are displayed.](media/ads-reviews-query-results.png 'Reviews query results')
-
-    ```sql
-    SELECT TOP (1000) [product_id]
-        ,[customer_id]
-        ,[review]
-        ,[date_added]
-    FROM [sales].[dbo].[Reviews]
-    ```
 
 ### Task 2: Create external table from CSV files
 
@@ -295,33 +299,36 @@ The next data source we will be virtualizing is a CSV file that you will upload 
 
 5. Select **Upload**.
 
-6. Expand the **data** subfolder you created, then right-click on the `stockitemholdings.csv` file and select **Create External Table From CSV Files**.
+6. Expand the **data** subfolder you created
+7. Right-click the `stockitemholdings.csv` file and select **Create External Table From CSV Files**.
 
    ![The CSV file and the Create External Table From CSV Files menu item are highlighted.](media/ads-create-external-table-csv.png 'Create External Table From CSV Files')
 
-7. In the Create External Table from CSV dialog, confirm that the **sales** database is selected and that the name of the external table is **stockitemholdings**.
+8. In the Create External Table from CSV dialog, confirm that the **sales** database is selected and that the name of the external table is **stockitemholdings**.
 
    ![The previously mentioned form is displayed.](media/ads-external-table-csv-wizard-active-connection.png 'Active SQL Server connections')
 
-8. Select **Next**.
+9. Select **Next**.
 
-9. The next step displays a preview of the first 50 rows CSV data for validation. Select **Next** to continue.
+10. The next step displays a preview of the first 50 rows CSV data for validation. Select **Next** to continue.
+
+   > If you get a null reference error, cancel the dialog and re-try until it succeeds to show the preview data
 
    ![A preview of the CSV data is displayed.](media/ads-external-table-csv-preview.png 'Preview Data')
 
-10. In the next step, you will be able to modify the columns of the external table you intend to create. You are able to alter the column name, change the data type, and allow for Nullable rows. For now, leave everything as-is and select **Next**.
+11. In the next step, you will be able to modify the columns of the external table you intend to create. You are able to alter the column name, change the data type, and allow for Nullable rows. For now, leave everything as-is and select **Next**.
 
     ![The Modify Columns step is displayed.](media/ads-external-table-csv-modify.png 'Modify Columns')
 
-11. Verify that everything looks correct in the Summary step, then select **Create Table**.
+12. Verify that everything looks correct in the Summary step, then select **Create Table**.
 
     ![The Summary step is displayed.](media/ads-external-table-csv-create.png 'Summary')
 
-12. As with the previous external table you created, a "Create External Table succeeded" dialog will appear under your task history in a few moments. Select the Servers link (Ctrl+Shift+D) on the left-hand menu, then expand the Tables list underneath your **sales** database and find the **dbo.stockitemholdings (External)** table. If you do not see it, right-click on the Tables folder, then select Refresh. **Right-click** the **dbo.stockitemholdings (External)** table, then choose **Select Top 1000** from the context menu.
+13. As with the previous external table you created, a "Create External Table succeeded" dialog will appear under your task history in a few moments. Select the Servers link (Ctrl+Shift+D) on the left-hand menu, then expand the Tables list underneath your **sales** database and find the **dbo.stockitemholdings (External)** table. If you do not see it, right-click on the Tables folder, then select Refresh. **Right-click** the **dbo.stockitemholdings (External)** table, then choose **Select Top 1000** from the context menu.
 
     ![The Select Top 1000 rows menu item is highlighted.](media/ads-stockitemholdings-select-top-1000.png 'Select Top 1000')
 
-13. Just as before, you should see a SQL query selecting the top 1000 rows and its query results, this time from the `stockitemholdings` table. Again, the SQL query is the same type of query you would write to select from a table internal to the sales database.
+14. Just as before, you should see a SQL query selecting the top 1000 rows and its query results, this time from the `stockitemholdings` table. Again, the SQL query is the same type of query you would write to select from a table internal to the sales database.
 
     ![The stockitemholdings query and results are displayed.](media/ads-stockitemholdings-results.png 'Stockitemholdings results')
 
@@ -429,7 +436,6 @@ Earlier in this lab, you virtualized data using the UI components within Azure D
 - Next, you'll create a data source for the SQL Storage Pool, since that allows you to access the HDFS system in BDC.
 - Finally, you'll create an External Table, which uses the previous steps to access the data.
 
-
 1. In Azure Data Studio, select **File**, then **Open File...**.
 
 2. In the folder browser dialog, navigate to the `C:\MCW-Modernizing-data-analytics-with-SQL-Server-2019-master\Hands-on lab\Resources` folder and select **notebook_02.ipynb**.
@@ -494,7 +500,9 @@ The trucks have sensors that transmit data to a file location. The trips are als
 
 4. Follow the instructions in the notebook and return to the next step after you have completed the notebook.
 
-   > There may be a kernel error pertaining to there not being a valid SQL connection when you open the notebook. If this happens, close the notebook and Azure Data Studio, then re-launch, reconnect, then re-open the notebook.
+   > You may get an error when executing the first cell, if so, change the kernal to `SQL`, then change it back to `PySpark`
+
+   > Additionally, there may be a kernel error pertaining to there not being a valid SQL connection when you open the notebook. If this happens, close the notebook and Azure Data Studio, then re-launch, reconnect, then re-open the notebook.
 
 ### Task 2: Score and save data as an external table
 
@@ -512,23 +520,27 @@ The trucks have sensors that transmit data to a file location. The trips are als
 
     ![Step 1 of the wizard is displayed.](media/ads-predictions-csv-wizard-step1.png 'Step 1')
 
+    > If you get a null reference error, cancel the dialog and re-try until it succeeds to show the preview data
+
 5. On Step 2, Preview Data, select **Next**.
 
-6. On Step 3, for the column `Car_Has_EcoStart` set the Data Type to **char(10)**. Select **Next**.
+6. On Step 3, for the column `Car_Has_EcoStart` set the Data Type to **char(10)**.
+
+7. Select **Next**.
 
     ![Step 3 of the wizard is displayed.](media/ads-predictions-csv-wizard-step3.png 'Step 3')
 
-7. On Step 4, select **Create Table**. Your predictions are now available for SQL querying in the battery-life-predictions table in the sales database.
+8. On Step 4, select **Create Table**. Your predictions are now available for SQL querying in the battery-life-predictions table in the sales database.
 
-8. In Azure Data Studio, Servers, expand your Big Data Cluster, `Databases`, `sales`, right-click `Tables` and then select `Refresh`.
+9. In Azure Data Studio, Servers, expand your Big Data Cluster, `Databases`, `sales`, right-click `Tables` and then select `Refresh`.
 
     ![Refresh the sales database tables.](media/ads-refresh-sales.png 'Refresh sales')
 
-9. Expand `tables`, right-click `battery-life-prediction` and choose **Select Top 1000** to view the data contained by the external table.
+10. Expand `tables`, right-click `battery-life-prediction` and choose **Select Top 1000** to view the data contained by the external table.
 
     ![Select Top 1000 records.](media/ads-predictions-select-top.png 'Select Top 1000')
 
-10. The vehicle telemetry along with predictions will appear. These are queried from the external table which is sourced from the CSV you created using the notebook.
+11. The vehicle telemetry along with predictions will appear. These are queried from the external table which is sourced from the CSV you created using the notebook.
 
     ![Sample data is displayed.](media/task02-view-data.png 'View data')
 
@@ -548,33 +560,35 @@ With SQL Server Management Studio, they are able to identify, classify, and gene
 
 In this task, you will run the SQL Data Discovery & Classification tool against their customer database, which includes personal, demographic, and sales data.
 
-1. Open SQL Server Management Studio (SSMS) and connect to your SQL Server 2019 cluster.
+1. Open **SQL Server Management Studio** (SSMS) and connect to your SQL Server 2019 cluster.
 
-2. Right-click on the **sales** database, then choose **Tasks > Classify Data...**.
+2. Right-click on the **sales** database, then choose **Tasks > Data Discovery and Classification > Classify Data...**.
 
     ![The sales database, Tasks menu, and Classify Data items are highlighted.](media/ssms-classify-data-link.png 'Data Classification')
 
-3. When the tool runs, it will analyze all of the columns within all of the tables and recommend appropriate data classifications for each. What you should see is the Data Classification dashboard showing no currently classified columns, and a classification recommendations box at the top showing that there are 44 columns that the tool identified as containing sensitive (PII) or GDPR-related data. **Select** on this classification recommendations box.
+3. When the tool runs, it will analyze all of the columns within all of the tables and recommend appropriate data classifications for each. What you should see is the Data Classification dashboard showing no currently classified columns, and a classification recommendations box at the top showing that there are 45 columns that the tool identified as containing sensitive (PII) or GDPR-related data.
+
+4. **Select** on this classification recommendations box.
 
     ![The data classification recommendations box is highlighted.](media/ssms-classification-recommendations-box.png 'Data classification recommendations box')
 
-4. The list of recommendations displays the schema, table, column, type of information, and recommended sensitivity label for each identified column. You can change the information type and sensitivity labels for each if desired. In this case, accept all recommendations by **checking the checkbox** in the recommendations table header.
+5. The list of recommendations displays the schema, table, column, type of information, and recommended sensitivity label for each identified column. You can change the information type and sensitivity labels for each if desired. In this case, accept all recommendations by **checking the checkbox** in the recommendations table header.
 
     ![The recommendations are shown with each checkbox checked.](media/ssms-recommendations.png 'Classification recommendations')
 
-5. Select **Accept selected recommendations**.
+6. Select **Accept selected recommendations**.
 
     ![The Accept selected recommendations button is highlighted.](media/ssms-accept-selected-recommendations.png 'Accept selected recommendations')
 
-6. Select **Save** in the toolbar above to apply your changes.
+7. Select **Save** in the toolbar above to apply your changes.
 
     ![The Save button is highlighted.](media/ssms-save-classification-changes.png 'Save classification changes')
 
-7. After the changes are saved, select **View Report**.
+8. After the changes are saved, select **View Report**.
 
     ![The View Report button is highlighted.](media/ssms-view-report.png 'View Report')
 
-8. What you should see is a report with a full summary of the database classification state. When you right-click on the report, you can see options to print or export the report in different formats.
+9. What you should see is a report with a full summary of the database classification state. When you right-click on the report, you can see options to print or export the report in different formats.
 
     ![The report is displayed, as well as the context menu showing export options after right-clicking on the report.](media/ssms-report.png 'SQL Data Classification Report')
 
@@ -586,7 +600,7 @@ Dynamic data masking helps prevent unauthorized access to sensitive data by enab
 
 In this task, you will apply dynamic data masking to one of the database fields so you can see how to address the reported compliance issues. To test the data mask, you will create a test user and query the field as that user.
 
-1. Open SQL Server Management Studio (SSMS) and connect to your SQL Server 2019 cluster.
+1. If not already open, open **SQL Server Management Studio** (SSMS) and connect to your SQL Server 2019 cluster.
 
 2. Expand the databases list, right-select on **sales**, then select **New Query**.
 
@@ -919,11 +933,13 @@ The tab allows you to:
 
     ![The SQL Server Big Data Cluster tab, which contains a Cluster Dashboard button to select.](media/ads-management-bdc-tab.png "Cluster Dashboard")
 
-3. The Big Data Cluster overview contains a brief overview of your Big Data Cluster's health, services, and service endpoints.  For now, select the SQL Server link.
+3. The Big Data Cluster overview contains a brief overview of your Big Data Cluster's health, services, and service endpoints.  For now, select the **SQL Server** link.
 
     ![The SQL Server Big Data Cluster overview, which contains a SQL Server link to select.](media/ads-management-bdc-overview.png "Big Data Cluster overview")
 
-4. The SQL Server details section shows information on your master instance, as well as your compute, data, and storage pods.  Select the **View** link under SQL Metrics.  This will open a browser window and connect to Grafana.
+4. The SQL Server details section shows information on your master instance, as well as your compute, data, and storage pods.  Select the **View** link under SQL Metrics.  This will open a browser window and connect to Grafana. 
+
+   > Note that you may need to select to ignore certificate warnings and then login using the `admin` username and the password you selected in the before the HOL steps.
 
     ![In SQL Server cluster details, select the View link under SQL Metrics.](media/ads-management-bdc-sql-metrics.png "View in Grafana")
 
@@ -931,7 +947,9 @@ The tab allows you to:
 
     ![SQL Server Big Data Cluster master instance metrics in Grafana.](media/ads-management-grafana.png "SQL Server Metrics from Grafana")
 
-5. Return to the Big Data Cluster Dashboard.  Then, select the **View** link under Node Metrics.  This will once again take you to Grafana, but this time you will see the Host Node Metrics dashboard,  which contains details on the Azure Kubernetes Services nodes which make up your service cluster.
+5. Return to the Big Data Cluster Dashboard.  Then, select the **View** link under Node Metrics.  
+
+6. This will once again take you to Grafana, but this time you will see the Host Node Metrics dashboard,  which contains details on the Azure Kubernetes Services nodes which make up your service cluster.
 
     ![In SQL Server cluster details, select the View link under SQL Metrics.](media/ads-management-bdc-node-metrics.png "View in Grafana")
 
@@ -939,7 +957,7 @@ The tab allows you to:
 
     ![Azure Kubernetes Service host node metrics in Grafana.](media/ads-management-grafana-host-node.png "Host Node Metrics from Grafana")
 
-6. Return to the Big Data Cluster Dashboard.  Then, select the **View** link under Logs.  This will take you to Kibana.
+7. Return to the Big Data Cluster Dashboard.  Then, select the **View** link under Logs.  This will take you to Kibana.  If prompted, again use the `admin` username with the password you selected in the before the HOL steps.
 
     ![In SQL Server cluster details, select the View link under Logs.](media/ads-management-bdc-logs.png "View in Kibana")
 
@@ -947,9 +965,9 @@ The tab allows you to:
 
     ![Logged messages concerning the master SQL Server instance in the past 15 minutes.](media/ads-management-kibana.png "Kibana")
 
-7. Return to the Big Data Cluster Dashboard.  Then, review node metrics and logs for other services, including HDFS and Spark.  These links will take you to Grafana and Kibana, respectively, and will provide measures and information for these services.
+8.  Return to the Big Data Cluster Dashboard.  Then, review node metrics and logs for other services, including HDFS and Spark.  These links will take you to Grafana and Kibana, respectively, and will provide measures and information for these services.
 
-8. After you have reviewed Grafana and Kibana, return to the Big Data Cluster Dashboard.  Then, select the **Big data cluster overview** link and then the **Troubleshoot** button.
+9.  After you have reviewed Grafana and Kibana, return to the Big Data Cluster Dashboard.  Then, select the **Big data cluster overview** link and then the **Troubleshoot** button.
 
     ![In the SQL Server Big Data Cluster Dashboard, select the Troubleshoot button.](media/ads-management-troubleshoot.png "Troubleshoot")
 
