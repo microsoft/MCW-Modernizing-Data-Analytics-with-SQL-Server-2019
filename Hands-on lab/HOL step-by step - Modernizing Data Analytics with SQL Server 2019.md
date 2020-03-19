@@ -1006,21 +1006,20 @@ The tab allows you to:
 11. Review node metrics and logs for other services, including HDFS and Spark.  These links will take you to Grafana and Kibana, respectively, and will provide measures and information for these services.
 
 12. After you have reviewed Grafana and Kibana, return to the Big Data Cluster Dashboard.  
-13. Select the **Big data cluster overview** link and then the **Troubleshoot** button.
+13. Select the **Big data cluster overview** link and then the **Troubleshoot** button. 
+   
+   - You may get an error with some versions of the tool. If so, select **File -> Open File**.  Browse to the **C:\Program Files\Azure Data Studio\resources\app\extensions\Microsoft.sqlservernotebook\books\sqlserver2019\content\troubleshooters** directory, select the **tsg100-troubleshoot-bdc.ipynb** file.
 
       ![In the SQL Server Big Data Cluster Dashboard, select the Troubleshoot button.](media/ads-management-troubleshoot.png "Troubleshoot")
 
-    - This brings up a Jupyter notebook designed to troubleshoot basic availability scenarios.
+   - This brings up a Jupyter notebook designed to troubleshoot basic availability scenarios.
 
       ![The Big Data Cluster troubleshooter, with links to other notebooks.](media/ads-management-tsg.png "A troubleshooting guide")
 
-    - Review the notebook and select the links to additional notebooks and Standard Operating Procedures, such as SOP007. Version information is returned.
+   - Review the notebook and select the links to additional notebooks and Standard Operating Procedures, such as SOP007. Version information is returned.
 
       ![A Standard Operating Procedure notebook for determining version information for tools.](media/ads-management-tsg-sop007.png "Version information Standard Operating Procedure guide")
 
-    - You can also view the entire set of notebooks in Azure Data Studio by selecting the Jupyter Books button.  This will show the **Operations and Support - SQL Server 2019 Big Data Clusters** collection of Jupyter notebooks.  Review these notebooks to learn more about how to troubleshoot individual components of a Big Data Cluster.
-
-      ![The set of notebooks available for SQL Server 2019 Big Data Clusters.](media/ads-management-jupyter-books.png "Jupyter Books")
 
 ### Task 2: Monitor and troubleshoot using kubectl commands
 
