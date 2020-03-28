@@ -156,7 +156,7 @@ When participants are doing activities, you can **look ahead to refresh your mem
 
 - **Consider creating a "parking lot"** to record issues or questions raised that are outside the scope of the whiteboard design session or can be answered later. Decide how you will address these issues, so you can acknowledge them without being derailed by them.
 
-**\*Have fun**! Encourage participants to have fun and share!\*
+**\*Have fun\***! Encourage participants to have fun and share!
 
 **Involve your participants.** Talk and share your knowledge but always involve your participants, even while you are the one speaking.
 
@@ -184,11 +184,11 @@ Timeframe: 15 minutes
 
 Directions: With all participants in the session, the facilitator/SME presents an overview of the customer case study along with technical tips.
 
-1.  Meet your table participants and trainer.
+1. Meet your table participants and trainer.
 
-2.  Read all of the directions for steps 1-3 in the student guide.
+2. Read all of the directions for steps 1-3 in the student guide.
 
-3.  As a table team, review the following customer case study.
+3. As a table team, review the following customer case study.
 
 ### Customer situation
 
@@ -204,25 +204,25 @@ Due to their continued growth, lending to expansion into the digital space, WWI 
 
 However, as a first step, WWI's technology team has recognized they must address the fact that they have quickly outgrown their ability to handle data. They anticipate the following solutions needed to reach more customers and grow the business:
 
-- Scale data systems to reach more consumers
-- Unlock business insights from multiple sources of structured and unstructured data
-- Apply deep analytics with high-performance responses
-- Infuse AI into apps to actively engage with customers
+- Scale data systems to reach more consumers.
+- Unlock business insights from multiple sources of structured and unstructured data.
+- Apply deep analytics with high-performance responses.
+- Infuse AI into apps to actively engage with customers.
 
 Prior to expanding to their current omni-channel strategy, WWI had a simple Point of Sale (POS) application that handled customer orders at each retail store. The back-end was a series of service layers used to process orders and store them in a SQL database. They had designed their systems and tuned them to handle this level of data.
 
-![A POS app was the only source of data prior to the omni-channel strategy.](media/pos-app.png 'Single channel: POS app')
+![A POS app was the only source of data prior to the omni-channel strategy. This app integrated with multiple service layers that ultimately feeds into a database.](media/pos-app.png 'Single channel: POS app')
 
 As they added new e-commerce channels to expand the customer base, consumer demand also increased. This increased demand from more customers ordering products through more channels generated more data. Now WWI has new challenges to address:
 
-- Increased consumer demand, leading to increased app data
-- They are unable to determine business trends because of siloed insights
-- They have a rising data management footprint, increasing cost and complexity
-- New development challenges resulting from more deployment targets and duplicated code
+- Increased consumer demand, leading to increased app data.
+- They are unable to determine business trends because of siloed insights.
+- They have a rising data management footprint, increasing cost and complexity.
+- New development challenges resulting from more deployment targets and duplicated code.
 
-![The expansion to omni-channel causes issues.](media/omni-channel.png 'Omni-channel causes issues like siloed insights')
+![The expansion to omni-channel causes issues. Each interface, retail store, web store and mobile store, each had their own set of service layers and databases, resulting in siloed data and insights.](media/omni-channel.png 'Omni-channel causes issues like siloed insights')
 
-WWI has considered using a traditional data warehouse to join data from their disparate systems to gain insights in one location. Their biggest concerns with this approach are the amount of time to put such a system in place and properly maintain it, but even more so, having an inherent delay between when new data is written to the source system and when that data is moved into the data warehouse. They would like to have access to data from all systems while it is fresh, but do so in a way that is highly scalable and able to support complex joins between the external sources and internal SQL server tables as well. They also want to be able to use their existing codebase while enabling a flexible scale-out architecture.
+WWI has considered using a traditional data warehouse to join data from their disparate systems to gain insights in one location. Their biggest concerns with this approach are the amount of time to put such a system in place and properly maintain it, but even more so, having an inherent delay between when new data is written to the source system and when that data is moved into the data warehouse. They would like to have access to data from all systems while it is fresh, but do so in a way that is highly scalable and able to support complex joins between the external sources and internal SQL server tables as well.
 
 However, there are times when they would like to move data into storage to provide denormalized and aggregated representations of their data for reporting purposes. In other terms, a data mart. However, they would like to also take advantage of distributed storage of this data, which would include sharding the data across multiple databases. They are concerned about the level of effort to shard their data, access that data, and maintain the distributed system.
 
@@ -266,7 +266,7 @@ There are two scenarios WWI is considering using AI to help grow their business 
 
 The following infographic can be used as inspiration when designing your solution.
 
-![Infographic to be used as inspiration when designing a solution.](media/infographic-for-common-scenarios.png 'Infographic for common scenarios')
+![Infographic to be used as inspiration when designing a solution. Multiple data sources, such as logs, files and media (unstructured); sensor and IoT data (unstructured) and business/custom application data (structured) are ingested via Spark Streaming or Kafka (for unstructured) or a scheduled data movement orchestration using Azure Data Factory. From ingestion, data is stored in a database cluster or pool and HDFS. Models are then prepped and trained using Machine learning services and libraries (such as Python, Scala, Java, R, Spark, Hadoop, SQL ML Services). Operational models are served via an ML Service hosted in a container, web service, or database service. Finally the models and data are consumed by Predictive applications and BI Tools.](media/infographic-for-common-scenarios.png 'Infographic for common scenarios')
 
 ## Step 2: Design a proof of concept solution
 
@@ -280,9 +280,9 @@ Timeframe: 60 minutes
 
 Directions: With all participants at your table, answer the following questions and list the answers on a flip chart:
 
-1.  Who should you present this solution to? Who is your target customer audience? Who are the decision makers?
+1. Who should you present this solution to? Who is your target customer audience? Who are the decision makers?
 
-2.  What customer business needs do you need to address with your solution?
+2. What customer business needs do you need to address with your solution?
 
 **Design**
 
@@ -371,7 +371,7 @@ Directions: Tables reconvene with the larger group to hear the facilitator/SME s
 | Always Encrypted with Secure Enclaves   | <https://docs.microsoft.com/en-us/sql/relational-databases/security/encryption/always-encrypted-enclaves?view=sqlallproducts-allversions> |
 | SQL Data Discovery and Classification   |     <https://docs.microsoft.com/en-us/sql/relational-databases/security/sql-data-discovery-and-classification?view=sql-server-ver15>      |
 | Hadoop File System (HDFS)               |                                        <https://kubernetes.io/docs/concepts/overview/components/>                                         |
-| Apache Spark                            |                                                        <https://spark.apache.org/>                                                        |
+| Apache Spark                            |                                                        <https://spark.apache.org/>                                                                              |
 
 # Modernizing Data Analytics with SQL Server 2019 whiteboard design session trainer guide
 
@@ -427,7 +427,7 @@ _High-level architecture_
 
 1. Diagram your initial vision for the architecture of the solution.
 
-   ![Preferred solution.](../Media/preferred-solution.png 'Preferred solution diagram')
+   ![Preferred solution diagram described in the text that follows.](../Media/preferred-solution.png 'Preferred solution diagram')
 
    WWI's requirements can be fully met with SQL Server 2019 Big Data Clusters (BDC). Kubernetes is responsible for the state of the BDC, and it builds and configures the cluster nodes, assigns pods to nodes, and monitors the health of the cluster. The architecture is composed of an App Pool that hosts applications, an instance of Machine Learning Server, and SSIS packages. It has a Control Plane consisting of a SQL Server Master Instance, and components for managing access to the HDFS cluster, Spark jobs, and metadata. SQL Server instances are distributed within the Compute Pool, under direction of the SQL Server Master Instance. The Storage Pool consists of collocated instances of SQL Server, Apache Spark, and HDFS. These components of the storage pool can be combined to create a data lake to store big data in a highly available-distributed fashion. The Data Pool provides persistent SQL Server storage for the cluster, distributed into shards across the member SQL Server data pool instances.
 
@@ -435,7 +435,7 @@ _High-level architecture_
 
    SQL Server big data clusters architecture:
 
-   ![SQL Server big data clusters architecture diagram.](media/common-scenario-1.png)
+   ![SQL Server big data clusters architecture diagram. From a high level, the controller provides management and security for the cluster. It contains the control service, the configuration store, and other cluster-level services such as Kibana, Grafana, and Elastic Search. The compute pool provides computational resources to the cluster. It contains nodes running SQL Server on Linux pods. The pods in the compute pool are divided into SQL Compute instances for specific processing tasks. The data pool is used for data persistence and caching. The data pool consists of one or more pods running SQL Server on Linux. It is used to ingest data from SQL queries or Spark jobs. SQL Server big data cluster data marts are persisted in the data pool.The storage pool consists of storage pool pods comprised of SQL Server on Linux, Spark, and HDFS. All the storage nodes in a SQL Server big data cluster are members of an HDFS cluster.](media/common-scenario-1.png)
 
 _Big data and insights_
 
@@ -449,7 +449,7 @@ _Big data and insights_
 
    One of the key new features of SQL Server 2019 is data virtualization. What this means is that you can virtualize external data in a SQL Server instance, regardless of source, location, and format, so that it can be queried like any other table, or sets of tables, within your SQL Server instance. In essence, data virtualization helps you create a single "virtual" layer of data from these disparate sources, providing unified data services to support multiple applications and users. A more familiar term we could use is data lake, or perhaps data hub. Unlike a typical data lake, however, you do not have to move data out from where it lives, yet you can still query that data through a consistent interface. This is a huge advantage over traditional ETL (extract-transform-load) processes where data must be moved from its original source to a new destination, oftentimes with some data transformation or mapping. This causes delays, extra storage, additional security, and a fair amount of engineering in most cases. With data virtualization, no data movement is required, which means the data sets are up-to-date, and it is possible to query and join these different data sources through these new capabilities, thanks to the use of new [PolyBase](https://docs.microsoft.com/sql/relational-databases/polybase/polybase-guide?view=sql-server-ver15) connectors. The data sources you can connect to include Cosmos DB, SQL Server (including Azure SQL Database), Oracle, HDFS (for flat files), and DB2.
 
-   ![ETL vs. Data Virtualization](../Hands-on%20lab/media/data-virtualization-vs-etl.png)
+   ![ETL vs. Data Virtualization is displayed. Data movement shows database to database transfer via ETL. Data Virtualization shows a SQL Server Parent as the unified layer that sits over top of Cosmos DB, MongoDB, Oracle, HDFS and DB2.](../Hands-on%20lab/media/data-virtualization-vs-etl.png)
 
    The image to the left represents traditional data movement using ETL. Compare that to data virtualization, which does not require data movement and provides a unified layer over top of existing data sources.
 
@@ -465,7 +465,7 @@ _Big data and insights_
 
    HDFS also provides data persistency, as HDFS data is spread across all the storage nodes in the SQL big data cluster. However, you can add external HDFS data sources to the HDFS cluster through tiering. With tiering, applications can seamlessly access data in a variety of external stores as though the data resides in the local HDFS. This allows you to interact with the files in Azure Data Lake Storage Gen2 or Amazon S3 as if they were local files. Both options allow you to mount the data store using storage keys. However, with Azure Data Lake Storage Gen 2, you can either use an Azure Storage access key or an Azure Active Directory User Account to gain permission to the files.
 
-   ![Diagram of SQL Server 2019 Data Lake](media/sql-server-2019-data-lake.png)
+   ![Diagram of SQL Server 2019 Data Lake. Two parent nodes, SQL and Spark, sit over top of a scalable, shared storage HDFS.](media/sql-server-2019-data-lake.png)
 
    **Data Pool**
 
@@ -519,7 +519,7 @@ _Big data and insights_
 
    How does this differ from a traditional data warehouse, such as Azure SQL Data Warehouse? The biggest difference is that a data warehouse is typically a [massively parallel processing](https://en.wikipedia.org/wiki/Massively_parallel) system (MPP), where SQL Server 2019 BDC is not. Although SQL Server 2019 big data clusters have separate compute and storage pools, that is where the similarities to an MPP system end. A disadvantage of using MPP systems is that the differences in querying, modeling, and data partitioning mean that MPP solutions require a different skillset. When you choose to use SQL Server 2019 BDC for your data mart, you can use your existing skillset and maintain compatibility with existing software that are written to query SQL Server databases.
 
-4) What methods can be used to ensure the best performance when querying data?
+4. What methods can be used to ensure the best performance when querying data?
 
    The [Intelligent Query Processing](https://docs.microsoft.com/en-us/sql/relational-databases/performance/intelligent-query-processing?view=sql-server-ver15) (QP) features of SQL Server 2019, coupled with Automatic Plan Correction, can be used to improve the performance of existing workloads with minimal work. The key to enabling these features in SQL Server 2019 is to set the [database compatibility level](https://docs.microsoft.com/en-us/sql/t-sql/statements/alter-database-transact-sql-compatibility-level?view=sql-server-ver15) to `150`.
 
@@ -535,7 +535,7 @@ _Deep analytics and AI_
 
    The SQL Server Master Instance in the BDC installs with SQL Machine Learning Services. In this way, SQL Server 2019 BDC provides **Integrated AI and Machine Learning**. Spark can be used as well as built-in AI tools in SQL Server, using R, Python, Scala, or Java.
 
-   ![Diagram of SQL Server 2019 Integrated AI and Machine Learning](media/sql-server-2019-integrated-ai-ml.png)
+   ![Diagram of SQL Server 2019 Integrated AI and Machine Learning. Various data sources are shown including Logs, files, and media (unstructured), Sensors and IoT data (unstructured) and Business/Custom applications data (structured). Unstructured data is then ingested via Spark Streaming or Kafka. Structured data is ingested via Azure Data Factory. The data is then stored in a SQL Server data pool and HDFS. Machine learning models are then prepped and trained via Spark, Spark ML and Azure Machine Learning Services. The models are then hosted and served via SQL Server master instance and Machine learning Services. Models and data are then consumed by predictive applications and BI tools.](media/sql-server-2019-integrated-ai-ml.png)
 
    Data scientists can continue to use big data ecosystem tools against HDFS while also utilizing easy, real-time access to the high-value data in SQL Server because it is all part of one integrated, complete system.
 
@@ -563,11 +563,11 @@ _Monitor and Troubleshoot_
 
    The cluster administration portal allows you to:
 
-   - Quickly view number of pods running and any issues
-   - Monitor deployment status
-   - View available service endpoints
-   - View controller and SQL Server master instance
-   - Drill down information on pods, including accessing Grafana dashboards and Kibana logs
+   - Quickly view number of pods running and any issues.
+   - Monitor deployment status.
+   - View available service endpoints.
+   - View controller and SQL Server master instance.
+   - Drill down information on pods, including accessing Grafana dashboards and Kibana logs.
 
 ## Checklist of preferred objection handling
 

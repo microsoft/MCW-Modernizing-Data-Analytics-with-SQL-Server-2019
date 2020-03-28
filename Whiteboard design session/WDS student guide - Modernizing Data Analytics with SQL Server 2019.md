@@ -78,23 +78,23 @@ Due to their continued growth, lending to expansion into the digital space, WWI 
 
 However, as a first step, WWI's technology team has recognized they must address the fact that they have quickly outgrown their ability to handle data. They anticipate the following solutions needed to reach more customers and grow the business:
 
-- Scale data systems to reach more consumers
-- Unlock business insights from multiple sources of structured and unstructured data
-- Apply deep analytics with high-performance responses
-- Infuse AI into apps to actively engage with customers
+- Scale data systems to reach more consumers.
+- Unlock business insights from multiple sources of structured and unstructured data.
+- Apply deep analytics with high-performance responses.
+- Infuse AI into apps to actively engage with customers.
 
 Prior to expanding to their current omni-channel strategy, WWI had a simple Point of Sale (POS) application that handled customer orders at each retail store. The back-end was a series of service layers used to process orders and store them in a SQL database. They had designed their systems and tuned them to handle this level of data.
 
-![A POS app was the only source of data prior to the omni-channel strategy.](media/pos-app.png 'Single channel: POS app')
+![A POS app was the only source of data prior to the omni-channel strategy. This app integrated with multiple service layers that ultimately feeds into a database.](media/pos-app.png 'Single channel: POS app')
 
 As they added new e-commerce channels to expand the customer base, consumer demand also increased. This increased demand from more customers ordering products through more channels generated more data. Now WWI has new challenges to address:
 
-- Increased consumer demand, leading to increased app data
-- They are unable to determine business trends because of siloed insights
-- They have a rising data management footprint, increasing cost and complexity
-- New development challenges resulting from more deployment targets and duplicated code
+- Increased consumer demand, leading to increased app data.
+- They are unable to determine business trends because of siloed insights.
+- They have a rising data management footprint, increasing cost and complexity.
+- New development challenges resulting from more deployment targets and duplicated code.
 
-![The expansion to omni-channel causes issues.](media/omni-channel.png 'Omni-channel causes issues like siloed insights')
+![The expansion to omni-channel causes issues. Each interface, retail store, web store and mobile store, each had their own set of service layers and databases, resulting in siloed data and insights.](media/omni-channel.png 'Omni-channel causes issues like siloed insights')
 
 WWI has considered using a traditional data warehouse to join data from their disparate systems to gain insights in one location. Their biggest concerns with this approach are the amount of time to put such a system in place and properly maintain it, but even more so, having an inherent delay between when new data is written to the source system and when that data is moved into the data warehouse. They would like to have access to data from all systems while it is fresh, but do so in a way that is highly scalable and able to support complex joins between the external sources and internal SQL server tables as well.
 
@@ -140,7 +140,7 @@ There are two scenarios WWI is considering using AI to help grow their business 
 
 The following infographic can be used as inspiration when designing your solution.
 
-![Infographic to be used as inspiration when designing a solution.](media/infographic-for-common-scenarios.png 'Infographic for common scenarios')
+![Infographic to be used as inspiration when designing a solution. Multiple data sources, such as logs, files and media (unstructured); sensor and IoT data (unstructured) and business/custom application data (structured) are ingested via Spark Streaming or Kafka (for unstructured) or a scheduled data movement orchestration using Azure Data Factory. From ingestion, data is stored in a database cluster or pool and HDFS. Models are then prepped and trained using Machine learning services and libraries (such as Python, Scala, Java, R, Spark, Hadoop, SQL ML Services). Operational models are served via an ML Service hosted in a container, web service, or database service. Finally the models and data are consumed by Predictive applications and BI Tools.](media/infographic-for-common-scenarios.png 'Infographic for common scenarios')
 
 ## Step 2: Design a proof of concept solution
 
