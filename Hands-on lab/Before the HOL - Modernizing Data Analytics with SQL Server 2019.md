@@ -71,36 +71,54 @@ The instructions that follow are the same for either your own system (desktop or
 > **Note**: For further information, please [refer to this link](https://docs.microsoft.com/en-us/sql/big-data-cluster/deploy-get-started?view=sqlallproducts-allversions) for the latest installation instructions if you have problems running the steps below.
 
 1. Open the [Azure Portal](https://portal.azure.com).
+
 2. Create a new resource group called `mod-data-INIT` in a [supported AKS region](https://docs.microsoft.com/en-us/azure/aks/availability-zones).
+
 3. Under **Settings**, select **Export template**.
 
    ![The resource group left menu is displayed with Export template item highlighted.](media/before-hol-azure-region-setup.png 'select export template')
 
 4. In the menu, select **Deploy**.
+
 5. Select **Build your own template in the editor**.
+
 6. Copy then paste the **/hands-on-lab/template.json** file contents to the window, then select **Save**.
+
 7. Check the **I agree...** checkbox.
+
 8. Select **Purchase**.
+
 9. Navigate to the **Overview** dialog of the resource group, select **Deployments**, wait for the **Microsoft.template** deployment to succeed.  You can select it to review its progress.
 
    ![From the Resource group left menu, Deployments is highlighted. The deployment with the name Microsoft.Template is highlighted in the listing of deployments.](media/before-hol-azure-deploy-status.png 'Review the deployment process')
 
 10. Select the **dev-1-nsg** network security group, in the list of newly created resources.
+
 11. In the **Settings** section, select **Inbound Security rules**.
+
 12. Select **+Add**.
+
 13. For the source, select **IP Addresses**.
+
 14. For the source ip, type your client IP Address.
-    - You can get this by looking at your router, or using a service such as google by doing a search for `what is my ip`
+    - You can get this by looking at your router, or using a service such as google by doing a search for `what is my ip`.
+    
 15. For the destination port range, type `3389`
+
 16. For the name, type `Port_3389`
-17. Click **Add**.
+
+17. Select **Add**.
+
 18. Select the **dev-1** vm, in the list of newly created resources.
 
       ![In the list of resources in the resource group, the virtual machine dev-1 is highlighted.](media/before-hol-azure-vm.png 'Select the dev-1 virtual  machine')
 
 19. Select **Connect -> RDP** in the top menu navigation.
+
 20. Select **Download RDP file**, then connect to the virtual machine.
+
 21. Open Internet Explorer, download and install [Google Chrome](https://www.google.com/chrome).
+
 22. Set Google Chrome to the default browser.
 
 23. Ensure your system updates are current. Run from an Administrator-level Windows PowerShell session (if running on a VM, you may safely ignore errors). This could take up to 30 minutes to complete.
@@ -225,13 +243,15 @@ Open PowerShell and execute the following to deploy the clusters in preparation 
    ```
 
 4. Switch to **Azure Data Studio**.
+
 5. Select the **Connections** tab, then select the ellipsis (...) in Connections.
+
 6. Select the **New Deployment** option.
 
    ![Azure Data Studio is displayed. In the CONNECTIONS section, the ellipsis next to the Connections header is expanded, and the Deploy SQL Server option is selected.](media/ads-deploy-sql-server.png 'Deploy SQL Server')
 
 7. On the Select the deployment options, set the following values, then choose the **Select** button to continue:
-   - For deployment template, select **SQL Server Big Data Cluster**
+   - For deployment template, select **SQL Server Big Data Cluster**.
    - Check the checkbox to accept the Microsoft Privacy Statement, SQL Server License Terms, and azdata license terms. Choose the **Select** button to continue.
    - Choose the following SQL Server Options:
      - **Version**: Select **SQL Server 2019**.
@@ -243,6 +263,7 @@ Open PowerShell and execute the following to deploy the clusters in preparation 
    > **Note**: If the **Install tools** button is present, click it to install anything that may not have been installed in the above steps.
 
 8. On the Step 1 Deployment configuration template panel, select **aks-dev-test**, and select **Next** to continue.
+
    ![The aks-dev-test configuration template is selected from the Step 1 Deployment Configuration Template panel. The Next button is highlighted.](media/ads-deploy-bdc-aks.png 'Deploy SQL Server Big Data Cluster on Azure Kubernetes Service')
 
 9. On the Step 2 Azure Settings panel, set the following values, then select **Next** to continue:
@@ -297,6 +318,7 @@ Open PowerShell and execute the following to deploy the clusters in preparation 
       ![The Big Data Cluster deployment notebook is shown with the Run cell command highlighted as an example of how to run a cell.](media/ads-deploy-bdc-notebook.png 'Running the notebook to deploy a SQL Server Big Data Cluster')
 
 15. The final step of the notebook will allow you to connect to your Big Data Cluster master instance using Azure Data Studio. Run the step and then select the link to connect to your SQL Server master instance.
+
    ![In the notebook in the Connect to SQL Server Master instance in Azure Data Studio section, the Click here to connect to SQL Server master instance link is highlighted.](media/ads-deploy-bdc-connect.png 'Connect to a SQL Server master instance')
 
 16. Once you have run through each step, save the notebook.  This notebook will contain information on all of your Big Data Cluster endpoints, which you will need throughout the lab.
@@ -308,6 +330,7 @@ Open PowerShell and execute the following to deploy the clusters in preparation 
    - Review the contents of the script file.
 
 2. Switch to Windows command prompt.
+
 3. Run the script named **bootstrap-sample-db.cmd**. Substitute `<MSSQL_CLUSTER_NAME>`, `<SQL_MASTER_IP>`, `<SQL_MASTER_ADMIN_PASSWORD>`, `<KNOX_IP>`, `<KNOX_PASSWORD>` with values output from the SQL Server 2019 cluster creation notebook above.  Halfway through the execution of this script, you may need to hit a key to have it continue.  This script will download and restore a database called `sales` to your Big Data cluster.
 
    ```bash
@@ -351,6 +374,7 @@ In this lab, you will be using an Azure SQL Database as a source for virtual tab
     ![On the Overview pane of the SQL database, the Set server firewall item is highlighted on the toolbar.](media/azure-sql-set-server-firewall-link.png 'Overview blade')
 
 4. Select **+ Add client IP** to automatically add your system's IP address, and make sure **Allow access to Azure services** is set to **ON**.
+
 5. Select **Save** to apply your changes.
 
     ![On the Firewall settings screen, the + Add client IP button is highlighted in the toolbar, and the toggle for Allow access to Azure services is set to **ON**.](media/azure-sql-set-server-firewall.png 'Firewall settings')
