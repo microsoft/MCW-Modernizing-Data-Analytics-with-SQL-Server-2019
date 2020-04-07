@@ -156,7 +156,7 @@ When participants are doing activities, you can **look ahead to refresh your mem
 
 - **Consider creating a "parking lot"** to record issues or questions raised that are outside the scope of the whiteboard design session or can be answered later. Decide how you will address these issues, so you can acknowledge them without being derailed by them.
 
-**\*Have fun\***! Encourage participants to have fun and share!
+***Have fun**! Encourage participants to have fun and share!*
 
 **Involve your participants.** Talk and share your knowledge but always involve your participants, even while you are the one speaking.
 
@@ -504,8 +504,8 @@ _Big data and insights_
 
    Other reasons for storing data in a data mart include:
 
-   - The external system that receives the push down queries to return the data may not be optimized to keep up with demand, causing performance degradation or too much interference on the system, so caching results in the data mart helps relieve pressure
-   - The external source may not keep track of historical data and you need to store this data somewhere for historical analysis
+   - The external system that receives the push down queries to return the data may not be optimized to keep up with demand, causing performance degradation or too much interference on the system, so caching results in the data mart helps relieve pressure.
+   - The external source may not keep track of historical data and you need to store this data somewhere for historical analysis.
 
    The process of creating a data mart begins much like when you set up data virtualization. The primary difference is that you configure your PolyBase statements that connect to the external data sources to specify the target of the returned data to be the Data Pool.
 
