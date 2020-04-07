@@ -972,7 +972,7 @@ The tab allows you to:
 
 2. Expand the **SQL SERVER BIG DATA CLUSTERS** section.
 
-3. Click **Add SQL Server Big Data cluster controller** link.
+3. Select the **Add SQL Server Big Data cluster controller** link.
 
 4. Connect to your SQL Server Big Data Cluster's master instance (x.x.x.x:30080), use the connection details from the **deploy-bdc-aks** workbook.
 
