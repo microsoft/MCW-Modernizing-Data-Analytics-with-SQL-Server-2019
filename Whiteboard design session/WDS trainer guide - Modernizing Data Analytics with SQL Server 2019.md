@@ -427,7 +427,7 @@ _High-level architecture_
 
 1. Diagram your initial vision for the architecture of the solution.
 
-   ![Preferred solution diagram described in the text that follows.](../Media/preferred-solution.png 'Preferred solution diagram')
+   ![Preferred solution diagram described in the text that follows.](media/preferred-solution.png 'Preferred solution diagram')
 
    WWI's requirements can be fully met with SQL Server 2019 Big Data Clusters (BDC). Kubernetes is responsible for the state of the BDC, and it builds and configures the cluster nodes, assigns pods to nodes, and monitors the health of the cluster. The architecture is composed of an App Pool that hosts applications, an instance of Machine Learning Server, and SSIS packages. It has a Control Plane consisting of a SQL Server Master Instance, and components for managing access to the HDFS cluster, Spark jobs, and metadata. SQL Server instances are distributed within the Compute Pool, under direction of the SQL Server Master Instance. The Storage Pool consists of collocated instances of SQL Server, Apache Spark, and HDFS. These components of the storage pool can be combined to create a data lake to store big data in a highly available-distributed fashion. The Data Pool provides persistent SQL Server storage for the cluster, distributed into shards across the member SQL Server data pool instances.
 
