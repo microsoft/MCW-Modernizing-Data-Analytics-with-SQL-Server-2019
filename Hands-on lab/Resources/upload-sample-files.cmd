@@ -29,7 +29,7 @@ echo Creating HDFS directories to store file data...
 REM Download source files
 echo Downloading source files...
 %DEBUG% curl -G "https://solliancepublicdata.blob.core.windows.net/mcw-moderndata/customers.csv" -o customers.csv
-%DEBUG% curl -G "https://solliancepublicdata.blob.core.windows.net/mcw-moderndata/products.csv" -o products.csv
+%DEBUG% curl -G "https://solliancepublicdata.blob.core.windows.net/mcw-moderndata/stockitemholdings.csv" -o products.csv
 %DEBUG% curl -G "https://solliancepublicdata.blob.core.windows.net/mcw-moderndata/web_clickstreams.csv" -o web_clickstreams.csv
 
 REM Upload the data files to HDFS
