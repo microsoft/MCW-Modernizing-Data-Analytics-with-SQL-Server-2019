@@ -214,7 +214,7 @@ Download a starter project that includes data files used in the lab.
 
 2. In a web browser, navigate to the [Modernizing data analytics with SQL Server 2019 MCW repo](https://github.com/Microsoft/MCW-Modernizing-data-analytics-with-SQL-Server-2019).
 
-3. On the repo page, select **Code**, then select **Download ZIP**.
+3. On the repo page, select **Clone or download**, then select **Download ZIP**.
 
    ![On the repo page, the Clone or Download button is expanded with the Download Zip button selected.](media/github-download-repo.png 'Download ZIP')
 

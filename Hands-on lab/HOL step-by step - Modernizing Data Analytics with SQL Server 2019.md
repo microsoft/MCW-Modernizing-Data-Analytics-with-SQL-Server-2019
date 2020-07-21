@@ -305,11 +305,11 @@ The next data source we will be virtualizing is a CSV file that you will upload 
 
 6. Select **Upload**.
 
-7. In the **data** folder, right-click the `stockitemholdings.csv` file and select **Virtualize Data  Table From CSV Files**.
+7. In the **data** folder, right-click the `stockitemholdings.csv` file and select **Create External Table From CSV Files**.
 
-   ![In the data folder, the CSV file is highlighted and the context menu displayed with the Virtualize Data From CSV Files menu item selected.](media/ads-create-external-table-csv.png 'Virtualize Data From CSV Files')
+   ![In the data folder, the CSV file is highlighted and the context menu displayed with the Create External Table From CSV Files menu item selected.](media/ads-create-external-table-csv.png 'Create External Table From CSV Files')
 
-8. In the Virtualize Data from CSV dialog, Step 1 Select the destination database for your external table panel; confirm that the **sales** database is selected and that the name of the external table is **stockitemholdings**.
+8. In the Create External Table from CSV dialog, Step 1 Select the destination database for your external table panel; confirm that the **sales** database is selected and that the name of the external table is **stockitemholdings**.
 
    ![The Step 1 Select the destination database for your external table panel is shown populated with the previously mentioned values.](media/ads-external-table-csv-wizard-active-connection.png 'Active SQL Server connections')
 
@@ -326,8 +326,8 @@ The next data source we will be virtualizing is a CSV file that you will upload 
 
 12. In the Step 4 Summary pane, verify that everything looks correct, then select **Create Table**.
 
-    ![The Step 4 Summary pane is displayed with the Virtualize Data information.](media/ads-external-table-csv-create.png 'Summary')
-    - As with the previous external table you created, a "Virtualize Data succeeded" dialog will appear under your task history in a few moments.
+    ![The Step 4 Summary pane is displayed with the Create External Table information.](media/ads-external-table-csv-create.png 'Summary')
+    - As with the previous external table you created, a "Create External Table succeeded" dialog will appear under your task history in a few moments.
   
 13. Select the Servers link (Ctrl+Shift+D) on the left-hand menu, then expand the Tables list underneath your **sales** database and find the **dbo.stockitemholdings (External)** table. If you do not see it, right-click on the Tables folder, then select **Refresh**.
 
@@ -540,9 +540,9 @@ The trucks have sensors that transmit data to a file location. The trips are als
 
     ![In the SERVERS list, the Data Services folder and the HDFS item are expanded. The data folder is selected with its context menu displayed. The Refresh item is selected from the context menu.](media/ads-refresh-data.png 'Refresh data')
 
-2. You should see `battery-life.csv` as a folder, expand it and then right-click on the CSV file whose name starts with `part-00000-` and select `Virtualize Data From CSV Files`.
+2. You should see `battery-life.csv` as a folder, expand it and then right-click on the CSV file whose name starts with `part-00000-` and select `Create External Table From CSV Files`.
 
-    ![The data folder is expanded along with the battery-life.csv folder. The part-00000- file is selected with its context menu displayed. The Virtualize Data From CSV Files is selected from the context menu.](media/ads-battery-create-external-menu.png 'Virtualize Data')
+    ![The data folder is expanded along with the battery-life.csv folder. The part-00000- file is selected with its context menu displayed. The Create External Table From CSV Files is selected from the context menu.](media/ads-battery-create-external-menu.png 'Create External Table')
 
 3. In the Step 1 Select the destination database for your external table pane, select the `sales` database and for the `Name for new external table` field provide **battery-life-predictions**.
 
