@@ -129,7 +129,7 @@ Follow the steps below to connect to your SQL Server 2019 cluster with both Azur
      - **Connection type**: Select Microsoft SQL Server.
      - **Server**: Enter the IP address, followed by port number `31433` to the SQL Server 2019 Big Data cluster. It should have a format of IP separated by a comma from the port, such as: `11.122.133.144,31433`
      - **Authentication type**: Select SQL Login.
-     - **Username**: Enter `admin`
+     - **Username**: Enter `admin`.
      - **Password**: Enter the password you used when creating the cluster.
      - **Remember password**: Checked.
      - Leave all other options at their default values.
@@ -148,7 +148,7 @@ Follow the steps below to connect to your SQL Server 2019 cluster with both Azur
 
    - **Server name**: Enter the IP address, followed by port number `31433` to the SQL Server 2019 Big Data cluster. It should have a format of IP separated by a comma from the port, such as: `11.122.133.144,31433`
    - **Authentication**: Select SQL Server Authentication.
-   - **Login**: Enter `admin`
+   - **Login**: Enter `admin`.
    - **Password**: Enter the password you used when creating the cluster.
    - **Remember password**: Checked.
 
@@ -966,7 +966,7 @@ The tab allows you to:
 - View available service endpoints.
 - Drill down information on pods, including accessing Grafana dashboards and Kibana logs.
 
-> If you are prompted on any of the following screens for a username and password, enter the same username and password combination you chose when creating the cluster. By default, the username is `admin`.
+> **Note**: If you are prompted on any of the following screens for a username and password, enter the same username and password combination you chose when creating the cluster. By default, the username is `admin`.
 
 1. Switch to Azure Data Studio.
 
