@@ -9,7 +9,7 @@ Hands-on lab step-by-step
 </div>
 
 <div class="MCWHeader3">
-March 2020
+June 2020
 </div>
 
 Information in this document, including URL and other Internet Web site references, is subject to change without notice. Unless otherwise noted, the example companies, organizations, products, domain names, e-mail addresses, logos, people, places, and events depicted herein are fictitious, and no association with any real company, organization, product, domain name, e-mail address, logo, person, place or event is intended or should be inferred. Complying with all applicable copyright laws is the responsibility of the user. Without limiting the rights under copyright, no part of this document may be reproduced, stored in or introduced into a retrieval system, or transmitted in any form or by any means (electronic, mechanical, photocopying, recording, or otherwise), or for any purpose, without the express written permission of Microsoft Corporation.
@@ -129,7 +129,7 @@ Follow the steps below to connect to your SQL Server 2019 cluster with both Azur
      - **Connection type**: Select Microsoft SQL Server.
      - **Server**: Enter the IP address, followed by port number `31433` to the SQL Server 2019 Big Data cluster. It should have a format of IP separated by a comma from the port, such as: `11.122.133.144,31433`
      - **Authentication type**: Select SQL Login.
-     - **Username**: Enter `admin`
+     - **Username**: Enter `admin`.
      - **Password**: Enter the password you used when creating the cluster.
      - **Remember password**: Checked.
      - Leave all other options at their default values.
@@ -148,7 +148,7 @@ Follow the steps below to connect to your SQL Server 2019 cluster with both Azur
 
    - **Server name**: Enter the IP address, followed by port number `31433` to the SQL Server 2019 Big Data cluster. It should have a format of IP separated by a comma from the port, such as: `11.122.133.144,31433`
    - **Authentication**: Select SQL Server Authentication.
-   - **Login**: Enter `admin`
+   - **Login**: Enter `admin`.
    - **Password**: Enter the password you used when creating the cluster.
    - **Remember password**: Checked.
 
@@ -305,11 +305,11 @@ The next data source we will be virtualizing is a CSV file that you will upload 
 
 6. Select **Upload**.
 
-7. In the **data** folder, right-click the `stockitemholdings.csv` file and select **Create External Table From CSV Files**.
+7. In the **data** folder, right-click the `stockitemholdings.csv` file and select **Virtualize Data  Table From CSV Files**.
 
-   ![In the data folder, the CSV file is highlighted and the context menu displayed with the Create External Table From CSV Files menu item selected.](media/ads-create-external-table-csv.png 'Create External Table From CSV Files')
+   ![In the data folder, the CSV file is highlighted and the context menu displayed with the Virtualize Data From CSV Files menu item selected.](media/ads-create-external-table-csv.png 'Virtualize Data From CSV Files')
 
-8. In the Create External Table from CSV dialog, Step 1 Select the destination database for your external table panel; confirm that the **sales** database is selected and that the name of the external table is **stockitemholdings**.
+8. In the Virtualize Data from CSV dialog, Step 1 Select the destination database for your external table panel; confirm that the **sales** database is selected and that the name of the external table is **stockitemholdings**.
 
    ![The Step 1 Select the destination database for your external table panel is shown populated with the previously mentioned values.](media/ads-external-table-csv-wizard-active-connection.png 'Active SQL Server connections')
 
@@ -326,8 +326,8 @@ The next data source we will be virtualizing is a CSV file that you will upload 
 
 12. In the Step 4 Summary pane, verify that everything looks correct, then select **Create Table**.
 
-    ![The Step 4 Summary pane is displayed with the Create External Table information.](media/ads-external-table-csv-create.png 'Summary')
-    - As with the previous external table you created, a "Create External Table succeeded" dialog will appear under your task history in a few moments.
+    ![The Step 4 Summary pane is displayed with the Virtualize Data information.](media/ads-external-table-csv-create.png 'Summary')
+    - As with the previous external table you created, a "Virtualize Data succeeded" dialog will appear under your task history in a few moments.
   
 13. Select the Servers link (Ctrl+Shift+D) on the left-hand menu, then expand the Tables list underneath your **sales** database and find the **dbo.stockitemholdings (External)** table. If you do not see it, right-click on the Tables folder, then select **Refresh**.
 
@@ -406,9 +406,9 @@ Notebooks are made up of one or more of cells that allow for the execution of th
 3. When the notebook opens, you need to select the **Kernel** you would like to use to run the notebook. Locate the **Kernel** dropdown in the toolbar above the notebook, then select **Python 3**.
 
    - After selecting the Kernel, you may be prompted to install Python for Notebooks components. If you see this, select **New Python installation**. Select **Install**. This may take **several minutes to complete**.
-   
-      ![The Python 3 kernel is selected from the Kernel dropdown list.](media/ads-notebook-select-kernel.png 'Kernel dropdown')
-      
+ 
+     ![The Python 3 kernel is selected from the Kernel dropdown list.](media/ads-notebook-select-kernel.png 'Kernel dropdown')
+
       ![The Configure Python for Notebooks dialog is displayed with the New Python installation option selected. The Install button is highlighted.](media/ads-configure-python-for-notebooks.png 'Configure Python for Notebooks')
 
      - While it is running, you will see the install progress in the **TASKS** tab, and the **Kernel** will display "Changing kernel..." in the dropdown.
@@ -540,9 +540,9 @@ The trucks have sensors that transmit data to a file location. The trips are als
 
     ![In the SERVERS list, the Data Services folder and the HDFS item are expanded. The data folder is selected with its context menu displayed. The Refresh item is selected from the context menu.](media/ads-refresh-data.png 'Refresh data')
 
-2. You should see `battery-life.csv` as a folder, expand it and then right-click on the CSV file whose name starts with `part-00000-` and select `Create External Table From CSV Files`.
+2. You should see `battery-life.csv` as a folder, expand it and then right-click on the CSV file whose name starts with `part-00000-` and select `Virtualize Data From CSV Files`.
 
-    ![The data folder is expanded along with the battery-life.csv folder. The part-00000- file is selected with its context menu displayed. The Create External Table From CSV Files is selected from the context menu.](media/ads-battery-create-external-menu.png 'Create External Table')
+    ![The data folder is expanded along with the battery-life.csv folder. The part-00000- file is selected with its context menu displayed. The Virtualize Data From CSV Files is selected from the context menu.](media/ads-battery-create-external-menu.png 'Virtualize Data')
 
 3. In the Step 1 Select the destination database for your external table pane, select the `sales` database and for the `Name for new external table` field provide **battery-life-predictions**.
 
@@ -966,7 +966,7 @@ The tab allows you to:
 - View available service endpoints.
 - Drill down information on pods, including accessing Grafana dashboards and Kibana logs.
 
-> If you are prompted on any of the following screens for a username and password, enter the same username and password combination you chose when creating the cluster. By default, the username is `admin`.
+> **Note**: If you are prompted on any of the following screens for a username and password, enter the same username and password combination you chose when creating the cluster. By default, the username is `admin`.
 
 1. Switch to Azure Data Studio.
 
@@ -985,7 +985,7 @@ The tab allows you to:
 7. The SQL Server details section shows information on your master instance, as well as your compute, data, and storage pods.  Select the **View** link under SQL Metrics.  This will open a browser window and connect to Grafana.
 
    - Note that you may need to select to ignore certificate warnings. If so, select **Advanced**, then select **Proceed to ...** link. Login using the `admin` username and the password you selected in the before the HOL steps.
-   
+
       ![In SQL Server cluster details screen on the master tab under the Metrics and Logs section, select the View link under the SQL Metrics column for the master-0 instance.](media/ads-management-bdc-sql-metrics.png "View in Grafana")
 
    - Grafana will appear, along with details on your SQL Server instance.  Spend some time viewing the available metrics and graphs on the Grafana dashboard.  You can also change between instances by selecting the appropriate instance in the Host drop-down list.
@@ -1019,7 +1019,7 @@ The tab allows you to:
 13. Select the **Big data cluster overview** link and then the **Troubleshoot** button.
 
     - You may get an error with some versions of the tool. If so, select **File -> Open File**.  Browse to the **C:\Program Files\Azure Data Studio\resources\app\extensions\Microsoft.sqlservernotebook\books\sqlserver2019\content\troubleshooters** directory, select the **tsg100-troubleshoot-bdc.ipynb** file.
-    
+
       ![In the SQL Server Big Data Cluster Dashboard, the Troubleshoot button is selected from the toolbar.](media/ads-management-troubleshoot.png "Troubleshoot")
 
     - This brings up a Jupyter notebook designed to troubleshoot basic availability scenarios.
