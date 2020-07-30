@@ -66,7 +66,7 @@ Duration: 60 minutes
 
 The instructions that follow are the same for either your own system (desktop or laptop), or a Virtual Machine. It's best to have at least 4GB of RAM on the management system, and these instructions assume that you are not planning to run the database server or any Containers on the workstation. It's also assumed that you are using a current version of Windows, either desktop or server.
 
-> **Note**: You can copy and paste all of the commands that follow in a PowerShell window that you run as the system Administrator
+> **Note**: You can copy and paste all of the commands that follow in a PowerShell window that you run as the system Administrator.
 
 > **Note**: For further information, please [refer to this link](https://docs.microsoft.com/en-us/sql/big-data-cluster/deploy-get-started?view=sqlallproducts-allversions) for the latest installation instructions if you have problems running the steps below.
 
@@ -100,12 +100,12 @@ The instructions that follow are the same for either your own system (desktop or
 
 13. For the source, select **IP Addresses**.
 
-14. For the source ip, type your client IP Address.
+14. For the source IP, type your client IP Address.
     - You can get this by looking at your router, or using a service such as google by doing a search for `what is my ip`.
     
-15. For the destination port range, type `3389`
+15. For the destination port range, type `3389`.
 
-16. For the name, type `Port_3389`
+16. For the name, type `Port_3389`.
 
 17. Select **Add**.
 
@@ -289,12 +289,15 @@ Open PowerShell and execute the following to deploy the clusters in preparation 
       > **Please note:**  Some of the steps in this hands-on lab use Windows batch scripts to perform operations.  Windows batch scripts have a set of special characters which you should not use in your password.  Examples of safe special characters to use are `@`, `#`, and `$`, as these do not have any special meaning for Windows batch scripts. If you wish to use an exclamation point (`!`), your batch script calls will need to include four carets (`^`) before each exclamation point.  That is, if your password is `ThisIsMyPassword!`, then you will need to enter it as `ThisIsMyPassword^^^^!` when you call the Windows batch script.
 
 11. Review the scale settings, we will **leave all of the defaults**, including endpoints for the labs. The default values will be based off of the deployment configuration template, but you have the opportunity to change these if you would like. When finished, select the **Next** button.
+
    ![The Step 4 Service settings page is filled with with default values. The Next button is highlighted.](media/ads-deploy-bdc-service-settings.png 'Service settings for deploying a SQL Server Big Data Cluster on Azure Kubernetes Service')
 
 12. On the Step 5 Summary panel, review the summary to ensure that your settings are correct. Once finished, select the **Script to Notebook** button.
+
    ![The Summary page has our cluster details and a Script to Notebook button which we will select.](media/ads-deploy-bdc-summary.png 'Summary details our SQL Server Big Data Cluster')
 
 13. If you have never run a notebook before, Azure Data Studio will ask you to choose a new Python installation or, if you have one already, an existing installation.  We will choose to use a new installation of Python to avoid any permissions issues with existing installations of Python.  Choose the **Install** button.  As Azure Data Studio configures Jupyter notebooks and installs necessary components, it will write messages to the Output buffer.
+
    ![The Configure Python for Notebooks dialog is displayed with an installation type of "New Python installation" selected and the Install button is highlighted.](media/ads-configure-python-for-notebooks.png 'Configure Python for Notebooks')
 
 14. After Azure Data Studio finishes configuration, run each step of the notebook by selecting the "play" button next to each code block in order. It may take a few moments to start the python kernel and execute the first step, you can watch the `output` window for status.
