@@ -1,4 +1,5 @@
-## Effective December 1, 2020 this workshop will be archived.  Materials remain available through November but are no longer being maintained. 
+## This workshop is archived and is no longer being maintained. Content is read-only.
+
 ### For additional Data and AI content, please go to https://microsoft.github.io/sqlworkshops/.
 
 # Modernizing Data Analytics with SQL Server 2019
